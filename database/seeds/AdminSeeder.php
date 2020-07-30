@@ -15,3 +15,4 @@ class AdminSeeder extends Seeder
         factory(Admin::class, 5)->create();
     }
 }
+\
