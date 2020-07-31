@@ -5,7 +5,6 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class AdminResetPasswordNotification extends Notification

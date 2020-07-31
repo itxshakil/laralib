@@ -22,7 +22,7 @@
                     <h4 class="text-lg text-center text-success">You are logged in as Admin!</h4>
                     @else
                     <h4 class="text-lg text-center text-danger">You are logged out as Admin!</h4>
-                    @endifF
+                    @endif
 
                     {{ __('You are logged in!') }}
                 </div>
