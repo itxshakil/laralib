@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -26,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -37,7 +38,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'class' => ['required', 'string', 'max:255'],
+            'rollno' => ['required', 'integer'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+
+        $data['password'] = Hash::make($data['password']);
+
+        User::create($data);
+        return redirect(route('admin.users.index'));
     }
 
     /**
@@ -59,7 +71,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -71,7 +83,16 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $data =  $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'class' => ['required', 'string', 'max:255'],
+            'rollno' => ['required', 'integer'],
+        ]);
+
+        $user->update($data);
+
+        return redirect(route('admin.users.index'));
     }
 
     /**
