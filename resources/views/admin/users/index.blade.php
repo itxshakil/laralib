@@ -2,9 +2,11 @@
 
 @section('content')
 <div class="max-w-7xl mx-auto px-6">
-    <div class="flex justify-between">
+    <div class="flex justify-between items-center">
         <h3 class="text-2xl p-2">{{ __('Users') }}</h3>
-    <a href="{{route('admin.users.create')}}" class="align-baseline py-2 px-4 border border-transparent text-sm  font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">Add new Student</a>
+        <a href="{{route('admin.users.create')}}"
+            class="align-baseline py-2 px-4 border border-transparent text-sm  font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">Add
+            new Student</a>
     </div>
     <div class="flex flex-col">
         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -53,8 +55,8 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">Regional Paradigm Technician</div>
-                                <div class="text-sm leading-5 text-gray-500">Optimization</div>
+                            <div class="text-sm leading-5 text-gray-900">{{$user->class}}</div>
+                                <div class="text-sm leading-5 text-gray-500">{{$user->rollno}}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <span
