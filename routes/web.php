@@ -41,5 +41,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::middleware('auth:admin')->namespace('Admin')->group(function () {
         Route::resource('users', 'UserController');
+        Route::resource('books', 'BookController');
     });
 });
