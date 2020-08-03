@@ -17,6 +17,7 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('isbn' , 13);
+            $table->unsignedBigInteger('count');
             $table->string('language')->default('english');
             $table->timestamps();
         });

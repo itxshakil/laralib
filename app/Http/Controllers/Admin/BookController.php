@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Author;
 use App\Book;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreBookRequest;
 
 class BookController extends Controller
 {
@@ -26,7 +27,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $authors = Author::all();
+        return view('admin.books.create', compact('authors'));
     }
 
     /**
@@ -35,9 +37,12 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBookRequest $request)
     {
-        //
+        $book = Book::create($request->only('title', 'isbn', 'count', 'language'));
+        $book->authors()->sync($request->authors);
+
+        return redirect(route('admin.books.index'));
     }
 
     /**
@@ -59,7 +64,10 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        $book_authors = $book->getAuthorsId();
+
+        $authors =  Author::all();
+        return view('admin.books.edit', compact('book', 'authors', 'book_authors'));
     }
 
     /**
@@ -69,9 +77,12 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(StoreBookRequest $request, Book $book)
     {
-        //
+        $book->update($request->only('title', 'isbn', 'count', 'language'));
+        $book->authors()->sync($request->authors);
+
+        return redirect(route('admin.books.index'));
     }
 
     /**

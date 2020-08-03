@@ -30,13 +30,13 @@
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex">
                         <a href="{{route('admin.dashboard')}}"
-                            class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
+                            class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.dashboard' ? 'bg-gray-900' : null}}">Dashboard</a>
                         <a href="{{route('admin.users.index')}}"
-                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">User</a>
+                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.users.index' ? 'bg-gray-900' : null}}">User</a>
                         <a href="{{route('admin.books.index')}}"
-                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Books</a>
+                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.books.index' ? 'bg-gray-900' : null}}">Books</a>
                         <a href="{{route('admin.authors.index')}}"
-                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Authors</a>
+                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.authors.index' ? 'bg-gray-900' : null}}">Authors</a>
                     </div>
                 </div>
             </div>

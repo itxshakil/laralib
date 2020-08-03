@@ -27,6 +27,10 @@
                                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                 Status
                             </th>
+                            <th
+                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                Count
+                            </th>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                         </tr>
                     </thead>
@@ -57,10 +61,20 @@
                                 @endforeach
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                @if ($book->count > 20)
                                 <span
                                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    {{$book->email_verified_at ? 'Verified' : 'Unverified'}}
+                                    Available
                                 </span>
+                                @else
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                    Low Count
+                                </span>
+                                @endif
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+                                {{$book->count}}
                             </td>
                             <td
                                 class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
