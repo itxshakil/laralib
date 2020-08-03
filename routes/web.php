@@ -37,10 +37,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
         Route::get('/password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
     });
-    Route::get('/', 'AdminController@index')->name('admin')->middleware('auth:admin');
+    Route::get('/', 'AdminController@index')->name('dashboard')->middleware('auth:admin');
 
     Route::middleware('auth:admin')->namespace('Admin')->group(function () {
         Route::resource('users', 'UserController');
         Route::resource('books', 'BookController');
+        Route::resource('authors', 'AuthorController');
     });
 });
