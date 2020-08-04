@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Book;
+use App\Course;
 use App\Http\Controllers\Controller;
 use App\IssueLog;
+use App\User;
 use Illuminate\Http\Request;
 
 class IssueLogController extends Controller
@@ -26,7 +29,8 @@ class IssueLogController extends Controller
      */
     public function create()
     {
-        return view('admin/issue_logs.create');
+        $courses =  Course::all();
+        return view('admin/issue_logs.create', compact('courses'));
     }
 
     /**
@@ -37,7 +41,16 @@ class IssueLogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user =  User::where('rollno', $request->rollno)->where('course_id', $request->course)->get()->first();
+
+        $book =  Book::where('isbn', $request->isbn)->get()->first();
+
+        $issue_log = auth('admin')->user()->issue_logs()->create([
+            'book_id' => $book->id,
+            'user_id' => $user->id,
+        ]);
+
+        return redirect(route('admin.issue_logs.index'));
     }
 
     /**
