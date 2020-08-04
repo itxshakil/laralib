@@ -37,7 +37,13 @@ class User extends Authenticatable
         'rollno' => 'integer'
     ];
 
-    public function issued(){
+    public function issued()
+    {
         return $this->belongsToMany(Book::class)->withTimestamps();
+    }
+
+    public function issue_logs()
+    {
+        return $this->hasMany(IssueLog::class);
     }
 }

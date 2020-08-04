@@ -31,7 +31,13 @@ class Book extends Model
         })->flatten();
     }
 
-    function issuer(){
+    public function issuer()
+    {
         return $this->belongsToMany(User::class)->withTimestamps();
+    }
+
+    public function issue_logs()
+    {
+        return $this->hasMany(IssueLog::class);
     }
 }

@@ -44,4 +44,9 @@ class Admin extends Authenticable
     {
         $this->notify(new AdminResetPasswordNotification($token));
     }
+
+    public function issue_logs()
+    {
+        return $this->hasMany(IssueLog::class);
+    }
 }
