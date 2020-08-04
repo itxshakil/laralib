@@ -30,4 +30,8 @@ class Book extends Model
             return $author->id;
         })->flatten();
     }
+
+    function issuer(){
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
 }

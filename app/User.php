@@ -36,4 +36,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'rollno' => 'integer'
     ];
+
+    public function issued(){
+        return $this->belongsToMany(Book::class)->withTimestamps();
+    }
 }
