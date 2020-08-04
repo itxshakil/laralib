@@ -43,5 +43,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('users', 'UserController');
         Route::resource('books', 'BookController');
         Route::resource('authors', 'AuthorController');
+
+        Route::get('/issues','IssueLogController@index')->name('issue_logs.index');
+        Route::get('/issues/create','IssueLogController@create')->name('issue_logs.create');
     });
 });

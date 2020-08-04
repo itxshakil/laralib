@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\IssueLog;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class IssueLogController extends Controller
      */
     public function index()
     {
-        
+        $issue_logs =  IssueLog::all();
+        return view('admin.issue_logs.index', compact('issue_logs'));
     }
 
     /**
@@ -24,7 +26,7 @@ class IssueLogController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/issue_logs.create');
     }
 
     /**
