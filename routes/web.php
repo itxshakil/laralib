@@ -49,3 +49,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/issues', 'IssueLogController@store')->name('issue_logs.store');
     });
 });
+
+Route::prefix('api')->namespace('Api')->group(function () {
+    Route::get('/admin/books', 'Admin\BookController@index')->middleware('auth:admin');
+    Route::get('/admin/users', 'Admin\UserController@index')->middleware('auth:admin');
+});
