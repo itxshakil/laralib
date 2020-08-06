@@ -19,7 +19,7 @@ class IssueController extends Controller
      */
     public function index()
     {
-        return IssueResource::collection(IssueLog::paginate(20));
+        return IssueResource::collection(IssueLog::latest()->paginate(20));
     }
 
     /**
@@ -30,6 +30,14 @@ class IssueController extends Controller
      */
     public function store(Request $request)
     {
+        $user =  User::where('rollno', $request->rollno)->where('course_id', $request->course)->get()->first();
+
+        $book =  Book::where('isbn', $request->isbn)->get()->first();
+
+        return  auth('admin')->user()->issue_logs()->create([
+            'book_id' => $book->id,
+            'user_id' => $user->id,
+        ]);
     }
 
     /**

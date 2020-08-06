@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Book;
+use App\Course;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\User;
@@ -59,5 +60,15 @@ class UserController extends Controller
      */
     public function destroy(Book $book)
     {
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Book                 $book
+     * @return \Illuminate\Http\Response
+     */
+    public function rollno(Course $course,User $user)
+    {
+        return $user->loadCount('alreadyIssued');
     }
 }

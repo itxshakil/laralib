@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Course::class);
     }
+
+    public function alreadyIssued()
+    {
+        return $this->issue_logs()->whereNull('returned_at');
+    }
 }

@@ -45,7 +45,7 @@ class IssueLogController extends Controller
 
         $book =  Book::where('isbn', $request->isbn)->get()->first();
 
-        $issue_log = auth('admin')->user()->issue_logs()->create([
+        auth('admin')->user()->issue_logs()->create([
             'book_id' => $book->id,
             'user_id' => $user->id,
         ]);
