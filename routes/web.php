@@ -54,4 +54,5 @@ Route::prefix('api')->namespace('Api')->group(function () {
     Route::get('/admin/books', 'Admin\BookController@index')->middleware('auth:admin');
     Route::get('/admin/users', 'Admin\UserController@index')->middleware('auth:admin');
     Route::get('/admin/authors', 'Admin\AuthorController@index')->middleware('auth:admin');
+    Route::get('/admin/issues', 'Admin\IssueController@index')->middleware('auth:admin');
 });

@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('books', require('./components/Books.vue').default);
 Vue.component('users', require('./components/Users.vue').default);
 Vue.component('authors', require('./components/Authors.vue').default);
+Vue.component('issues', require('./components/Issues.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
