@@ -16,9 +16,17 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return UserResource::collection(User::with('course')->paginate(20));
+        $users =  User::query();
+
+        if($request->has('course')){
+            $users =  $users->course($request->course);
+        }
+        if($request->has('search')){
+            $users =  $users->search($request->search);
+        }
+        return UserResource::collection($users->with('course')->paginate(20));
     }
 
     /**

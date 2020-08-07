@@ -1,25 +1,51 @@
 <template>
   <div class="flex flex-col">
+    <input
+      type="search"
+        name="search"
+        id="search"
+        @change="fetch"
+        v-model="search"
+        placeholder="Search Name or Rollno"
+        class="w-full sm:w-2/12 my-2 self-end py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700"
+      >
     <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
       <div
-        class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200"
-      >
+        class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
         <table class="min-w-full divide-y divide-gray-200">
           <thead>
             <tr>
               <th
-                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >Name</th>
               <th
-                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >Course</th>
               <th
-                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >Status</th>
               <th
-                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >Role</th>
-              <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+              >
+                <select
+                  name="filter"
+                  id="filter"
+                  @change="fetch"
+                  v-model="course"
+                  class="w-full py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700"
+                >
+                  <option value>All Courses</option>
+                  <option
+                    :value="course.id"
+                    v-for="course in courses"
+                    :key="course.id"
+                    v-text="course.name"
+                  ></option>
+                </select>
+              </th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
@@ -92,10 +118,14 @@ export default {
     return {
       users: {},
       links: {},
+      courses: {},
+      course: "",
+      search:"",
     };
   },
   created() {
     this.fetch();
+    this.fetchCourses();
   },
   methods: {
     fetch(page) {
@@ -106,11 +136,23 @@ export default {
         let query = location.search.match(/page=(\d+)/);
         page = query ? query[1] : 1;
       }
-      return "/api/admin/users?page=" + page;
+      let route ="/api/admin/users?page=" + page;
+      if(this.course){
+        route +=  "&course="+this.course;
+      }
+      if(this.search){
+        route +=  "&search="+this.search;
+      }
+      return route;
     },
     refresh({ data }) {
       this.users = data.data;
       this.links = data.meta;
+    },
+    fetchCourses() {
+      axios.get("/api/courses").then((response) => {
+        this.courses = response.data;
+      });
     },
   },
 };

@@ -2437,7 +2437,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2593,15 +2592,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       users: {},
-      links: {}
+      links: {},
+      courses: {},
+      course: "",
+      search: ""
     };
   },
   created: function created() {
     this.fetch();
+    this.fetchCourses();
   },
   methods: {
     fetch: function fetch(page) {
@@ -2613,12 +2642,29 @@ __webpack_require__.r(__webpack_exports__);
         page = query ? query[1] : 1;
       }
 
-      return "/api/admin/users?page=" + page;
+      var route = "/api/admin/users?page=" + page;
+
+      if (this.course) {
+        route += "&course=" + this.course;
+      }
+
+      if (this.search) {
+        route += "&search=" + this.search;
+      }
+
+      return route;
     },
     refresh: function refresh(_ref) {
       var data = _ref.data;
       this.users = data.data;
       this.links = data.meta;
+    },
+    fetchCourses: function fetchCourses() {
+      var _this = this;
+
+      axios.get("/api/courses").then(function (response) {
+        _this.courses = response.data;
+      });
     }
   }
 });
@@ -4036,12 +4082,7 @@ var render = function() {
                           2
                         )
                       ]
-                    ),
-                    _vm._v(" "),
-                    _c("th", {
-                      staticClass:
-                        "px-6 py-3 border-b border-gray-200 bg-gray-50"
-                    })
+                    )
                   ])
                 ]),
                 _vm._v(" "),
@@ -4291,6 +4332,35 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "flex flex-col" }, [
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.search,
+          expression: "search"
+        }
+      ],
+      staticClass:
+        "w-full sm:w-2/12 my-2 self-end py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700",
+      attrs: {
+        type: "search",
+        name: "search",
+        id: "search",
+        placeholder: "Search Name or Rollno"
+      },
+      domProps: { value: _vm.search },
+      on: {
+        change: _vm.fetch,
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.search = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
     _c(
       "div",
       {
@@ -4309,7 +4379,106 @@ var render = function() {
               "table",
               { staticClass: "min-w-full divide-y divide-gray-200" },
               [
-                _vm._m(0),
+                _c("thead", [
+                  _c("tr", [
+                    _c(
+                      "th",
+                      {
+                        staticClass:
+                          "px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                      },
+                      [_vm._v("Name")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      {
+                        staticClass:
+                          "px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                      },
+                      [_vm._v("Course")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      {
+                        staticClass:
+                          "px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                      },
+                      [_vm._v("Status")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      {
+                        staticClass:
+                          "px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                      },
+                      [_vm._v("Role")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      {
+                        staticClass:
+                          "px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                      },
+                      [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.course,
+                                expression: "course"
+                              }
+                            ],
+                            staticClass:
+                              "w-full py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700",
+                            attrs: { name: "filter", id: "filter" },
+                            on: {
+                              change: [
+                                function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.course = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                },
+                                _vm.fetch
+                              ]
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "" } }, [
+                              _vm._v("All Courses")
+                            ]),
+                            _vm._v(" "),
+                            _vm._l(_vm.courses, function(course) {
+                              return _c("option", {
+                                key: course.id,
+                                domProps: {
+                                  value: course.id,
+                                  textContent: _vm._s(course.name)
+                                }
+                              })
+                            })
+                          ],
+                          2
+                        )
+                      ]
+                    )
+                  ])
+                ]),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -4324,7 +4493,7 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "flex items-center" }, [
-                            _vm._m(1, true),
+                            _vm._m(0, true),
                             _vm._v(" "),
                             _c("div", { staticClass: "ml-4" }, [
                               _c("div", {
@@ -4484,54 +4653,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c(
-          "th",
-          {
-            staticClass:
-              "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-          },
-          [_vm._v("Name")]
-        ),
-        _vm._v(" "),
-        _c(
-          "th",
-          {
-            staticClass:
-              "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-          },
-          [_vm._v("Course")]
-        ),
-        _vm._v(" "),
-        _c(
-          "th",
-          {
-            staticClass:
-              "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-          },
-          [_vm._v("Status")]
-        ),
-        _vm._v(" "),
-        _c(
-          "th",
-          {
-            staticClass:
-              "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-          },
-          [_vm._v("Role")]
-        ),
-        _vm._v(" "),
-        _c("th", {
-          staticClass: "px-6 py-3 border-b border-gray-200 bg-gray-50"
-        })
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

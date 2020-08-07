@@ -56,4 +56,13 @@ class User extends Authenticatable
     {
         return $this->issue_logs()->whereNull('returned_at');
     }
+
+    public function scopeCourse($query, $course)
+    {
+        return $query->where('course_id', $course);
+    }
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('name', 'like', "%$search%")->orWhere('rollno', 'like', "%$search%");
+    }
 }
