@@ -31,7 +31,7 @@
                     />
                   </div>
                   <div class="ml-4">
-                    <div class="text-sm leading-5 font-medium text-gray-900" v-text="author.name"></div>
+                    <a :href="'/admin/authors/'+author.id" class="text-sm leading-5 font-medium text-gray-900" v-text="author.name"></a>
                     <div class="text-sm leading-5 text-gray-500" v-text="author.email"></div>
                   </div>
                 </div>
