@@ -22,4 +22,14 @@ class IssueLog extends Model
    {
       return $this->belongsTo(Admin::class);
    }
+
+   public function scopeReturned($query)
+   {
+      return $query->whereNotNull('returned_at');
+   }
+
+   public function scopeIssued($query)
+   {
+      return $query->whereNull('returned_at');
+   }
 }
