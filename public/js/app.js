@@ -4540,9 +4540,10 @@ var render = function() {
                             _vm._m(0, true),
                             _vm._v(" "),
                             _c("div", { staticClass: "ml-4" }, [
-                              _c("div", {
+                              _c("a", {
                                 staticClass:
                                   "text-sm leading-5 font-medium text-gray-900",
+                                attrs: { href: "/admin/users/" + user.id },
                                 domProps: { textContent: _vm._s(user.name) }
                               }),
                               _vm._v(" "),

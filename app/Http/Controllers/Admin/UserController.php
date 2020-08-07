@@ -60,7 +60,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $user->load('course', 'issue_logs.book')->loadCount('issue_logs');
+
+        $pending_count = $user->issue_logs()->issued()->count();
+
+        return view('admin.users.show', compact('user', 'pending_count'));
     }
 
     /**

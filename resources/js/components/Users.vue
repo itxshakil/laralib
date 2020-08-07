@@ -61,7 +61,7 @@
                     />
                   </div>
                   <div class="ml-4">
-                    <div class="text-sm leading-5 font-medium text-gray-900" v-text="user.name"></div>
+                    <a :href="'/admin/users/'+user.id" class="text-sm leading-5 font-medium text-gray-900" v-text="user.name"></a>
                     <div class="text-sm leading-5 text-gray-500" v-text="user.email"></div>
                   </div>
                 </div>
