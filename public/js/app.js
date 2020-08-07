@@ -2136,6 +2136,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3497,9 +3498,10 @@ var render = function() {
                             _vm._m(1, true),
                             _vm._v(" "),
                             _c("div", { staticClass: "ml-4" }, [
-                              _c("div", {
+                              _c("a", {
                                 staticClass:
                                   "text-sm leading-5 font-medium text-gray-900",
+                                attrs: { href: "/admin/books/" + book.id },
                                 domProps: {
                                   textContent: _vm._s(book.title.slice(0, 32))
                                 }

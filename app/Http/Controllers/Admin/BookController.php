@@ -53,7 +53,10 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        $book->load('issue_logs.user')->loadCount('issue_logs');
+
+        $pending_count = $book->issue_logs()->issued()->count();
+        return view('admin.books.show', compact('book', 'pending_count'));
     }
 
     /**

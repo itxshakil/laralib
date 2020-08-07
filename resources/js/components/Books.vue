@@ -43,10 +43,11 @@
                     />
                   </div>
                   <div class="ml-4">
-                    <div
+                    <a
+                    :href="'/admin/books/'+book.id"
                       class="text-sm leading-5 font-medium text-gray-900"
                       v-text="book.title.slice(0,32)"
-                    ></div>
+                    ></a>
                     <div class="text-sm leading-5 text-gray-500" v-text="book.isbn"></div>
                   </div>
                 </div>
