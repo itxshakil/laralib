@@ -2452,6 +2452,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4149,9 +4153,12 @@ var render = function() {
                             _vm._m(0, true),
                             _vm._v(" "),
                             _c("div", { staticClass: "ml-4" }, [
-                              _c("div", {
+                              _c("a", {
                                 staticClass:
                                   "text-sm leading-5 font-medium text-gray-900",
+                                attrs: {
+                                  href: "/admin/users/" + issue.user.id
+                                },
                                 domProps: {
                                   textContent: _vm._s(issue.user.name)
                                 }
@@ -4175,8 +4182,9 @@ var render = function() {
                             "px-6 py-4 whitespace-no-wrap border-b border-gray-200"
                         },
                         [
-                          _c("div", {
+                          _c("a", {
                             staticClass: "text-sm leading-5 text-gray-900",
+                            attrs: { href: "/admin/books/" + issue.book.id },
                             domProps: {
                               textContent: _vm._s(issue.book.title.slice(0, 32))
                             }

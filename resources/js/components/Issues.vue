@@ -2,8 +2,7 @@
   <div class="flex flex-col">
     <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
       <div
-        class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200"
-      >
+        class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
         <table class="min-w-full divide-y divide-gray-200">
           <thead>
             <tr>
@@ -20,18 +19,14 @@
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >Status</th>
               <th
-                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-              >
+                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 <select
                   name="filter"
                   id="filter"
                   @change="updateFilter"
                   v-model="currentFilter"
-                  class="w-full py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700"
-                >
-                  <option
-                    value=""
-                  >All Books</option>
+                  class="w-full py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                  <option value>All Books</option>
                   <option
                     :value="filter.key"
                     v-for="filter in filters"
@@ -54,16 +49,21 @@
                     />
                   </div>
                   <div class="ml-4">
-                    <div
+                    <a
+                      :href="'/admin/users/' + issue.user.id"
                       class="text-sm leading-5 font-medium text-gray-900"
                       v-text="issue.user.name"
-                    ></div>
+                    ></a>
                     <div class="text-sm leading-5 text-gray-500" v-text="issue.user.email"></div>
                   </div>
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="text-sm leading-5 text-gray-900" v-text="issue.book.title.slice(0,32)"></div>
+                <a
+                  :href="'/admin/books/' + issue.book.id"
+                  class="text-sm leading-5 text-gray-900"
+                  v-text="issue.book.title.slice(0, 32)"
+                ></a>
                 <div class="text-sm leading-5 text-gray-500" v-text="issue.book.isbn"></div>
               </td>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -154,14 +154,13 @@ export default {
     updateFilter() {
       this.fetch();
     },
-    dateInterval(date){
-      date  = new Date(date);
+    dateInterval(date) {
+      date = new Date(date);
       let today = new Date();
 
       return today.getDate() - date.getDate();
-    }
+    },
   },
 };
 </script>
-<style>
-</style>
+<style></style>
