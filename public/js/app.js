@@ -2412,11 +2412,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       issues: {},
-      links: {}
+      links: {},
+      filters: [{
+        id: 1,
+        key: "issued",
+        name: "Issued Books"
+      }, {
+        id: 2,
+        key: "returned",
+        name: "Returned Books"
+      }],
+      currentFilter: ""
     };
   },
   created: function created() {
@@ -2432,6 +2468,10 @@ __webpack_require__.r(__webpack_exports__);
         page = query ? query[1] : 1;
       }
 
+      if (this.currentFilter) {
+        return "/api/admin/issues?page=" + page + "&" + this.currentFilter;
+      }
+
       return "/api/admin/issues?page=" + page;
     },
     refresh: function refresh(_ref) {
@@ -2442,6 +2482,14 @@ __webpack_require__.r(__webpack_exports__);
     dateString: function dateString(date) {
       date = new Date(date);
       return date.toDateString();
+    },
+    updateFilter: function updateFilter() {
+      this.fetch();
+    },
+    dateInterval: function dateInterval(date) {
+      date = new Date(date);
+      var today = new Date();
+      return today.getDate() - date.getDate();
     }
   }
 });
@@ -3891,7 +3939,111 @@ var render = function() {
               "table",
               { staticClass: "min-w-full divide-y divide-gray-200" },
               [
-                _vm._m(0),
+                _c("thead", [
+                  _c("tr", [
+                    _c(
+                      "th",
+                      {
+                        staticClass:
+                          "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                      },
+                      [_vm._v("User")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      {
+                        staticClass:
+                          "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                      },
+                      [_vm._v("Book")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      {
+                        staticClass:
+                          "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                      },
+                      [_vm._v("Admin")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      {
+                        staticClass:
+                          "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                      },
+                      [_vm._v("Status")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      {
+                        staticClass:
+                          "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                      },
+                      [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.currentFilter,
+                                expression: "currentFilter"
+                              }
+                            ],
+                            staticClass:
+                              "w-full py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700",
+                            attrs: { name: "filter", id: "filter" },
+                            on: {
+                              change: [
+                                function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.currentFilter = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                },
+                                _vm.updateFilter
+                              ]
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "" } }, [
+                              _vm._v("All Books")
+                            ]),
+                            _vm._v(" "),
+                            _vm._l(_vm.filters, function(filter) {
+                              return _c("option", {
+                                key: filter.id,
+                                domProps: {
+                                  value: filter.key,
+                                  textContent: _vm._s(filter.name)
+                                }
+                              })
+                            })
+                          ],
+                          2
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("th", {
+                      staticClass:
+                        "px-6 py-3 border-b border-gray-200 bg-gray-50"
+                    })
+                  ])
+                ]),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -3906,7 +4058,7 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "flex items-center" }, [
-                            _vm._m(1, true),
+                            _vm._m(0, true),
                             _vm._v(" "),
                             _c("div", { staticClass: "ml-4" }, [
                               _c("div", {
@@ -3988,18 +4140,30 @@ var render = function() {
                                   )
                                 }
                               })
-                            : _c(
-                                "div",
-                                {
+                            : _c("div", [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                                  },
+                                  [_vm._v("Issued")]
+                                ),
+                                _vm._v(" "),
+                                _c("div", {
                                   staticClass:
-                                    "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                                },
-                                [_vm._v("Issued")]
-                              )
+                                    "ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800",
+                                  domProps: {
+                                    textContent: _vm._s(
+                                      _vm.dateInterval(issue.created_at)
+                                    )
+                                  }
+                                })
+                              ])
                         ]
                       ),
                       _vm._v(" "),
-                      _vm._m(2, true)
+                      _vm._m(1, true)
                     ])
                   }),
                   0
@@ -4067,54 +4231,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c(
-          "th",
-          {
-            staticClass:
-              "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-          },
-          [_vm._v("User")]
-        ),
-        _vm._v(" "),
-        _c(
-          "th",
-          {
-            staticClass:
-              "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-          },
-          [_vm._v("Book")]
-        ),
-        _vm._v(" "),
-        _c(
-          "th",
-          {
-            staticClass:
-              "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-          },
-          [_vm._v("Admin")]
-        ),
-        _vm._v(" "),
-        _c(
-          "th",
-          {
-            staticClass:
-              "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-          },
-          [_vm._v("Status")]
-        ),
-        _vm._v(" "),
-        _c("th", {
-          staticClass: "px-6 py-3 border-b border-gray-200 bg-gray-50"
-        })
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

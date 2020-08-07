@@ -17,9 +17,17 @@ class IssueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return IssueResource::collection(IssueLog::latest()->paginate(20));
+        $issue =  IssueLog::query();
+
+        if ($request->has('issued')) {
+            $issue = $issue->issued();
+        } else if ($request->has('returned')) {
+            $issue = $issue->returned();
+        }
+        
+        return IssueResource::collection($issue->latest()->paginate(20));
     }
 
     /**

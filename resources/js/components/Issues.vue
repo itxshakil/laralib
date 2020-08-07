@@ -19,6 +19,27 @@
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >Status</th>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+              >
+                <select
+                  name="filter"
+                  id="filter"
+                  @change="updateFilter"
+                  v-model="currentFilter"
+                  class="w-full py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700"
+                >
+                  <option
+                    value=""
+                  >All Books</option>
+                  <option
+                    :value="filter.key"
+                    v-for="filter in filters"
+                    :key="filter.id"
+                    v-text="filter.name"
+                  ></option>
+                </select>
+              </th>
               <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
             </tr>
           </thead>
@@ -56,10 +77,15 @@
                   v-if="issue.returned_at"
                   v-text="dateString(issue.returned_at)"
                 ></div>
-                <div
-                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                  v-else
-                >Issued</div>
+                <div v-else>
+                  <div
+                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                  >Issued</div>
+                  <div
+                    class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                    v-text="dateInterval(issue.created_at)"
+                  ></div>
+                </div>
               </td>
               <td
                 class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
@@ -94,6 +120,11 @@ export default {
     return {
       issues: {},
       links: {},
+      filters: [
+        { id: 1, key: "issued", name: "Issued Books" },
+        { id: 2, key: "returned", name: "Returned Books" },
+      ],
+      currentFilter: "",
     };
   },
   created() {
@@ -108,6 +139,9 @@ export default {
         let query = location.search.match(/page=(\d+)/);
         page = query ? query[1] : 1;
       }
+      if (this.currentFilter) {
+        return "/api/admin/issues?page=" + page + "&" + this.currentFilter;
+      }
       return "/api/admin/issues?page=" + page;
     },
     refresh({ data }) {
@@ -118,6 +152,15 @@ export default {
       date = new Date(date);
       return date.toDateString();
     },
+    updateFilter() {
+      this.fetch();
+    },
+    dateInterval(date){
+      date  = new Date(date);
+      let today = new Date();
+
+      return today.getDate() - date.getDate();
+    }
   },
 };
 </script>
