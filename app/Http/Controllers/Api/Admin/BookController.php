@@ -14,9 +14,13 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return BookResource::collection(Book::with('authors')->paginate(15));
+        $books = Book::query();
+        if ($request->has('search')) {
+            $books = $books->search($request->search);
+        }
+        return BookResource::collection($books->with('authors')->paginate(15));
     }
 
     /**
@@ -71,6 +75,6 @@ class BookController extends Controller
      */
     public function isbn(Book $book)
     {
-        return $book->only('title','count','language');
+        return $book->only('title', 'count', 'language');
     }
 }

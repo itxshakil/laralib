@@ -2127,11 +2127,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       books: {},
-      links: {}
+      links: {},
+      search: ""
     };
   },
   created: function created() {
@@ -2142,9 +2152,13 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(this.url(page)).then(this.refresh);
     },
     url: function url(page) {
-      if (!page) {
+      if (!page || isNaN(page)) {
         var query = location.search.match(/page=(\d+)/);
         page = query ? query[1] : 1;
+      }
+
+      if (this.search) {
+        return "/api/admin/books?page=" + page + "&search=" + this.search;
       }
 
       return "/api/admin/books?page=" + page;
@@ -2618,6 +2632,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2637,7 +2652,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(this.url(page)).then(this.refresh);
     },
     url: function url(page) {
-      if (!page) {
+      if (!page || isNaN(page)) {
         var query = location.search.match(/page=(\d+)/);
         page = query ? query[1] : 1;
       }
@@ -3417,6 +3432,35 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "flex flex-col" }, [
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.search,
+          expression: "search"
+        }
+      ],
+      staticClass:
+        "w-full sm:w-2/12 my-2 self-end py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700",
+      attrs: {
+        type: "search",
+        name: "search",
+        id: "search",
+        placeholder: "Search By ISBN, Author or Book Name"
+      },
+      domProps: { value: _vm.search },
+      on: {
+        change: _vm.fetch,
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.search = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
     _c(
       "div",
       {

@@ -2,16 +2,17 @@
   <div class="flex flex-col">
     <input
       type="search"
-        name="search"
-        id="search"
-        @change="fetch"
-        v-model="search"
-        placeholder="Search Name or Rollno"
-        class="w-full sm:w-2/12 my-2 self-end py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700"
-      >
+      name="search"
+      id="search"
+      @change="fetch"
+      v-model="search"
+      placeholder="Search Name or Rollno"
+      class="w-full sm:w-2/12 my-2 self-end py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700"
+    />
     <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
       <div
-        class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+        class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200"
+      >
         <table class="min-w-full divide-y divide-gray-200">
           <thead>
             <tr>
@@ -120,7 +121,7 @@ export default {
       links: {},
       courses: {},
       course: "",
-      search:"",
+      search: "",
     };
   },
   created() {
@@ -132,16 +133,16 @@ export default {
       axios.get(this.url(page)).then(this.refresh);
     },
     url(page) {
-      if (!page) {
+      if (!page || isNaN(page)) {
         let query = location.search.match(/page=(\d+)/);
         page = query ? query[1] : 1;
       }
-      let route ="/api/admin/users?page=" + page;
-      if(this.course){
-        route +=  "&course="+this.course;
+      let route = "/api/admin/users?page=" + page;
+      if (this.course) {
+        route += "&course=" + this.course;
       }
-      if(this.search){
-        route +=  "&search="+this.search;
+      if (this.search) {
+        route += "&search=" + this.search;
       }
       return route;
     },

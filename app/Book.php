@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
@@ -39,5 +40,12 @@ class Book extends Model
     public function issue_logs()
     {
         return $this->hasMany(IssueLog::class);
+    }
+
+    public function scopeSearch($query, $search)
+    {
+        return $query->whereHas('authors', function (Builder $query) use ($search) {
+            $query->where('name', 'like', "%$search%");
+        })->orWhere('title', 'like', "%$search%")->orWhere('isbn', 'like', "%$search%");
     }
 }
