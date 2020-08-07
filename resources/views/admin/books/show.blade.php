@@ -12,7 +12,7 @@
             <div class="w-full sm:w-1/2 lg:w-3/12 rounded p-2 border bg-gray-300">
                 <p class="text-lg font-semibold">{{$book->title}} By</p>
                 @foreach($book->authors as $author)
-                <p>{{$author->name}}</p>
+                <a href="{{route('admin.authors.show',$author)}}">{{$author->name}}</a>
                 @endforeach
                 <div class="mt-2 flex gap-2 text-gray-700 justify-between">
                     <div>
@@ -28,7 +28,7 @@
             </div>
             @foreach($book->issue_logs as $issue)
             <div class="w-full sm:w-1/2 lg:w-3/12 rounded p-2 border bg-gray-100 flex-grow">
-                <p class="text-lg">{{$issue->user->name}}</p>
+                <a href="{{route('admin.users.show',$issue->user)}}" class="text-lg">{{$issue->user->name}}</a>
                 <p class="text-sm">{{$issue->user->email}}</p>
                 <p class="text-gray-700 mt-2">Issued : {{$issue->created_at}}</p>
                 <p class="text-gray-700">Returned: {{$issue->returned_at ?? "Not Returned" }}</p>
