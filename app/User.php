@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return $query->where('name', 'like', "%$search%")->orWhere('rollno', 'like', "%$search%");
     }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
 }

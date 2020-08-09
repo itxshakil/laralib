@@ -48,4 +48,9 @@ class Book extends Model
             $query->where('name', 'like', "%$search%");
         })->orWhere('title', 'like', "%$search%")->orWhere('isbn', 'like', "%$search%");
     }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
 }
