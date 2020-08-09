@@ -48,7 +48,9 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        $book->load('ratings.user');
+
+        return view('books.show',compact('book'));
     }
 
     /**
