@@ -10,10 +10,11 @@
     <div class="flex flex-col sm:flex-row flex-wrap flex-stretch gap-4 justify-center">
         @foreach($books as $book)
         <div class="w-full sm:w-1/3 lg:w-1/4 xl:w-1/5 bg-gray-300 rounded p-4 shadow ">
-            <p class="text-xl">{{$book->title}}</p>
+            <a href="{{route('books.show',$book)}}" class="text-xl">{{$book->title}}</a>
             <p class="mt-2">Written By @foreach($book->authors as $author) <a href="{{route('authors.show',$author)}}">{{$author->name}}</a>@endforeach</p>
             <span class="text-gray-500 text-sm capitalize bg-gray-900 inline-block items-center px-1 rounded-full">{{$book->count ? 'Available' : 'Not Available'}}</span>
             <span class="text-gray-500 text-sm capitalize">in {{$book->language}}</span>
+            <p class="text-gray-500 text-sm">Rating : {{$book->average_rating}}</p>
             <p class="text-gray-500 text-sm">ISBN : {{$book->isbn}}</p>
         </div>
         @endforeach

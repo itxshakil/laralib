@@ -57,11 +57,15 @@ class Book extends Model
     public function getAverageRatingAttribute()
     {
         $ratings = $this->ratings()->select('score')->get();
-        $scores = 0;
-        foreach ($ratings as  $rating) {
-            $scores += $rating->score;
+        if(count($ratings)){
+            $scores = 0;
+            foreach ($ratings as  $rating) {
+                $scores += $rating->score;
+            }
+            return $scores / count($ratings);
         }
-
-        return $scores / count($ratings);
+        else{
+            return 'Yet Not Rated';
+        }
     }
 }
