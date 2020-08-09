@@ -14,7 +14,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books = Book::with('authors')->latest()->get();
+
+        return view('books.index',compact('books'));
     }
 
     /**
