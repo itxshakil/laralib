@@ -21,6 +21,7 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/books','BookController@index')->name('books.index');
+Route::get('/authors/{author}','AuthorController@show')->name('authors.show');
 Route::get('/issues','IssueController@index')->name('issues.index')->middleware('auth');
 
 
