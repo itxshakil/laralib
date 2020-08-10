@@ -70,4 +70,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Rating::class);
     }
+
+    public function isRated($book)
+    {
+        $ratings = $this->ratings()->pluck('book_id');
+
+        return $ratings->contains($book->id);
+    }
 }

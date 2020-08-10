@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\Rating;
 use Illuminate\Http\Request;
 
@@ -33,15 +34,18 @@ class RatingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Book $book)
     {
-        $data = $request->validate([
-            'score' => ['required','numeric','between:1,5'],
-            'comment' => ['nullable','string','max:255'],
-            'book_id' =>['required']
+        $request->validate([
+            'score' => ['required', 'numeric', 'between:1,5'],
+            'comment' => ['nullable', 'string', 'max:255'],
         ]);
 
-        return auth()->user()->ratings()->create($data);
+        return $book->ratings()->create([
+            'score' => $request->score,
+            'comment' => $request->comment,
+            'user_id' => auth()->id(),
+        ]);
     }
 
     /**

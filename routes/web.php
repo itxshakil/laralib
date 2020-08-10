@@ -20,10 +20,12 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/books','BookController@index')->name('books.index');
-Route::get('/books/{book}','BookController@show')->name('books.show');
-Route::get('/authors/{author}','AuthorController@show')->name('authors.show');
-Route::get('/issues','IssueController@index')->name('issues.index')->middleware('auth');
+Route::get('/books', 'BookController@index')->name('books.index');
+Route::get('/books/{book}', 'BookController@show')->name('books.show');
+Route::get('/authors/{author}', 'AuthorController@show')->name('authors.show');
+Route::get('/issues', 'IssueController@index')->name('issues.index')->middleware('auth');
+
+Route::post('/ratings/{book}', 'RatingController@store')->name('rating.store');
 
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -62,5 +64,5 @@ Route::prefix('api')->namespace('Api')->group(function () {
 
     Route::get('/book/isbn/{book:isbn}', 'Admin\BookController@isbn')->middleware('auth:admin');
     Route::get('/course/{course:id}/user/{user:rollno}', 'Admin\UserController@rollno')->middleware('auth:admin');
-    Route::post('/admin/issues','Admin\IssueController@store');
+    Route::post('/admin/issues', 'Admin\IssueController@store');
 });
