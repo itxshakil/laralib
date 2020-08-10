@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\IssueLog;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,7 +19,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $issues = IssueLog::issued()->get();
+        return view('admin.index',compact('issues'));
     }
 
     /**
