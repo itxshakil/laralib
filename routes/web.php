@@ -54,6 +54,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/issues', 'IssueLogController@index')->name('issue_logs.index');
         Route::get('/issues/create', 'IssueLogController@create')->name('issue_logs.create');
         Route::post('/issues', 'IssueLogController@store')->name('issue_logs.store');
+
+        Route::post('/tags', 'TagController@store')->name('tags.store');
     });
 });
 
