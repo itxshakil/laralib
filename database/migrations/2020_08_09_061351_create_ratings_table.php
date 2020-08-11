@@ -21,7 +21,7 @@ class CreateRatingsTable extends Migration
             $table->foreignId('book_id')->constrained();
             $table->timestamps();
 
-            $table->primary(['user_id', 'book_id']);
+            $table->unique(['user_id', 'book_id']);
         });
     }
 
