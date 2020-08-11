@@ -4,9 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Book extends Model
 {
+    use SearchableTrait;
+
     protected $fillable = ['title', 'isbn', 'language', 'count'];
 
     /**
@@ -17,6 +21,29 @@ class Book extends Model
     protected $casts = [
         'isbn' => 'integer',
         'count' => 'integer'
+    ];
+
+    /**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        /**
+         * Columns and their priority in search results.
+         * Columns with higher values are more important.
+         * Columns with equal values have equal importance.
+         *
+         * @var array
+         */
+        'columns' => [
+            'books.title' => 10,
+            'books.isbn' => 10,
+            'authors.name' => 8,
+        ],
+        'joins' => [
+            'authors' => ['books.id', 'authors.books.id'],
+        ],
     ];
 
 
@@ -56,16 +83,6 @@ class Book extends Model
 
     public function getAverageRatingAttribute()
     {
-        $ratings = $this->ratings()->select('score')->get();
-        if(count($ratings)){
-            $scores = 0;
-            foreach ($ratings as  $rating) {
-                $scores += $rating->score;
-            }
-            return $scores / count($ratings);
-        }
-        else{
-            return 'Yet Not Rated';
-        }
+        return $this->ratings()->avg('score');
     }
 }

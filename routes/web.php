@@ -27,6 +27,8 @@ Route::get('/issues', 'IssueController@index')->name('issues.index')->middleware
 
 Route::post('/ratings/{book}', 'RatingController@store')->name('rating.store');
 
+Route::get('/search', 'SearchController@show')->name('search');
+
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::namespace('Auth\Admin')->group(function () {
         Route::get('/login', 'LoginController@showLoginForm')->name('login');

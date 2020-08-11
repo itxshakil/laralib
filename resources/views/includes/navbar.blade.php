@@ -40,8 +40,10 @@
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <input type="search" name="q" id="q" placeholder="Search Books"
-                    class="w-48 sm:w-64 my-2 py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                <form action="{{route('search')}}" method="get">
+                    <input type="search" name="q" id="q" placeholder="Search Books"
+                        class="w-48 sm:w-64 my-2 py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                </form>
                 <button
                     class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
                     aria-label="Notifications">
