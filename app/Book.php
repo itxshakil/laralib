@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
+use App\Tag;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Book extends Model
@@ -84,5 +85,10 @@ class Book extends Model
     public function getAverageRatingAttribute()
     {
         return $this->ratings()->avg('score');
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 }
