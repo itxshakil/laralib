@@ -77,4 +77,9 @@ class User extends Authenticatable
 
         return $ratings->contains($book->id);
     }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }
