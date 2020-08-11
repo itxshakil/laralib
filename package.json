@@ -21,6 +21,6 @@
     },
     "dependencies": {
         "laravel-mix-purgecss": "^5.0.0",
-        "tailwindcss": "^1.6.0"
+        "tailwindcss": "^1.6.2"
     }
 }
