@@ -16970,7 +16970,10 @@ Vue.component('issueBookForm', __webpack_require__(/*! ./components/IssueBookFor
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+    isOpen: false
+  }
 });
 
 /***/ }),

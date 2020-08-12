@@ -33,4 +33,7 @@ Vue.component('issueBookForm', require('./components/IssueBookForm.vue').default
 
 const app = new Vue({
     el: '#app',
+    data: {
+        isOpen: false
+    }
 });

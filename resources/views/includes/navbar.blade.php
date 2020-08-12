@@ -1,5 +1,5 @@
 <nav class="bg-gray-800">
-    <div class="  sm:px-6 lg:px-8">
+    <div class=" sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <!-- Mobile menu button-->
@@ -8,13 +8,15 @@
                     aria-label="Main menu" aria-expanded="false">
                     <!-- Icon when menu is closed. -->
                     <!-- Menu open: "hidden", Menu closed: "block" -->
-                    <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg v-if="isOpen == false" @click="isOpen = true" class="block h-6 w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                     <!-- Icon when menu is open. -->
                     <!-- Menu open: "block", Menu closed: "hidden" -->
-                    <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg v-else @click="isOpen = false" class="block h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -56,7 +58,7 @@
                 <!-- Profile dropdown -->
                 <div class="ml-3 relative">
                     <div>
-                        <button
+                        <button @click="isOpen = !isOpen"
                             class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out"
                             id="user-menu" aria-label="User menu" aria-haspopup="true">
                             <img class="h-8 w-8 rounded-full"
@@ -65,18 +67,17 @@
                         </button>
                     </div>
                     <!--
-            Profile dropdown panel, show/hide based on dropdown state.
-
-            Entering: "transition ease-out duration-100"
-              From: "transform opacity-0 scale-95"
-              To: "transform opacity-100 scale-100"
-            Leaving: "transition ease-in duration-75"
-              From: "transform opacity-100 scale-100"
-              To: "transform opacity-0 scale-95"
-          -->
+                        Profile dropdown panel, show/hide based on dropdown state.
+                        Entering: "transition ease-out duration-100"
+                        From: "transform opacity-0 scale-95"
+                        To: "transform opacity-100 scale-100"
+                        Leaving: "transition ease-in duration-75"
+                        From: "transform opacity-100 scale-100"
+                        To: "transform opacity-0 scale-95"
+                    -->
                     <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-                        <div class="hidden py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical"
-                            aria-labelledby="user-menu">
+                        <div :class="isOpen ? 'block' : 'hidden'" class="py-1 rounded-md bg-white shadow-xs" role="menu"
+                            aria-orientation="vertical" aria-labelledby="user-menu">
                             <a href="#"
                                 class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
                                 role="menuitem">Your Profile</a>
@@ -98,7 +99,7 @@
 
     Menu open: "block", Menu closed: "hidden"
   -->
-    <div class="hidden sm:hidden">
+    <div :class="isOpen ? 'block' : 'hidden'" class="sm:hidden">
         <div class="px-2 pt-2 pb-3">
             <a href="#"
                 class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
@@ -111,54 +112,3 @@
         </div>
     </div>
 </nav>
-{{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-{{ config('app.name', 'Laravel') }}
-</a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-    <span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <!-- Left Side Of Navbar -->
-    <ul class="navbar-nav mr-auto">
-
-    </ul>
-
-    <!-- Right Side Of Navbar -->
-    <ul class="navbar-nav ml-auto">
-        <!-- Authentication Links -->
-        @guest
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-        </li>
-        @if (Route::has('register'))
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-        </li>
-        @endif
-        @else
-        <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }} <span class="caret"></span>
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </div>
-        </li>
-        @endguest
-    </ul>
-</div>
-</div>
-</nav> --}}
