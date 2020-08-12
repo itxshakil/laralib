@@ -18,6 +18,7 @@ class CreateIssueLogsTable extends Migration
             $table->foreignId('book_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('admin_id')->constrained();
+            $table->unsignedBigInteger('returned_to')->nullable();
             $table->timestamp('returned_at')->nullable();
             $table->timestamps();
         });

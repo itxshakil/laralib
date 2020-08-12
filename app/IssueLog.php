@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class IssueLog extends Model
 {
-   protected $fillable = ['user_id', 'book_id', 'admin_id'];
+   protected $fillable = ['user_id', 'book_id', 'admin_id','returned_at','returned_to'];
 
    protected $with = ['book', 'user', 'admin'];
+
+   protected $appends = ['fine'];
 
    /**
     * The attributes that should be cast to native types.
@@ -18,6 +20,16 @@ class IssueLog extends Model
    protected $casts = [
       'returned_at' => 'datetime',
    ];
+
+   public function getFineAttribute()
+   {
+      $interval = $this->created_at->diffInDays($this->returned_at ?? now());
+      if ($interval <= 15) {
+         return 0;
+      }
+
+      return ($interval - 15) / 2;
+   }
 
    public function book()
    {

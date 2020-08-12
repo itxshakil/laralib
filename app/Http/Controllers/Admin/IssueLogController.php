@@ -59,9 +59,9 @@ class IssueLogController extends Controller
      * @param  \App\IssueLog  $issueLog
      * @return \Illuminate\Http\Response
      */
-    public function show(IssueLog $issueLog)
+    public function return(IssueLog $issueLog)
     {
-        //
+        return $issueLog->update(['returned_at' => now(), 'returned_to' => auth('admin')->id()]);
     }
 
     /**
