@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\IssueLog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class IssueController extends Controller
 {
@@ -14,7 +15,10 @@ class IssueController extends Controller
      */
     public function index()
     {
-        $issues = auth()->user()->issue_logs()->with('book.authors')->without('admin')->latest()->get();
+        $issues = Cache::remember('index.posts', 30, function () {
+            return auth()->user()->issue_logs()->with('book.authors')->without('admin')->latest()->get();
+        });
+        // $issues = auth()->user()->issue_logs()->with('book.authors')->without('admin')->latest()->get();
 
         return view('issues.index', compact('issues'));
     }

@@ -22,7 +22,8 @@
             @if ($rating->comment)
             <div class="w-full sm:w-1/2 lg:w-3/12 rounded p-2 border bg-gray-100 flex-grow">
                 <p class="text-gray-700 mt-2 capitalize">{{$rating->user->name}}</p>
-                <span class="text-sm text-gray-700">{{$rating->score}} ♥</span>
+                <span class="text-sm text-gray-700">@for ($i = 0; $i < 5; $i++)<span class="@if($book->average_rating > $i)text-red-500 @endif">♥</span>
+                    @endfor</span>
                 <span class="text-gray-700">on {{$rating->created_at->toDateString() }}</span>
                 <p class="text-lg">{{$rating->comment}}</p>
             </div>
