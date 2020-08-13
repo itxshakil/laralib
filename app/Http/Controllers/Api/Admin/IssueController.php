@@ -26,7 +26,7 @@ class IssueController extends Controller
         } else if ($request->has('returned')) {
             $issue = $issue->returned();
         }
-        
+
         return IssueResource::collection($issue->latest()->paginate(20));
     }
 
@@ -42,10 +42,13 @@ class IssueController extends Controller
 
         $book =  Book::where('isbn', $request->isbn)->get()->first();
 
-        return  auth('admin')->user()->issue_logs()->create([
+        $issue =   auth('admin')->user()->issue_logs()->create([
             'book_id' => $book->id,
             'user_id' => $user->id,
         ]);
+
+        $book->decrement('count');
+        return response($issue,201);
     }
 
     /**

@@ -50,6 +50,8 @@ class IssueLogController extends Controller
             'user_id' => $user->id,
         ]);
 
+        $book->decrement('count');
+
         return redirect(route('admin.issue_logs.index'));
     }
 
@@ -61,7 +63,9 @@ class IssueLogController extends Controller
      */
     public function return(IssueLog $issueLog)
     {
-        return $issueLog->update(['returned_at' => now(), 'returned_to' => auth('admin')->id()]);
+        $issueLog->update(['returned_at' => now(), 'returned_to' => auth('admin')->id()]);
+        $issueLog->book()->increment('count');
+        return response('1');
     }
 
     /**
