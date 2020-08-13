@@ -37,6 +37,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/register', 'LoginController@register')->name('register.submit');
         Route::post('/logout', 'LoginController@logout')->name('logout');
 
+        Route::get('/password/change', 'ChangePasswordController@showForm');
+        Route::post('/password/change', 'ChangePasswordController@change')->name('password.change');
+
+
         // Password reset routes
 
         Route::post('/password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');

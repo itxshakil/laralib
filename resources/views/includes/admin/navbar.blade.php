@@ -82,9 +82,9 @@
                             <a href="#"
                                 class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
                                 role="menuitem">Your Profile</a>
-                            <a href="#"
+                            <a href="/admin/password/change"
                                 class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
-                                role="menuitem">Settings</a>
+                                role="menuitem">Change Password</a>
                             <a href="#"
                                 class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
                                 role="menuitem" onclick="event.preventDefault();
