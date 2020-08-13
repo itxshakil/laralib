@@ -69,7 +69,7 @@
                 >Low Count</span>
               </td>
               <td
-                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
+                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500" title="Book Available Count"
                 v-text="book.count"
               ></td>
               <td

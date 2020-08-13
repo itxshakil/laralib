@@ -22,7 +22,7 @@
                     <div>
                         <p class="text-gray-300 mt-2">ISBN: {{$book->isbn}}</p>
                         <span class="capitalize">{{$book->language}}</span>
-                        <span class="ml-2 bg-indigo-700 rounded-full p-1 text-white text-xs">{{$book->count}}</span>
+                        <span class="ml-2 bg-indigo-700 rounded-full p-1 text-white text-xs" title="Book Available Count">{{$book->count}}</span>
                     </div>
                     <div>
                         <p class="text-gray-300 mt-2">Book Issued: {{$book->issue_logs_count}}</p>

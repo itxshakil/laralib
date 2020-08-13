@@ -40,6 +40,7 @@
           <div
             class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
             v-text="issue.fine"
+            title="Total Fine"
             v-if="issue.fine > 0"
           ></div>
         </div>
@@ -52,6 +53,7 @@
         <div
           class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
           v-text="issue.fine"
+          title="Total Fine"
           v-if="issue.fine > 0"
         ></div>
       </div>

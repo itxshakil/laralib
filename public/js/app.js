@@ -2253,6 +2253,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["data"],
   data: function data() {
@@ -3630,6 +3632,7 @@ var render = function() {
                       _c("td", {
                         staticClass:
                           "px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500",
+                        attrs: { title: "Book Available Count" },
                         domProps: { textContent: _vm._s(book.count) }
                       }),
                       _vm._v(" "),
@@ -3884,6 +3887,7 @@ var render = function() {
                   ? _c("div", {
                       staticClass:
                         "ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800",
+                      attrs: { title: "Total Fine" },
                       domProps: { textContent: _vm._s(_vm.issue.fine) }
                     })
                   : _vm._e()
@@ -3910,6 +3914,7 @@ var render = function() {
                 ? _c("div", {
                     staticClass:
                       "ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800",
+                    attrs: { title: "Total Fine" },
                     domProps: { textContent: _vm._s(_vm.issue.fine) }
                   })
                 : _vm._e()
@@ -17422,26 +17427,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!***********************************!*\
+  !*** multi ./resources/js/app.js ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\booklab\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\booklab\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\booklab\resources\js\app.js */"./resources/js/app.js");
 
 
 /***/ })
