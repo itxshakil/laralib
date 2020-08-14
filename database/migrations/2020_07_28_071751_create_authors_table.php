@@ -16,7 +16,7 @@ class CreateAuthorsTable extends Migration
         Schema::create('authors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('introduction')->nullable();
+            $table->text('introduction')->nullable();
             $table->string('email')->nullable();
             $table->timestamps();
         });
