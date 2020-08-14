@@ -9,6 +9,6 @@ $factory->define(Book::class, function (Faker $faker) {
     return [
         'title' => $faker->text(40),
         'isbn' => $faker->unique()->isbn10,
-        'count' => $faker->numberBetween(0,999),
+        'count' => $faker->numberBetween(0,18),
     ];
 });
