@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class IssueLog extends Model
 {
-   protected $fillable = ['user_id', 'book_id', 'admin_id','returned_at','returned_to'];
+   protected $fillable = ['user_id', 'book_id', 'admin_id', 'returned_at', 'returned_to'];
 
    protected $with = ['book', 'user', 'admin'];
 
@@ -20,16 +20,6 @@ class IssueLog extends Model
    protected $casts = [
       'returned_at' => 'datetime',
    ];
-
-   public function getFineAttribute()
-   {
-      $interval = $this->created_at->diffInDays($this->returned_at ?? now());
-      if ($interval <= 15) {
-         return 0;
-      }
-
-      return ($interval - 15) / 2;
-   }
 
    public function book()
    {
@@ -52,5 +42,12 @@ class IssueLog extends Model
    public function scopeIssued($query)
    {
       return $query->whereNull('returned_at');
+   }
+
+   public function getFineAttribute()
+   {
+      $interval = $this->created_at->diffInDays($this->returned_at ?? now());
+
+      return ($interval <= 15) ?  0 : ($interval - 15) / 2;
    }
 }

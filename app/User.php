@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -37,10 +37,10 @@ class User extends Authenticatable
         'rollno' => 'integer'
     ];
 
-    public function issued()
-    {
-        return $this->belongsToMany(Book::class)->withTimestamps();
-    }
+    // public function issued()
+    // {
+    //     return $this->belongsToMany(Book::class)->withTimestamps();
+    // }
 
     public function issue_logs()
     {
@@ -52,34 +52,28 @@ class User extends Authenticatable
         return $this->belongsTo(Course::class);
     }
 
-    public function alreadyIssued()
+    public function ratings()
     {
-        return $this->issue_logs()->whereNull('returned_at');
+        return $this->hasMany(Rating::class);
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     public function scopeCourse($query, $course)
     {
         return $query->where('course_id', $course);
     }
+
     public function scopeSearch($query, $search)
     {
         return $query->where('name', 'like', "%$search%")->orWhere('rollno', 'like', "%$search%");
     }
 
-    public function ratings()
+    public function isRated($book): bool
     {
-        return $this->hasMany(Rating::class);
-    }
-
-    public function isRated($book)
-    {
-        $ratings = $this->ratings()->pluck('book_id');
-
-        return $ratings->contains($book->id);
-    }
-
-    public function image()
-    {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->ratings()->pluck('book_id')->contains($book->id);
     }
 }

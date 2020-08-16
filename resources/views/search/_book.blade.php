@@ -10,7 +10,7 @@
             @endforeach
         </div>
         <div>
-            @for ($i = 0; $i < 5; $i++)<span class="@if($book->average_rating > $i)text-red-500 @endif">♥</span>
+            @for ($i = 0; $i < 5; $i++)<span class="@if($book->average_rating > $i)text-red-500 @endif">&hearts;</span>
                 @endfor
         </div>
     </div>

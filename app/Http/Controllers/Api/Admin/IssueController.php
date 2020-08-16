@@ -37,7 +37,7 @@ class IssueController extends Controller
      */
     public function store(Request $request)
     {
-        $user =  User::where('rollno', $request->rollno)->where('course_id', $request->course)->first();
+        $user =  User::where('rollno', $request->rollno)->course($request->course)->first();
 
         $book =  Book::where('isbn', $request->isbn)->first();
 

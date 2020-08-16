@@ -67,7 +67,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        $book_authors = $book->getAuthorsId();
+        $book_authors = $book->authors()->pluck('id');
 
         $authors =  Author::all();
         return view('admin.books.edit', compact('book', 'authors', 'book_authors'));

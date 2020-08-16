@@ -25,17 +25,6 @@ class Tag extends Model
 
     public function setSlugAttribute($value)
     {
-        $slug = $this->createSlug($value);
-        while (static::where('slug', $slug)->exists()) {
-            $slug = "{$slug}-{$this->id}";
-        }
-        $this->attributes['slug'] = $slug;
-    }
-
-    protected function createSlug($value)
-    {
-        $count = static::where('slug', 'like', Str::slug($value) . '%')->count();
-        $value = ($count > 0) ? ($value . '-' . $count) : $value;
-        return Str::slug($value);
+        $this->attributes['slug'] = Str::slug($value);
     }
 }

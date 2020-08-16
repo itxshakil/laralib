@@ -53,28 +53,14 @@ class Book extends Model
         return $this->belongsToMany(Author::class)->withTimestamps();
     }
 
-    function getAuthorsId()
-    {
-        return collect($this->authors()->select('id')->get())->map(function ($author) {
-            return $author->id;
-        })->flatten();
-    }
-
-    public function issuer()
-    {
-        return $this->belongsToMany(User::class)->withTimestamps();
-    }
+    // public function issuer()
+    // {
+    //     return $this->belongsToMany(User::class)->withTimestamps();
+    // }
 
     public function issue_logs()
     {
         return $this->hasMany(IssueLog::class);
-    }
-
-    public function scopeSearch($query, $search)
-    {
-        return $query->whereHas('authors', function (Builder $query) use ($search) {
-            $query->where('name', 'like', "%$search%");
-        })->orWhere('title', 'like', "%$search%")->orWhere('isbn', 'like', "%$search%");
     }
 
     public function ratings()
@@ -82,13 +68,20 @@ class Book extends Model
         return $this->hasMany(Rating::class);
     }
 
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
     public function getAverageRatingAttribute()
     {
         return $this->ratings()->avg('score');
     }
 
-    public function tags()
+    public function scopeSearch($query, $search)
     {
-        return $this->morphToMany(Tag::class, 'taggable');
+        return $query->whereHas('authors', function (Builder $query) use ($search) {
+            $query->where('name', 'like', "%$search%");
+        })->orWhere('title', 'like', "%$search%")->orWhere('isbn', 'like', "%$search%");
     }
 }
