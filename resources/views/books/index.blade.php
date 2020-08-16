@@ -14,8 +14,8 @@
             <span
                 class="text-gray-400 text-sm capitalize bg-gray-900 inline-block items-center px-2 rounded-full">{{$book->count ? 'Available' : 'Not Available'}}</span>
             <span class="text-gray-400 text-sm capitalize">in {{$book->language}}</span>
-            <p class="text-gray-400 text-sm">@for ($i = 0; $i < 5; $i++)<span
-                    class="@if($book->average_rating > $i)text-red-500 @endif">&hearts;</span>
+            <p class="text-gray-400 text-sm">@for ($i = 0, $rating =$book->average_rating; $i < 5; $i++)<span
+                    class="@if($rating > $i)text-red-500 @endif">&hearts;</span>
                     @endfor</p>
             <p class="text-gray-400 text-sm">ISBN : {{$book->isbn}}</p>
         </div>

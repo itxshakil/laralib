@@ -6,6 +6,7 @@ use App\Tag;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Cache;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Book extends Model
@@ -13,6 +14,8 @@ class Book extends Model
     use SearchableTrait;
 
     protected $fillable = ['title', 'isbn', 'language', 'count'];
+
+    protected $appends = ['average_rating'];
 
     /**
      * The attributes that should be cast to native types.
@@ -75,7 +78,9 @@ class Book extends Model
 
     public function getAverageRatingAttribute()
     {
-        return $this->ratings()->avg('score');
+        return Cache::remember("book.$this->id.averagerating", 3600, function () {
+            return $this->ratings()->avg('score');
+        });
     }
 
     public function scopeSearch($query, $search)

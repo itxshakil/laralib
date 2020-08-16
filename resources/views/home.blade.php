@@ -9,7 +9,7 @@
             Issue History</a>
     </div>
     <div class="flex flex-col sm:flex-row flex-wrap">
-        @forelse ($issues as $issue)
+        @forelse ($pending_issues as $issue)
         <div class="border rounded w-64 p-4 m-2 bg-gray-800 text-gray-100 flex-grow">
             <p class="text-xl">{{$issue->book->title}}</p>
             <p class="mt-2">Written By @foreach($issue->book->authors as $author) <a

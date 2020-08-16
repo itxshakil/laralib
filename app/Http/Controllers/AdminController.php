@@ -19,8 +19,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $issues = IssueLog::issued()->get();
-        return view('admin.index',compact('issues'));
+        $pending_issues = IssueLog::issued()->get();
+
+        return view('admin.index', compact('pending_issues'));
     }
 
     /**

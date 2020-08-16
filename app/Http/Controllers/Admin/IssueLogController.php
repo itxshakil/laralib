@@ -18,8 +18,7 @@ class IssueLogController extends Controller
      */
     public function index()
     {
-        $issue_logs =  IssueLog::all();
-        return view('admin.issue_logs.index', compact('issue_logs'));
+        return view('admin.issue_logs.index');
     }
 
     /**

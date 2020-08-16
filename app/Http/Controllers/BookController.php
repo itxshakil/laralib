@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class BookController extends Controller
 {
@@ -14,9 +15,11 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::with('authors')->latest()->get();
+        $books = Cache::remember('books.latest', 3600, function () {
+            return Book::with('authors')->latest()->get();
+        });
 
-        return view('books.index',compact('books'));
+        return view('books.index', compact('books'));
     }
 
     /**
@@ -50,7 +53,7 @@ class BookController extends Controller
     {
         $book->load('ratings.user');
 
-        return view('books.show',compact('book'));
+        return view('books.show', compact('book'));
     }
 
     /**

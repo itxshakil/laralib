@@ -21,7 +21,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $issues = auth()->user()->issue_logs()->issued()->without('admin')->get();
-        return view('home',compact('issues'));
+        $pending_issues = auth()->user()->issue_logs()->issued()->without('admin', 'user')->get();
+        return view('home', compact('pending_issues'));
     }
 }
