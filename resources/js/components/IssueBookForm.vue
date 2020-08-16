@@ -1,8 +1,15 @@
 <template>
-  <form class="px-4 md:px-8 pt-6 pb-2 mb-4 bg-white rounded"  @submit.prevent="issue">
+  <form class="px-4 md:px-8 pt-6 pb-2 mb-4 bg-white rounded" @submit.prevent="issue">
     <div class="flex flex-col sm:flex-row gap-4">
       <section class="sm:mb-4 w-full">
-        <label class="block mb-2 text-sm font-bold text-gray-700" for="rollno">Roll number</label>
+        <div class="flex justify-between items-baseline">
+          <label class="block mb-2 text-sm font-bold text-gray-700" for="rollno">Roll number</label>
+          <a
+            href="/admin/users/create"
+            target="_blank"
+            class="text-xs text-blue-500"
+          >add new student</a>
+        </div>
         <input
           type="number"
           name="rollno"
@@ -43,7 +50,10 @@
         ></p>
       </section>
       <section class="sm:mb-4 w-full">
-        <label class="block mb-2 text-sm font-bold text-gray-700" for="isbn">ISBN Number</label>
+        <div class="flex justify-between items-baseline">
+          <label class="block mb-2 text-sm font-bold text-gray-700" for="isbn">ISBN Number</label>
+          <a href="/admin/books/create" target="_blank" class="text-xs text-blue-500">add new book</a>
+        </div>
         <input
           type="number"
           name="isbn"
@@ -66,14 +76,21 @@
         <div class="text-sm text-gray-900 font-bold capitalize" v-text="user.name"></div>
         <div class="flex items-center">
           <div class="text-xs text-gray-700 font-bold" v-text="user.email"></div>
-          <div class="text-xs text-gray-100 font-bold p-1 ml-2 rounded-full bg-gray-900" v-if="user.already_issued_count" v-text="user.already_issued_count"></div>
+          <div
+            class="text-xs text-gray-100 font-bold p-1 ml-2 rounded-full bg-gray-900"
+            v-if="user.already_issued_count"
+            v-text="user.already_issued_count"
+          ></div>
         </div>
       </div>
       <div class="p-2 rounded-md flex-1 border" v-if="book">
         <div class="text-sm text-gray-900 font-bold capitalize" v-text="book.title"></div>
         <div class="flex items-center">
           <div class="text-xs text-gray-700 font-bold capitalize" v-text="book.language"></div>
-          <div class="text-xs text-gray-100 font-bold p-1 ml-2 rounded-full bg-gray-900" v-text="book.count"></div>
+          <div
+            class="text-xs text-gray-100 font-bold p-1 ml-2 rounded-full bg-gray-900"
+            v-text="book.count"
+          ></div>
         </div>
       </div>
     </div>
@@ -93,8 +110,8 @@ export default {
       form: {},
       errors: {},
       courses: null,
-      book:null,
-      user:null
+      book: null,
+      user: null,
     };
   },
   created() {
@@ -106,33 +123,42 @@ export default {
         this.courses = response.data;
       });
     },
-    loadBookName(){
-      axios.get('/api/book/isbn/'+this.form.isbn).then(response=>{
-        this.book =  response.data;
-      }).catch(error=>{
-        alert(error.response.statustext);
-        this.book = null;
-      })
+    loadBookName() {
+      axios
+        .get("/api/book/isbn/" + this.form.isbn)
+        .then((response) => {
+          this.book = response.data;
+        })
+        .catch((error) => {
+          alert(error.response.statustext);
+          this.book = null;
+        });
     },
-    checkUserName(){
-      if(this.form.rollno && this.form.course){
-        axios.get('/api/course/'+this.form.course+'/user/'+this.form.rollno).then(response=>{
-          this.user = response.data;
-      }).catch(error=>{
-        alert(error.response.statusText);
-        this.user = null;
-      })
+    checkUserName() {
+      if (this.form.rollno && this.form.course) {
+        axios
+          .get("/api/course/" + this.form.course + "/user/" + this.form.rollno)
+          .then((response) => {
+            this.user = response.data;
+          })
+          .catch((error) => {
+            alert(error.response.statusText);
+            this.user = null;
+          });
       }
     },
-    issue(){
-      axios.post('/api/admin/issues',this.form).then(response=>{
-        if(response.status == 201){
-          window.location= '/admin/issues';
-        }
-      }).catch(error=>{
-        alert(error.response.statusText);
-      })
-    }
+    issue() {
+      axios
+        .post("/api/admin/issues", this.form)
+        .then((response) => {
+          if (response.status == 201) {
+            window.location = "/admin/issues";
+          }
+        })
+        .catch((error) => {
+          alert(error.response.statusText);
+        });
+    },
   },
 };
 </script>

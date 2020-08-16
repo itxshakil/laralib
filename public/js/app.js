@@ -2378,6 +2378,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2402,7 +2415,7 @@ __webpack_require__.r(__webpack_exports__);
     loadBookName: function loadBookName() {
       var _this2 = this;
 
-      axios.get('/api/book/isbn/' + this.form.isbn).then(function (response) {
+      axios.get("/api/book/isbn/" + this.form.isbn).then(function (response) {
         _this2.book = response.data;
       })["catch"](function (error) {
         alert(error.response.statustext);
@@ -2413,7 +2426,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       if (this.form.rollno && this.form.course) {
-        axios.get('/api/course/' + this.form.course + '/user/' + this.form.rollno).then(function (response) {
+        axios.get("/api/course/" + this.form.course + "/user/" + this.form.rollno).then(function (response) {
           _this3.user = response.data;
         })["catch"](function (error) {
           alert(error.response.statusText);
@@ -2422,9 +2435,9 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     issue: function issue() {
-      axios.post('/api/admin/issues', this.form).then(function (response) {
+      axios.post("/api/admin/issues", this.form).then(function (response) {
         if (response.status == 201) {
-          window.location = '/admin/issues';
+          window.location = "/admin/issues";
         }
       })["catch"](function (error) {
         alert(error.response.statusText);
@@ -3995,14 +4008,7 @@ var render = function() {
     [
       _c("div", { staticClass: "flex flex-col sm:flex-row gap-4" }, [
         _c("section", { staticClass: "sm:mb-4 w-full" }, [
-          _c(
-            "label",
-            {
-              staticClass: "block mb-2 text-sm font-bold text-gray-700",
-              attrs: { for: "rollno" }
-            },
-            [_vm._v("Roll number")]
-          ),
+          _vm._m(0),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -4106,14 +4112,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("section", { staticClass: "sm:mb-4 w-full" }, [
-          _c(
-            "label",
-            {
-              staticClass: "block mb-2 text-sm font-bold text-gray-700",
-              attrs: { for: "isbn" }
-            },
-            [_vm._v("ISBN Number")]
-          ),
+          _vm._m(1),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -4206,11 +4205,59 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm._m(0)
+      _vm._m(2)
     ]
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex justify-between items-baseline" }, [
+      _c(
+        "label",
+        {
+          staticClass: "block mb-2 text-sm font-bold text-gray-700",
+          attrs: { for: "rollno" }
+        },
+        [_vm._v("Roll number")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "text-xs text-blue-500",
+          attrs: { href: "/admin/users/create", target: "_blank" }
+        },
+        [_vm._v("add new student")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex justify-between items-baseline" }, [
+      _c(
+        "label",
+        {
+          staticClass: "block mb-2 text-sm font-bold text-gray-700",
+          attrs: { for: "isbn" }
+        },
+        [_vm._v("ISBN Number")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "text-xs text-blue-500",
+          attrs: { href: "/admin/books/create", target: "_blank" }
+        },
+        [_vm._v("add new book")]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
