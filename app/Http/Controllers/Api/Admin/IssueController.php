@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\Admin;
 
 use App\Book;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\UserResource;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\IssueResource;
@@ -38,9 +37,9 @@ class IssueController extends Controller
      */
     public function store(Request $request)
     {
-        $user =  User::where('rollno', $request->rollno)->where('course_id', $request->course)->get()->first();
+        $user =  User::where('rollno', $request->rollno)->where('course_id', $request->course)->first();
 
-        $book =  Book::where('isbn', $request->isbn)->get()->first();
+        $book =  Book::where('isbn', $request->isbn)->first();
 
         $issue =   auth('admin')->user()->issue_logs()->create([
             'book_id' => $book->id,
@@ -48,7 +47,7 @@ class IssueController extends Controller
         ]);
 
         $book->decrement('count');
-        return response($issue,201);
+        return response($issue, 201);
     }
 
     /**

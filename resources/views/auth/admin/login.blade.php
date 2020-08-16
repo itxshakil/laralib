@@ -1,72 +1,47 @@
-@extends('layouts.app')
-
+@extends('layouts.admin.app')
+@section('title','Login')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Admin Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('admin.login.submit') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('admin.password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+<div class="container mx-auto flex justify-center px-3 md:px-6">
+    <div class="w-full xl:w-3/4 lg:w-11/12 flex my-6">
+        <div class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
+            style="background-image: url('https://source.unsplash.com/K4mSJ7kc0As/600x800')">
+        </div>
+        <div class="w-full lg:w-1/2 bg-gray-200 p-2 md:p-5 rounded-lg lg:rounded-l-none">
+            <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">Welcome Back!</h3>
+            <form method="POST" action="{{ route('admin.login.submit') }}">
+                @csrf
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-bold text-gray-700"
+                        for="email">{{ __('E-Mail Address') }}</label>
+                    <input
+                        class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none @error('email') border-red-500 @enderror"
+                        type="text" id="email" name="email" autocomplete="email" placeholder="john.doe"
+                        value="oarya@example.org" required autofocus />
+                    @error('email')
+                    <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
+                    @enderror
                 </div>
-            </div>
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-bold text-gray-700"
+                        for="password">{{ __('Password') }}</label>
+                    <input
+                        class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none @error('password') border-red-500 @enderror"
+                        type="password" id="password" name="password" autocomplete="password" placeholder="john.doe"
+                        value="password" required />
+                    @error('password')
+                    <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-4">
+                    <input class="mr-2 leading-tight" type="checkbox" name="remember" id="remember" />
+                    <label class="text-sm" for="remember">Remember Me</label>
+                </div>
+                <div class="mb-4 text-center">
+                    <button
+                        class="w-full bg-blue-500 active:bg-blue-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
+                        type="submit">Login</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
