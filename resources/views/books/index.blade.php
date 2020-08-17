@@ -12,7 +12,7 @@
             <p class="mt-2">Written By @foreach($book->authors as $author) <a
                     href="{{route('authors.show',$author)}}">{{$author->name}}</a>@endforeach</p>
             <span
-                class="text-gray-400 text-sm capitalize bg-gray-900 inline-block items-center px-2 rounded-full">{{$book->count ? 'Available' : 'Not Available'}}</span>
+            class="text-sm capitalize inline-block items-center px-2 rounded-full {{$book->count ? 'bg-green-800 text-green-100' : 'bg-red-800 text-red-100'}}">{{$book->count ? 'Available' : 'Not Available'}}</span>
             <span class="text-gray-400 text-sm capitalize">in {{$book->language}}</span>
             <p class="text-gray-400 text-sm">@for ($i = 0, $rating =$book->average_rating; $i < 5; $i++)<span
                     class="@if($rating > $i)text-red-500 @endif">&hearts;</span>

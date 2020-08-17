@@ -15,7 +15,11 @@
             <p class="mt-2">Written By @foreach($issue->book->authors as $author) <a
                     href="{{route('authors.show',$author)}}">{{$author->name}}</a>@endforeach</p>
             <span
-                class="text-gray-400 text-sm capitalize bg-gray-900 inline-block items-center px-2 rounded-full">{{$issue->returned_at ? 'Returned' : 'Not Returned'}}</span>
+                class="inline-flex text-sm capitalize px-2 rounded-full {{$issue->returned_at ? 'text-green-200 bg-green-800' : 'text-red-200 bg-red-800'}}">{{$issue->returned_at ? 'Returned' : 'Not Returned'}}</span>
+            @if ($issue->fine)
+            <span class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
+                title="Total Fine">{{$issue->fine}}</span>
+            @endif
             <p class="text-gray-400 text-sm">ISBN : {{$issue->book->isbn}}</p>
             <p class="text-gray-400 text-sm capitalize">Issued on : {{$issue->created_at->toDateString()}}</p>
         </div>

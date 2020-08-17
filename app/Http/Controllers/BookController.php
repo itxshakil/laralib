@@ -15,7 +15,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Cache::remember('books.latest', 3600, function () {
+        $books = Cache::remember('books.latest', 600, function () {
             return Book::with('authors')->latest()->get();
         });
 
