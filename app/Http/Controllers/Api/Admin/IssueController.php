@@ -47,6 +47,7 @@ class IssueController extends Controller
         ]);
 
         $book->decrement('count');
+
         return response($issue, 201);
     }
 

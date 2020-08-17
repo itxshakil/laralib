@@ -20,12 +20,13 @@ class UserController extends Controller
     {
         $users =  User::query();
 
-        if($request->has('course')){
+        if ($request->has('course')) {
             $users =  $users->course($request->course);
         }
-        if($request->has('search')){
+        if ($request->has('search')) {
             $users =  $users->search($request->search);
         }
+
         return UserResource::collection($users->with('course')->paginate(20));
     }
 
@@ -75,7 +76,7 @@ class UserController extends Controller
      * @param  \App\Book                 $book
      * @return \Illuminate\Http\Response
      */
-    public function rollno(Course $course,User $user)
+    public function rollno(Course $course, User $user)
     {
         return $user->loadCount('alreadyIssued');
     }
