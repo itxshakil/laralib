@@ -29,6 +29,8 @@ Route::post('/ratings/{book}', 'RatingController@store')->name('rating.store');
 
 Route::get('/search', 'SearchController@show')->name('search');
 
+Route::post('/contact', 'ContactController')->name('contact');
+
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::namespace('Auth\Admin')->group(function () {
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
