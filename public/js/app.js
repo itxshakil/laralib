@@ -2391,6 +2391,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2435,12 +2440,14 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     issue: function issue() {
+      var _this4 = this;
+
       axios.post("/api/admin/issues", this.form).then(function (response) {
         if (response.status == 201) {
           window.location = "/admin/issues";
         }
       })["catch"](function (error) {
-        alert(error.response.statusText);
+        _this4.errors = error.response.data.errors;
       });
     }
   }
@@ -4168,12 +4175,15 @@ var render = function() {
                       domProps: { textContent: _vm._s(_vm.user.email) }
                     }),
                     _vm._v(" "),
-                    _vm.user.already_issued_count
+                    _vm.user.issued_count
                       ? _c("div", {
                           staticClass:
-                            "text-xs text-gray-100 font-bold p-1 ml-2 rounded-full bg-gray-900",
+                            "text-xs text-red-100 font-bold p-1 ml-2 rounded-full bg-red-800",
+                          attrs: {
+                            title: "Book Already Issued and not return"
+                          },
                           domProps: {
-                            textContent: _vm._s(_vm.user.already_issued_count)
+                            textContent: _vm._s(_vm.user.issued_count)
                           }
                         })
                       : _vm._e()

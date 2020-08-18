@@ -77,9 +77,10 @@
         <div class="flex items-center">
           <div class="text-xs text-gray-700 font-bold" v-text="user.email"></div>
           <div
-            class="text-xs text-gray-100 font-bold p-1 ml-2 rounded-full bg-gray-900"
-            v-if="user.already_issued_count"
-            v-text="user.already_issued_count"
+            class="text-xs text-red-100 font-bold p-1 ml-2 rounded-full bg-red-800"
+            title="Book Already Issued and not return"
+            v-if="user.issued_count"
+            v-text="user.issued_count"
           ></div>
         </div>
       </div>
@@ -156,7 +157,7 @@ export default {
           }
         })
         .catch((error) => {
-          alert(error.response.statusText);
+          this.errors = error.response.data.errors;
         });
     },
   },

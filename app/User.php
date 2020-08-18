@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->hasMany(IssueLog::class);
     }
 
+    public function issued()
+    {
+        return $this->hasMany(IssueLog::class)->issued();
+    }
+
     public function course()
     {
         return $this->belongsTo(Course::class);

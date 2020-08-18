@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\IssueResource;
 use App\IssueLog;
+use App\Rules\AlreadyNotIssued;
 
 class IssueController extends Controller
 {
@@ -40,6 +41,12 @@ class IssueController extends Controller
         $user =  User::where('rollno', $request->rollno)->course($request->course)->first();
 
         $book =  Book::where('isbn', $request->isbn)->first();
+
+        $request->validate([
+            'rollno' => ['required', 'exists:users'],
+            'course' => ['required', 'exists:courses,id'],
+            'isbn' => ['required', 'exists:books', new AlreadyNotIssued($user)],
+        ]);
 
         $issue =   auth('admin')->user()->issue_logs()->create([
             'book_id' => $book->id,

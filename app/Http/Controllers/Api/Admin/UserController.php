@@ -78,6 +78,6 @@ class UserController extends Controller
      */
     public function rollno(Course $course, User $user)
     {
-        return $user->loadCount('alreadyIssued');
+        return $user->loadCount('issued');
     }
 }

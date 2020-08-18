@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Book;
-use App\Course;
-use App\Http\Controllers\Controller;
-use App\IssueLog;
 use App\User;
+use App\Course;
+use App\IssueLog;
 use Illuminate\Http\Request;
+use App\Rules\AlreadyNotIssued;
+use App\Http\Controllers\Controller;
 
 class IssueLogController extends Controller
 {
@@ -44,6 +45,12 @@ class IssueLogController extends Controller
 
         $book =  Book::where('isbn', $request->isbn)->get()->first();
 
+        $request->validate([
+            'rollno' => ['required', 'exists:users'],
+            'course' => ['required', 'exists:courses,id'],
+            'isbn' => ['required', 'exists:books', new AlreadyNotIssued($user)],
+        ]);
+
         auth('admin')->user()->issue_logs()->create([
             'book_id' => $book->id,
             'user_id' => $user->id,
@@ -55,7 +62,7 @@ class IssueLogController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * mark IssueLog as Returned.
      *
      * @param  \App\IssueLog  $issueLog
      * @return \Illuminate\Http\Response
