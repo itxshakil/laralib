@@ -31,6 +31,9 @@ Route::get('/search', 'SearchController@show')->name('search');
 
 Route::post('/contact', 'ContactController')->name('contact');
 
+Route::get('request-book','RequestedBookController@show')->name('request.books');
+Route::post('request-book','RequestedBookController@store')->name('request.books.store');
+
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::namespace('Auth\Admin')->group(function () {
         Route::get('/login', 'LoginController@showLoginForm')->name('login');

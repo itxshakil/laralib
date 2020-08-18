@@ -17,5 +17,9 @@
     @if ($books->count() > 0)
     {{$books->appends(request()->input())->links('pagination.tailwind')}}
     @endif
+
+    <div class="bg-gray-400 border p-4 rounded-md">
+    <p class="font-semibold">Didn't find the book?  Request new book <a class="text-blue-600" href="{{route('request.books')}}">here</a></p>
+    </div>
 </div>
 @endsection

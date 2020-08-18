@@ -1,0 +1,108 @@
+@extends('layouts.admin.app')
+
+@section('content')
+<div class="max-w-7xl mx-auto px-6">
+    <div class="flex justify-between items-center">
+        <h3 class="text-2xl p-2">{{ __('Request new Book') }}</h3>
+        {{-- <a href="{{route('admin.books.index')}}"
+        class="align-baseline py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white
+        bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo
+        active:bg-indigo-700">Your </a> --}}
+    </div>
+    <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg lg:rounded-l-none">
+        <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">Request New Book!</h3>
+        @if (session('message'))
+        <p class="text-center italic text-green-500 mb-2">
+            {{ session('message') }}
+        </p>
+        @endif
+        <form class="px-4 md:px-8  pt-6 pb-2 mb-4 bg-white rounded" method="POST"
+            action="{{route('request.books.store')}}">
+            @csrf
+            @auth
+            <input type="hidden" name="user_id" value="{{auth()->id()}}">
+            @endauth
+            <div class="flex flex-col sm:flex-row gap-4">
+                <section class="sm:mb-4 w-full">
+                    <label class="block mb-2 text-sm font-bold text-gray-700" for="name">
+                        Book name
+                    </label>
+                    <input type="text" name="name" id="name" value="{{old('name') ?? null }}"
+                        placeholder="Song of Ice and Fire"
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 @error('name') border-red-500 @enderror"
+                        required autofocus>
+                    @error('name')
+                    <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
+                    @enderror
+                </section>
+                <section class="sm:mb-4 w-full">
+                    <label class="block mb-2 text-sm font-bold text-gray-700" for="author">
+                        Author name
+                    </label>
+                    <input type="text" name="author" id="author" value="{{old('author') ?? null }}"
+                        placeholder="George R.R. Martin"
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 @error('author') border-red-500 @enderror"
+                        required>
+                    @error('author')
+                    <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
+                    @enderror
+                </section>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <section class="sm:mb-4 w-full">
+                    <label class="block mb-2 text-sm font-bold text-gray-700" for="isbn">
+                        ISBN Number(optional)
+                    </label>
+                    <input type="number" name="isbn" id="isbn" maxlength="13" minlength="10"
+                        value="{{old('isbn') ?? null}}" placeholder="7894561231234"
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 @error('isbn') border-red-500 @enderror">
+                    @error('isbn')
+                    <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
+                    @enderror
+                </section>
+                <section class="sm:mb-4 w-full">
+                    <label class="block mb-2 text-sm font-bold text-gray-700" for="publisher">
+                        Publisher(optional)
+                    </label>
+                    <input type="text" name="publisher" id="publisher" value="{{old('publisher')  ?? null }}"
+                        placeholder="McGraw Hill Publishing House"
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 @error('publisher') border-red-500 @enderror">
+                    @error('publisher')
+                    <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
+                    @enderror
+                </section>
+                <section class="sm:mb-4 w-full">
+                    <label class="block mb-2 text-sm font-bold text-gray-700" for="year">
+                        Year
+                    </label>
+                    <input type="number" name="year" id="year" minlength="4" maxlength="4"
+                        value="{{old('year') ?? now()->year}}" placeholder="2020"
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 @error('year') border-red-500 @enderror">
+                    @error('year')
+                    <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
+                    @enderror
+                </section>
+            </div>
+            <section class="sm:mb-4 w-full">
+                <label class="block mb-2 text-sm font-bold text-gray-700" for="message">
+                    Message(optional)
+                </label>
+                <textarea name="message" id="message" cols="30" rows="3" value="{{old('year')}}"
+                    placeholder="Additional Details about book"
+                    class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700"></textarea>
+                @error('message')
+                <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
+                @enderror
+            </section>
+            <section class="mb-4 text-center">
+                <button
+                    class="w-full bg-blue-500 active:bg-blue-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
+                    type="submit">
+                    Request Book
+                </button>
+            </section>
+            @csrf
+        </form>
+    </div>
+</div>
+@endsection
