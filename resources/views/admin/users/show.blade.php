@@ -30,6 +30,12 @@
             <div class="w-full sm:w-1/2 lg:w-3/12 rounded p-2 border bg-gray-800 text-gray-100 flex-grow">
                 <a href="{{route('admin.books.show',$issue->book)}}" class="text-xl font-semibold">{{$issue->book->title}}</a>
                 <p class="text-gray-300">ISBN : {{$issue->book->isbn}}</p>
+                <span
+                    class="inline-flex text-sm capitalize px-2 rounded-full {{$issue->returned_at ? 'text-green-200 bg-green-800' : 'text-red-200 bg-red-800'}}">{{$issue->returned_at ? 'Returned' : 'Not Returned'}}</span>
+                @if ($issue->fine)
+                <span class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
+                    title="Total Fine">{{$issue->fine}}</span>
+                @endif
                 <p class="text-gray-300">Issued : {{$issue->created_at}}</p>
                 <p class="text-gray-300">Returned: {{$issue->returned_at ?? "Not Returned" }}</p>
             </div>

@@ -18,11 +18,15 @@
                 @foreach($book->authors as $author)
                 <a href="{{route('admin.authors.show',$author)}}">{{$author->name}}</a>
                 @endforeach
-                <div class="mt-2 flex gap-2 text-gray-300 justify-between">
+                <p class="text-gray-400 text-sm">@for ($i = 0, $rating =$book->average_rating; $i < 5; $i++)<span
+                        class="@if($rating > $i)text-red-500 @endif">&hearts;</span>
+                        @endfor</p>
+                <div class="mt-1 flex gap-2 text-gray-300 justify-between">
                     <div>
                         <p class="text-gray-300 mt-2">ISBN: {{$book->isbn}}</p>
                         <span class="capitalize">{{$book->language}}</span>
-                        <span class="ml-2 bg-indigo-700 rounded-full p-1 text-white text-xs" title="Book Available Count">{{$book->count}}</span>
+                        <span class="ml-2 bg-indigo-700 rounded-full p-1 text-white text-xs"
+                            title="Book Available Count">{{$book->count}}</span>
                     </div>
                     <div>
                         <p class="text-gray-300 mt-2">Book Issued: {{$book->issue_logs_count}}</p>
@@ -35,6 +39,12 @@
                 <a href="{{route('admin.users.show',$issue->user)}}"
                     class="text-xl font-semibold">{{$issue->user->name}}</a>
                 <p class="text-sm text-gray-400">{{$issue->user->email}}</p>
+                <span
+                    class="inline-flex text-sm capitalize px-2 rounded-full {{$issue->returned_at ? 'text-green-200 bg-green-800' : 'text-red-200 bg-red-800'}}">{{$issue->returned_at ? 'Returned' : 'Not Returned'}}</span>
+                @if ($issue->fine)
+                <span class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
+                    title="Total Fine">{{$issue->fine}}</span>
+                @endif
                 <p class="text-gray-300 mt-2">Issued : {{$issue->created_at}}</p>
                 <p class="text-gray-300">Returned: {{$issue->returned_at ?? "Not Returned" }}</p>
             </div>
