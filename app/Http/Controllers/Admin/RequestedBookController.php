@@ -18,6 +18,17 @@ class RequestedBookController extends Controller
     public function show(RequestedBook $requestedBook)
     {
         return view('admin.requestedbooks.show', compact('requestedBook'));
-        dd($requestedBook);
+    }
+    public function approve(RequestedBook $requestedBook)
+    {
+        $requestedBook->status = true;
+        $requestedBook->save();
+        return back();
+    }
+    public function reject(RequestedBook $requestedBook)
+    {
+        $requestedBook->status = false;
+        $requestedBook->save();
+        return back();
     }
 }

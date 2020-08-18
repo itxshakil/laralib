@@ -70,6 +70,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('request-book', 'RequestedBookController@index')->name('request.books');
         Route::get('request-book/{requestedBook}', 'RequestedBookController@show')->name('request.books.show');
+        Route::post('request-book/{requestedBook}/approve', 'RequestedBookController@approve')->name('request.books.approve');
+        Route::post('request-book/{requestedBook}/reject', 'RequestedBookController@reject')->name('request.books.reject');
         Route::post('request-book', 'RequestedBookController@store')->name('request.books.store');
     });
 });

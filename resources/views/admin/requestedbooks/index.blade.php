@@ -24,7 +24,7 @@
                             <th
                                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                 Status</th>
-                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50">Action</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -52,15 +52,15 @@
                             </td>
                             <td
                                 class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+                                @if ($book->status === null)
+                                <p
+                                    class="text-sm capitalize inline-block items-center px-2 rounded-full bg-yellow-800 text-yellow-100">
+                                    Pending</p>
+                                @else
                                 @if ($book->status)
                                 <p
                                     class="text-sm capitalize inline-block items-center px-2 rounded-full bg-green-800 text-green-100">
                                     Approved</p>
-                                @else
-                                @if ($book->status == null)
-                                <p
-                                    class="text-sm capitalize inline-block items-center px-2 rounded-full bg-yellow-800 text-yellow-100">
-                                    Pending</p>
                                 @else
                                 <p
                                     class="text-sm capitalize inline-block items-center px-2 rounded-full bg-red-800 text-red-100">
@@ -71,8 +71,22 @@
                             </td>
                             <td
                                 class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                <a href="{{route('admin.request.books.show',$book)}}"
-                                    class="text-indigo-600 hover:text-indigo-900">View</a>
+                                <div class="flex flex-col justify-center items-center gap-1">
+                                    @if ($book->status === null)
+                                    <form action="{{route('admin.request.books.approve',$book)}}" method="post">
+                                        @csrf
+                                        <input type="submit" value="Approve"
+                                            class="w-full text-sm capitalize inline-block items-center py-2 px-4 rounded bg-green-800 text-green-100">
+                                    </form>
+                                    <form action="{{route('admin.request.books.reject',$book)}}" method="post">
+                                        @csrf
+                                        <input type="submit" value="Reject"
+                                            class="w-full text-sm capitalize inline-block items-center py-2 px-4 rounded bg-red-800 text-red-100">
+                                    </form>
+                                    @endif
+                                    <a href="{{route('admin.request.books.show',$book)}}"
+                                        class="text-indigo-600 hover:text-indigo-900">View</a>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

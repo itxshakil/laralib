@@ -30,6 +30,18 @@
                 @if ($requestedBook->user_id)
                 <p class="text-gray-500 text-sm">Requested By : {{App\User::find($requestedBook->user_id)->name}}
                     @endif
+                    @if ($requestedBook->status === null)
+                    <form action="{{route('admin.request.books.approve',$requestedBook)}}" method="post">
+                        @csrf
+                        <input type="submit" value="Approve"
+                            class="w-full text-sm capitalize inline-block items-center py-2 px-4 rounded bg-green-800 text-green-100 my-2">
+                    </form>
+                    <form action="{{route('admin.request.books.reject',$requestedBook)}}" method="post">
+                        @csrf
+                        <input type="submit" value="Reject"
+                            class="w-full text-sm capitalize inline-block items-center py-2 px-4 rounded bg-red-800 text-red-100">
+                    </form>
+                    @endif
             </div>
         </div>
     </div>
