@@ -31,8 +31,8 @@ Route::get('/search', 'SearchController@show')->name('search');
 
 Route::post('/contact', 'ContactController')->name('contact');
 
-Route::get('request-book','RequestedBookController@show')->name('request.books');
-Route::post('request-book','RequestedBookController@store')->name('request.books.store');
+Route::get('request-book', 'RequestedBookController@show')->name('request.books');
+Route::post('request-book', 'RequestedBookController@store')->name('request.books.store');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::namespace('Auth\Admin')->group(function () {
@@ -66,6 +66,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/issues/{issueLog}', 'IssueLogController@return')->name('issue_logs.return');
 
         Route::post('/tags', 'TagController@store')->name('tags.store');
+
+
+        Route::get('request-book', 'RequestedBookController@index')->name('request.books');
+        Route::get('request-book/{requestedBook}', 'RequestedBookController@show')->name('request.books.show');
+        Route::post('request-book', 'RequestedBookController@store')->name('request.books.store');
     });
 });
 
