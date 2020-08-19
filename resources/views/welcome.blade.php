@@ -59,7 +59,7 @@
         <div class="bg-gray-300 flex items-center justify-center relative">
             @if (Route::has('login'))
             <div class="top-right links">
-                @auth
+                @auth('admin')
                 <a href="{{ url('/admin') }}">Dashboard</a>
                 @else
                 <a href="{{ route('admin.login') }}">Admin Login</a>
@@ -74,7 +74,8 @@
                 @endif
                 @endauth
             </div>
-            @endif</div>
+            @endif
+        </div>
         <main class="py-4 flex flex-col justify-center items-center h-screen">
             <h1 class="text-6xl">LaraLib</h1>
             <p class="text-3xl">A Modern Library Mangement System</p>
@@ -97,7 +98,7 @@
             <p class="ml-4 mb-1">Authentication System</p>
             <p class="ml-4 mb-1">Change Password</p>
             <p class="ml-4 mb-1">Member can rate books.</p>
-            <p class="ml-4 mb-1">Status of Requested books (Coming Soon)</p>
+            <p class="ml-4 mb-1">Notification of Requested Book (approved, rejected)</p>
             <p class="ml-4 mb-1">View Notification From Admin (Coming Soon)</p>
             <p>and more...</p>
         </section>

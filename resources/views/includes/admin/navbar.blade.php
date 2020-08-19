@@ -1,5 +1,5 @@
 <nav class="bg-gray-800">
-    <div class="  sm:px-6 lg:px-8">
+    <div class="sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <!-- Mobile menu button-->
@@ -34,17 +34,20 @@
                         <a href="{{route('admin.dashboard')}}"
                             class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.dashboard' ? 'bg-gray-900' : null}}">Dashboard</a>
                         <a href="{{route('admin.users.index')}}"
-                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.users.index' ? 'bg-gray-900' : null}}">User</a>
+                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.users.index' ? 'bg-gray-900' : null}}">Users</a>
                         <a href="{{route('admin.books.index')}}"
                             class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.books.index' ? 'bg-gray-900' : null}}">Books</a>
                         <a href="{{route('admin.authors.index')}}"
                             class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.authors.index' ? 'bg-gray-900' : null}}">Authors</a>
+                        <a href="{{route('admin.request.books')}}"
+                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.authors.index' ? 'bg-gray-900' : null}}">Requests</a>
                     </div>
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <a href="{{route('admin.issue_logs.create')}}"
-                    class="flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">Issue Book</a>
+                <a href="{{route('admin.issue_logs.create')}}"
+                    class="flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">Issue
+                    Book</a>
                 <button
                     class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
                     aria-label="Notifications">
@@ -76,8 +79,8 @@
                         To: "transform opacity-0 scale-95"
                     -->
                     <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-                        <div :class="isOpen ? 'sm:block' : 'hidden'" class="py-1 rounded-md bg-white shadow-xs" role="menu"
-                            aria-orientation="vertical" aria-labelledby="user-menu">
+                        <div :class="isOpen ? 'hidden sm:block' : 'hidden'" class="py-1 rounded-md bg-white shadow-xs"
+                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                             <a href="#"
                                 class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
                                 role="menuitem">Your Profile</a>
@@ -88,7 +91,8 @@
                                 class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
                                 role="menuitem" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Sign out</a>
-                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
+                                style="display: none;">
                                 @csrf
                             </form>
                         </div>
@@ -100,19 +104,21 @@
 
     <!--
     Mobile menu, toggle classes based on menu state.
-
+ z
     Menu open: "block", Menu closed: "hidden"
   -->
     <div :class="isOpen ? 'block' : 'hidden'" class="sm:hidden">
         <div class="px-2 pt-2 pb-3">
-            <a href="#"
-                class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
-            <a href="#"
-                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
-            <a href="#"
-                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
-            <a href="#"
-                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+            <a href="{{route('admin.dashboard')}}"
+                class="block px-3 py-2 rounded-md text-base font-medium {{Route::currentRouteName() == 'admin.dashboard' ? 'text-white bg-gray-900' : 'text-gray-300 hover:text-white'}} focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
+            <a href="{{route('admin.users.index')}}"
+                class="mt-1 block px-3 py-2 rounded-md text-base font-medium {{Route::currentRouteName() == 'admin.users.index' ? 'text-white bg-gray-900' : 'text-gray-300 hover:text-white'}} hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Users</a>
+            <a href="{{route('admin.books.index')}}"
+                class="mt-1 block px-3 py-2 rounded-md text-base font-medium  {{Route::currentRouteName() == 'admin.books.index' ? 'text-white bg-gray-900' : 'text-gray-300 hover:text-white'}} hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Books</a>
+            <a href="{{route('admin.authors.index')}}"
+                class="mt-1 block px-3 py-2 rounded-md text-base font-medium  {{Route::currentRouteName() == 'admin.authors.index' ? 'text-white bg-gray-900' : 'text-gray-300 hover:text-white'}} hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Authors</a>
+            <a href="{{route('admin.request.books')}}"
+                class="mt-1 block px-3 py-2 rounded-md text-base font-medium  {{Route::currentRouteName() == 'admin.request.books' ? 'text-white bg-gray-900' : 'text-gray-300 hover:text-white'}} hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Requests</a>
         </div>
     </div>
 </nav>
