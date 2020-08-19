@@ -9,10 +9,7 @@
             <a href="{{route('authors.show',$author)}}" class="text-gray-300">{{$author->name}}, </a>
             @endforeach
         </div>
-        <div>
-            @for ($i = 0; $i < 5; $i++)<span class="@if($book->average_rating > $i)text-red-500 @endif">&hearts;</span>
-                @endfor
-        </div>
+        <x-book-average-rating average-rating="{{$book->average_rating}}" />
     </div>
     <a href="{{route('books.show',$book)}}"
         class="w-full sm:w-24 text-center bg-indigo-600 text-gray-100 py-1 px-2 rounded outline-none focus:outline-none mt-2 uppercase shadow hover:shadow-md font-bold text-xs">View

@@ -15,18 +15,14 @@
                 <span
                     class="text-sm capitalize inline-block items-center px-2 rounded-full {{$book->count ? 'bg-green-800 text-green-100' : 'bg-red-800 text-red-100'}}">{{$book->count ? 'Available' : 'Not Available'}}</span>
                 <span class="text-gray-500 text-sm capitalize">in {{$book->language}}</span>
-                <p class="text-gray-400 text-sm">@for ($i = 0, $rating =$book->average_rating; $i < 5; $i++)<span
-                        class="@if($rating > $i)text-red-500 @endif">&hearts;</span>
-                        @endfor</p>
+                <x-book-average-rating average-rating="{{$book->average_rating}}" />
                 <p class="text-gray-500 text-sm">ISBN : {{$book->isbn}}</p>
             </div>
             @foreach($book->ratings as $rating)
             @if ($rating->comment)
             <div class="w-full sm:w-1/2 lg:w-3/12 rounded p-2 border bg-gray-100 flex-grow">
                 <p class="text-gray-700 mt-2 capitalize">{{$rating->user->name}}</p>
-                <span class="text-sm text-gray-700">@for ($i = 0; $i < 5; $i++)<span
-                        class="@if($book->average_rating > $i)text-red-500 @endif">&hearts;</span>
-                @endfor</span>
+                <x-book-average-rating average-rating="{{$rating->score}}" />
                 <span class="text-gray-700">on {{$rating->created_at->toDateString() }}</span>
                 <p class="text-lg">{{$rating->comment}}</p>
             </div>

@@ -18,9 +18,7 @@
                 @foreach($book->authors as $author)
                 <a href="{{route('admin.authors.show',$author)}}">{{$author->name}}</a>
                 @endforeach
-                <p class="text-gray-400 text-sm">@for ($i = 0, $rating =$book->average_rating; $i < 5; $i++)<span
-                        class="@if($rating > $i)text-red-500 @endif">&hearts;</span>
-                        @endfor</p>
+                <x-book-average-rating average-rating="{{$book->average_rating}}" />
                 <div class="mt-1 flex gap-2 text-gray-300 justify-between">
                     <div>
                         <p class="text-gray-300 mt-2">ISBN: {{$book->isbn}}</p>
