@@ -22,7 +22,8 @@ class CreateRequestedBooksTable extends Migration
             $table->year('year')->nullable();
             $table->text('message')->nullable();
             $table->boolean('status')->nullable();
-            $table->boolean('user_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('admin_id')->nullable();
             $table->timestamps();
         });
     }

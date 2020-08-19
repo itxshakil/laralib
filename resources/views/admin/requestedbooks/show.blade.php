@@ -24,8 +24,8 @@
                 @endif
                 @endif
                 <p class="text-gray-500 text-sm">ISBN : {{$requestedBook->isbn}}</p>
-                <p class="text-gray-500 text-sm">Publisher : {{$requestedBook->publisher}}</p>
-                <p class="text-gray-500 text-sm">Year : {{$requestedBook->year}}</p>
+                <p class="text-gray-500 text-sm">Publisher : {{$requestedBook->publisher ?? 'Not Available'}}</p>
+                <p class="text-gray-500 text-sm">Year : {{$requestedBook->year ?? 'Any'}}</p>
                 <p class="text-gray-500 text-sm">Message : {{$requestedBook->message}}</p>
                 @if ($requestedBook->user_id)
                 <p class="text-gray-500 text-sm">Requested By : {{App\User::find($requestedBook->user_id)->name}}

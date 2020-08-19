@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\RequestedBook;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class RequestedBookController extends Controller
 {
@@ -21,14 +22,19 @@ class RequestedBookController extends Controller
     }
     public function approve(RequestedBook $requestedBook)
     {
-        $requestedBook->status = true;
-        $requestedBook->save();
+        $this->updateStatus($requestedBook);
         return back();
     }
     public function reject(RequestedBook $requestedBook)
     {
-        $requestedBook->status = false;
-        $requestedBook->save();
+        $this->updateStatus($requestedBook, false);
         return back();
+    }
+
+    protected function updateStatus(RequestedBook $requestedBook, Bool $status = true)
+    {
+        $requestedBook->status = $status;
+        $requestedBook->admin_id = auth('admin')->id();
+        return $requestedBook->save();
     }
 }

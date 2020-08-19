@@ -76,16 +76,16 @@
                                     <form action="{{route('admin.request.books.approve',$book)}}" method="post">
                                         @csrf
                                         <input type="submit" value="Approve"
-                                            class="w-full text-sm capitalize inline-block items-center py-2 px-4 rounded bg-green-800 text-green-100">
+                                            class="w-32 text-sm capitalize inline-block items-center py-2 px-4 rounded bg-green-800 text-green-100">
                                     </form>
                                     <form action="{{route('admin.request.books.reject',$book)}}" method="post">
                                         @csrf
                                         <input type="submit" value="Reject"
-                                            class="w-full text-sm capitalize inline-block items-center py-2 px-4 rounded bg-red-800 text-red-100">
+                                            class="w-32 text-sm capitalize inline-block items-center py-2 px-4 rounded bg-red-800 text-red-100">
                                     </form>
                                     @endif
                                     <a href="{{route('admin.request.books.show',$book)}}"
-                                        class="text-indigo-600 hover:text-indigo-900">View</a>
+                                        class="w-32 text-sm capitalize inline-block text-cemter py-2 px-4 rounded bg-indigo-800 text-indigo-100">View Details</a>
                                 </div>
                             </td>
                         </tr>
