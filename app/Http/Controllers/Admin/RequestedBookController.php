@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Notifications\BookRequestApproved;
+use App\Notifications\BookRequestRejected;
 use App\RequestedBook;
+use App\User;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Boolean;
 
@@ -23,11 +26,23 @@ class RequestedBookController extends Controller
     public function approve(RequestedBook $requestedBook)
     {
         $this->updateStatus($requestedBook);
+
+        if ($requestedBook->user_id) {
+            User::find($requestedBook->user_id)
+                ->notify(new BookRequestApproved($requestedBook->name));
+        }
+
         return back();
     }
     public function reject(RequestedBook $requestedBook)
     {
         $this->updateStatus($requestedBook, false);
+
+        if ($requestedBook->user_id) {
+            User::find($requestedBook->user_id)
+                ->notify(new BookRequestRejected($requestedBook->name));
+        }
+
         return back();
     }
 
