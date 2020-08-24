@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Author;
 use App\Book;
+use App\Author;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBookRequest;
 
@@ -79,8 +81,16 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreBookRequest $request, Book $book)
+    public function update(Request $request, Book $book)
     {
+        $data = $request->validate([
+            'title' => ['required', 'string'],
+            'isbn' => ['required', 'integer', Rule::unique('books')->ignore($book)],
+            'count' => ['required', 'integer'],
+            'language' => ['required', 'string'],
+            'authors' => ['required', 'array']
+        ]);
+
         $book->update($request->only('title', 'isbn', 'count', 'language'));
         $book->authors()->sync($request->authors);
 
