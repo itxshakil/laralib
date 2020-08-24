@@ -36,6 +36,8 @@ class RatingController extends Controller
      */
     public function store(Request $request, Book $book)
     {
+        $this->authorize('create', [Rating::class, $book]);
+
         $request->validate([
             'score' => ['required', 'numeric', 'between:1,5'],
             'comment' => ['nullable', 'string', 'max:255'],
