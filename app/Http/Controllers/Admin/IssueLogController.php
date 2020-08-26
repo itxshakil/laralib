@@ -67,7 +67,7 @@ class IssueLogController extends Controller
      * @param  \App\IssueLog  $issueLog
      * @return \Illuminate\Http\Response
      */
-    public function return(IssueLog $issueLog)
+    public function markAsReturn(IssueLog $issueLog)
     {
         $issueLog->update(['returned_at' => now(), 'returned_to' => auth('admin')->id()]);
         $issueLog->book()->increment('count');
