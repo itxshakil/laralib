@@ -30,7 +30,7 @@ class AlreadyNotIssued implements Rule
     public function passes($attribute, $value)
     {
         $book = Book::where('isbn', $value)->first();
-        if ($this->user->issue_logs()->issued()->pluck('book_id')->contains($book->id)) {
+        if ($this->userHasIssuedBook($book)) {
             return false;
         }
         return true;
@@ -44,5 +44,10 @@ class AlreadyNotIssued implements Rule
     public function message()
     {
         return 'Book is already issued to user.';
+    }
+
+    private function userHasIssuedBook(Book $book)
+    {
+        return $this->user->issue_logs()->issued()->pluck('book_id')->contains($book->id);
     }
 }
