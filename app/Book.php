@@ -79,7 +79,7 @@ class Book extends Model
     public function getAverageRatingAttribute()
     {
         return Cache::remember("book.$this->id.averagerating", 600, function () {
-            return $this->ratings()->avg('score');
+            return $this->ratings()->avg('score') ?? 0;
         });
     }
 
