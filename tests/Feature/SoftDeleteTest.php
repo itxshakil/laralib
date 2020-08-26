@@ -41,4 +41,17 @@ class SoftDeleteTest extends TestCase
 
         $this->assertSoftDeleted($rating);
     }
+
+    /**
+     * @test
+     */
+    public function admin_can_soft_delete_book()
+    {
+        $book = factory(Book::class)->create();
+
+        $this->actingAs(factory(Admin::class)->create(), 'admin');
+        $this->delete(route('admin.books.destroy', $book))->assertOk();
+
+        $this->assertSoftDeleted($book);
+    }
 }

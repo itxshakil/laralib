@@ -16,9 +16,10 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('isbn' , 13);
+            $table->string('isbn', 13);
             $table->unsignedBigInteger('count');
             $table->string('language')->default('english');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
