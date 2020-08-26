@@ -19,6 +19,7 @@ class CreateRatingsTable extends Migration
             $table->string('comment')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('book_id')->constrained();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->unique(['user_id', 'book_id']);

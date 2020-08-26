@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Rating extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = ['score', 'comment', 'user_id', 'product_id'];
 
     public function user()

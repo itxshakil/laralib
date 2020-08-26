@@ -65,6 +65,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/issues', 'IssueLogController@store')->name('issue_logs.store');
         Route::put('/issues/{issueLog}', 'IssueLogController@markAsReturn')->name('issue_logs.return');
 
+        Route::delete('/ratings/{rating}', 'RatingController@destroy')->name('ratings.destroy');
+
         Route::post('/tags', 'TagController@store')->name('tags.store');
 
 
