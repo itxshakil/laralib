@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users =  User::query();
+        $users =  User::with('course');
 
         if ($request->has('course')) {
             $users =  $users->course($request->course);
@@ -27,7 +27,7 @@ class UserController extends Controller
             $users =  $users->search($request->search);
         }
 
-        return UserResource::collection($users->with('course')->paginate(20));
+        return UserResource::collection($users->paginate(20));
     }
 
     /**

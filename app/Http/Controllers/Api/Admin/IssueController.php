@@ -19,7 +19,7 @@ class IssueController extends Controller
      */
     public function index(Request $request)
     {
-        $issue =  IssueLog::query();
+        $issue =  IssueLog::with('admin', 'user', 'book');
 
         if ($request->has('issued')) {
             $issue = $issue->issued();

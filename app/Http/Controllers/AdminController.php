@@ -20,6 +20,7 @@ class AdminController extends Controller
     public function index()
     {
         $pending_issues = IssueLog::issued()->get();
+        $pending_issues->load('admin', 'book.authors', 'user');
 
         return view('admin.index', compact('pending_issues'));
     }

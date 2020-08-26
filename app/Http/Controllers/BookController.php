@@ -51,10 +51,10 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        $issue_logs =  $book->issue_logs()->where('user_id',auth()->id())->without('admin','user','book')->get();
+        $issue_logs =  $book->issue_logs()->where('user_id', auth()->id())->get();
         $book->load('ratings.user');
 
-        return view('books.show', compact('book','issue_logs'));
+        return view('books.show', compact('book', 'issue_logs'));
     }
 
     /**

@@ -8,8 +8,6 @@ class IssueLog extends Model
 {
    protected $fillable = ['user_id', 'book_id', 'admin_id', 'returned_at', 'returned_to'];
 
-   protected $with = ['book', 'user', 'admin'];
-
    protected $appends = ['fine'];
 
    /**

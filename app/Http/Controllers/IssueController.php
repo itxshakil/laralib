@@ -16,7 +16,7 @@ class IssueController extends Controller
     public function index()
     {
         $issues = Cache::remember("issues." . auth()->id() . ".latest", 600, function () {
-            return auth()->user()->issue_logs()->with('book.authors')->without('admin','user')->latest()->get();
+            return auth()->user()->issue_logs()->with('book.authors')->latest()->get();
         });
 
         return view('issues.index', compact('issues'));
