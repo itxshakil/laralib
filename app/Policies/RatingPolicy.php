@@ -43,9 +43,7 @@ class RatingPolicy
      */
     public function create(User $user, Book $book)
     {
-        return Cache::remember("$book->id.canrated.$user->id", 100, function () use ($user, $book) {
-            return $user->issue_logs()->pluck('book_id')->contains($book->id);
-        });
+        return $this->isIssued($user, $book) && $this->isNotRated($user, $book);
     }
 
     /**
@@ -94,5 +92,31 @@ class RatingPolicy
     public function forceDelete(User $user, Rating $rating)
     {
         //
+    }
+
+    /***
+     * Determine if Book is issued to User
+     *
+     * @param $user
+     * @param $book
+     *
+     * @return boolean
+     */
+    private function isIssued($user, $book)
+    {
+        return $user->issue_logs()->pluck('book_id')->contains($book->id);
+    }
+
+    /***
+     * Returns true if user has not rated the book else true
+     *
+     * @param $user
+     * @param $book
+     *
+     * @return boolean
+     */
+    private function isNotRated($user, $book)
+    {
+        return !$book->ratings->pluck('user_id')->contains($user->id);
     }
 }

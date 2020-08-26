@@ -32,7 +32,6 @@
     </div>
     <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg lg:rounded-l-none">
         @can('create', [App\Rating::class, $book])
-        @if (!$book->ratings->pluck('user_id')->contains(auth()->id()))
         <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">Add New rating!</h3>
         <form class="px-4 md:px-8  pt-6 pb-2 mb-4 bg-white rounded" method="POST"
             action="{{route('rating.store',$book)}}">
@@ -73,11 +72,10 @@
             <input type="hidden" name="book_id" value="{{$book->id}}">
             @csrf
         </form>
-        @endif
         @endcan
-        {{-- @guest
-        <p class="pt-4 text-2xl text-center pb-2 md:pb-4"><a href="/login" class="text-blue-500">Login</a> to rate.</p>
-        @ndguest
+        @guest
+        <p class="pt-4 text-2xl text-center pb-2 md:pb-4">Please <a href="/login" class="text-blue-500">Login</a> to rate the book.</p>
+        @endguest
     </div>
 </div>
 @endsection
