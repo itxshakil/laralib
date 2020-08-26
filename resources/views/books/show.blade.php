@@ -8,7 +8,7 @@
     <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg lg:rounded-l-none">
         <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">Details of {{__($book->title)}}</h3>
         <div class="flex flex-col sm:flex-row gap-2 flex-wrap flex-stretch flex-grow">
-            <div class="w-full sm:w-1/2 lg:w-3/12 rounded p-2 border bg-gray-300">
+            <div class="w-full sm:w-1/2 rounded p-2 border bg-gray-300">
                 <p class="text-xl">{{$book->title}}</p>
                 <p class="mt-2">Written By @foreach($book->authors as $author) <a
                         href="{{route('authors.show',$author)}}">{{$author->name}}</a>@endforeach</p>
@@ -18,16 +18,26 @@
                 <x-book-average-rating average-rating="{{$book->average_rating}}" />
                 <p class="text-gray-500 text-sm">ISBN : {{$book->isbn}}</p>
             </div>
-            @foreach($book->ratings as $rating)
-            @if ($rating->comment)
-            <div class="w-full sm:w-1/2 lg:w-3/12 rounded p-2 border bg-gray-100 flex-grow">
-                <p class="text-gray-700 mt-2 capitalize">{{$rating->user->name}}</p>
-                <x-book-average-rating average-rating="{{$rating->score}}" />
-                <span class="text-gray-700">on {{$rating->created_at->toDateString() }}</span>
-                <p class="text-lg">{{$rating->comment}}</p>
+            @forelse($issue_logs as $issue)
+            <div class="w-full sm:w-1/3 lg:w-1/4 xl:w-1/5 bg-gray-800 text-gray-100 rounded p-4 shadow flex-grow">
+                <p class="text-xl">{{$book->title}}</p>
+                <p class="mt-2">Written By @foreach($book->authors as $author) <a
+                        href="{{route('authors.show',$author)}}">{{$author->name}}</a>@endforeach</p>
+                <span
+                    class="inline-flex text-sm capitalize px-2 rounded-full {{$issue->returned_at ? 'text-green-200 bg-green-800' : 'text-red-200 bg-red-800'}}">{{$issue->returned_at ? 'Returned' : 'Not Returned'}}</span>
+                @if ($issue->fine)
+                <span class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
+                    title="Total Fine">{{$issue->fine}}</span>
+                @endif
+                <p class="text-gray-400 text-sm">ISBN : {{$issue->book->isbn}}</p>
+                <p class="text-gray-400 text-sm capitalize">Issued on : {{$issue->created_at->toDateString()}}</p>
+                @if($issue->returned_at)
+                <p class="text-gray-400 text-sm capitalize">Returned on : {{$issue->returned_at->toDateString()}}</p>
+                @endif
             </div>
-            @endif
-            @endforeach
+            @empty
+            <p class="pt-4 text-xl text-center pb-2 md:pb-4">You have no issue history for this book.</p>
+            @endforelse
         </div>
     </div>
     <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg lg:rounded-l-none">
@@ -74,8 +84,21 @@
         </form>
         @endcan
         @guest
-        <p class="pt-4 text-2xl text-center pb-2 md:pb-4">Please <a href="/login" class="text-blue-500">Login</a> to rate the book.</p>
+        <p class="pt-4 text-2xl text-center pb-2 md:pb-4">Please <a href="/login" class="text-blue-500">Login</a> to
+            rate the book.</p>
         @endguest
+
+        <h3 class="pt-4 text-2xl pb-2 md:pb-4">Ratings </h3>
+        @foreach($book->ratings as $rating)
+        @if ($rating->comment)
+        <div class="w-full rounded p-2 bg-gray-100 px-4 mb-4">
+            <p class="text-gray-700 mt-2 capitalize">{{$rating->user->name}}</p>
+            <x-book-average-rating average-rating="{{$rating->score}}" />
+            <span class="text-gray-700">on {{$rating->created_at->toDateString() }}</span>
+            <p class="text-lg">{{$rating->comment}}</p>
+        </div>
+        @endif
+        @endforeach
     </div>
 </div>
 @endsection
