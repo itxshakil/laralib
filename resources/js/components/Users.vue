@@ -61,7 +61,11 @@
                     />
                   </div>
                   <div class="ml-4">
-                    <a :href="'/admin/users/'+user.id" class="text-sm leading-5 font-medium text-gray-900" v-text="user.name"></a>
+                    <a
+                      :href="'/admin/users/'+user.id"
+                      class="text-sm leading-5 font-medium text-gray-900"
+                      v-text="user.name"
+                    ></a>
                     <div class="text-sm leading-5 text-gray-500" v-text="user.email"></div>
                   </div>
                 </div>
@@ -86,10 +90,17 @@
               <td
                 class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
               >
-                <a
-                  :href="'/admin/users/'+user.id+'/edit'"
-                  class="text-indigo-600 hover:text-indigo-900"
-                >Edit</a>
+                <div class="flex flex-col justify-center items-center text-center gap-1">
+                  <a
+                    :href="'/admin/users/'+user.id+'/edit'"
+                    class="w-32 text-sm capitalize py-2 px-4 rounded bg-blue-800 text-blue-100"
+                  >Edit Details</a>
+                  <button
+                    v-if="user.deleted_at === null"
+                    class="w-32 text-sm capitalize py-2 px-4 rounded bg-red-800 text-red-100"
+                    @click="deleteUser(user)"
+                  >Delete</button>
+                </div>
               </td>
             </tr>
           </tbody>
@@ -154,6 +165,20 @@ export default {
       axios.get("/api/courses").then((response) => {
         this.courses = response.data;
       });
+    },
+    deleteUser(user) {
+      if (confirm("Are you sure to delete user?")) {
+        axios
+          .delete("/admin/users/" + user.id)
+          .then((response) => {
+            this.users = this.users.filter((item) => {
+              return item.id !== user.id;
+            });
+          })
+          .catch((err) => {
+            console.error(err.response);
+          });
+      }
     },
   },
 };

@@ -2716,6 +2716,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2763,6 +2774,19 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/api/courses").then(function (response) {
         _this.courses = response.data;
       });
+    },
+    deleteUser: function deleteUser(user) {
+      var _this2 = this;
+
+      if (confirm("Are you sure to delete user?")) {
+        axios["delete"]("/admin/users/" + user.id).then(function (response) {
+          _this2.users = _this2.users.filter(function (item) {
+            return item.id !== user.id;
+          });
+        })["catch"](function (err) {
+          console.error(err.response);
+        });
+      }
     }
   }
 });
@@ -4765,15 +4789,40 @@ var render = function() {
                         },
                         [
                           _c(
-                            "a",
+                            "div",
                             {
                               staticClass:
-                                "text-indigo-600 hover:text-indigo-900",
-                              attrs: {
-                                href: "/admin/users/" + user.id + "/edit"
-                              }
+                                "flex flex-col justify-center items-center text-center gap-1"
                             },
-                            [_vm._v("Edit")]
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "w-32 text-sm capitalize py-2 px-4 rounded bg-blue-800 text-blue-100",
+                                  attrs: {
+                                    href: "/admin/users/" + user.id + "/edit"
+                                  }
+                                },
+                                [_vm._v("Edit Details")]
+                              ),
+                              _vm._v(" "),
+                              user.deleted_at === null
+                                ? _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "w-32 text-sm capitalize py-2 px-4 rounded bg-red-800 text-red-100",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deleteUser(user)
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Delete")]
+                                  )
+                                : _vm._e()
+                            ]
                           )
                         ]
                       )
