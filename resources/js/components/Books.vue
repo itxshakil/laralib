@@ -44,7 +44,7 @@
                   </div>
                   <div class="ml-4">
                     <a
-                    :href="'/admin/books/'+book.id"
+                      :href="'/admin/books/'+book.id"
                       class="text-sm leading-5 font-medium text-gray-900"
                       v-text="book.title.slice(0,32)"
                     ></a>
@@ -69,16 +69,24 @@
                 >Low Count</span>
               </td>
               <td
-                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500" title="Book Available Count"
+                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
+                title="Book Available Count"
                 v-text="book.count"
               ></td>
               <td
                 class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
               >
-                <a
-                  :href="'/admin/books/'+book.id+'/edit'"
-                  class="text-indigo-600 hover:text-indigo-900"
-                >Edit</a>
+                <div class="flex flex-col justify-center items-center text-center gap-1">
+                  <a
+                    :href="'/admin/books/'+book.id+'/edit'"
+                    class="w-32 text-sm capitalize py-2 px-4 rounded bg-blue-800 text-blue-100"
+                  >Edit Details</a>
+                  <button
+                    v-if="book.deleted_at === null"
+                    class="w-32 text-sm capitalize py-2 px-4 rounded bg-red-800 text-red-100"
+                    @click="deleteBook(book)"
+                  >Delete</button>
+                </div>
               </td>
             </tr>
           </tbody>
@@ -131,6 +139,20 @@ export default {
     refresh({ data }) {
       this.books = data.data;
       this.links = data.meta;
+    },
+    deleteBook(book) {
+      if (confirm("Are you sure to delete book?")) {
+        axios
+          .delete("/admin/books/" + book.id)
+          .then((response) => {
+            this.books = this.books.filter((item) => {
+              return item.id !== book.id;
+            });
+          })
+          .catch((err) => {
+            console.error(err.response);
+          });
+      }
     },
   },
 };
