@@ -22,6 +22,8 @@
             @endif
             <p class="text-gray-400 text-sm">ISBN : {{$issue->book->isbn}}</p>
             <p class="text-gray-400 text-sm capitalize">Issued on : {{$issue->created_at->toDateString()}}</p>
+            <p class="text-gray-400 text-sm capitalize">Return due : {{$issue->created_at->addDays(15)->toDateString()}}
+            </p>
         </div>
         @empty
         <p class="text-lg">No Pending Books</p>
