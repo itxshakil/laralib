@@ -19,5 +19,8 @@
         </div>
         @endforeach
     </div>
+    @if ($books->count() > 0)
+    {{$books->links('pagination.tailwind')}}
+    @endif
 </div>
 @endsection
