@@ -34,9 +34,9 @@
             </div>
             @foreach($book->issue_logs as $issue)
             <div class="w-full sm:w-1/2 lg:w-3/12 rounded p-2 border bg-gray-800 text-gray-100 flex-grow">
-                <a href="{{route('admin.users.show',$issue->user)}}"
-                    class="text-xl font-semibold">{{$issue->user->name}}</a>
-                <p class="text-sm text-gray-400">{{$issue->user->email}}</p>
+                <a href="/admin/users/{{$issue->user->id ?? "#"}}"
+                    class="text-xl font-semibold">{{$issue->user->name ?? 'Deleted User'}}</a>
+                <p class="text-sm text-gray-400">{{$issue->user->email ?? 'Deleted User'}}</p>
                 <span
                     class="inline-flex text-sm capitalize px-2 rounded-full {{$issue->returned_at ? 'text-green-200 bg-green-800' : 'text-red-200 bg-red-800'}}">{{$issue->returned_at ? 'Returned' : 'Not Returned'}}</span>
                 @if ($issue->fine)
@@ -48,6 +48,19 @@
             </div>
             @endforeach
         </div>
+
+        <h3 class="pt-4 text-2xl pb-2 md:pb-4">Ratings </h3>
+        @foreach($book->ratings as $rating)
+        @if ($rating->comment)
+        <div class="w-full rounded p-2 bg-gray-100 px-4 mb-4">
+            <p class="text-gray-700 mt-2 capitalize">{{$rating->user->name}}</p>
+            <x-book-average-rating average-rating="{{$rating->score}}" />
+            <span class="text-gray-700">on {{$rating->created_at->toDateString() }}</span>
+            <p class="text-lg">{{$rating->comment}}</p>
+            <button class="w-32 text-sm capitalize py-2 px-4 rounded bg-red-800 text-red-100">Delete</button>
+        </div>
+        @endif
+        @endforeach
     </div>
 </div>
 @endsection
