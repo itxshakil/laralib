@@ -16,56 +16,11 @@ class BookController extends Controller
      */
     public function index(Request $request)
     {
-        $books = Book::query();
+        $books = Book::with('authors');
         if ($request->has('search')) {
             $books = $books->search($request->search);
         }
-        return BookResource::collection($books->with('authors')->paginate(15));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Book $book)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Book $book)
-    {
-        //
+        return BookResource::collection($books->paginate(15));
     }
     /**
      * Remove the specified resource from storage.
