@@ -23,9 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/books', 'BookController@index')->name('books.index');
 Route::get('/books/{book}', 'BookController@show')->name('books.show');
 Route::get('/authors/{author}', 'AuthorController@show')->name('authors.show');
-Route::get('/issues', 'IssueController@index')->name('issues.index')->middleware('auth');
 
-Route::post('/ratings/{book}', 'RatingController@store')->name('rating.store');
+Route::get('/issues', 'IssueController@index')->name('issues.index')->middleware('auth');
+Route::post('/ratings/{book}', 'RatingController@store')->name('rating.store')->middleware('auth');
 
 Route::get('/search', 'SearchController@show')->name('search');
 

@@ -9,26 +9,6 @@ use Illuminate\Http\Request;
 class RatingController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -48,17 +28,6 @@ class RatingController extends Controller
             'comment' => $request->comment,
             'user_id' => auth()->id(),
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Rating  $rating
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Rating $rating)
-    {
-        //
     }
 
     /**
