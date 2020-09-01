@@ -31,12 +31,12 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * get User By Roll no and Course.
      *
      * @param  \App\Book                 $book
      * @return \Illuminate\Http\Response
      */
-    public function rollno(Course $course, User $user)
+    public function userByRollno(Course $course, User $user)
     {
         return $user->loadCount('issued');
     }

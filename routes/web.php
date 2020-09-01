@@ -85,6 +85,6 @@ Route::middleware('auth:admin')->prefix('api')->namespace('Api')->group(function
     Route::get('/admin/issues', 'Admin\IssueController@index');
 
     Route::get('/book/isbn/{book:isbn}', 'Admin\BookController@bookByISBN');
-    Route::get('/course/{course:id}/user/{user:rollno}', 'Admin\UserController@rollno');
+    Route::get('/course/{course:id}/user/{user:rollno}', 'Admin\UserController@userByRollno');
     Route::post('/admin/issues', 'Admin\IssueController@store');
 });
