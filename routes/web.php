@@ -31,7 +31,7 @@ Route::get('/search', 'SearchController@show')->name('search');
 
 Route::post('/contact', 'ContactController')->name('contact');
 
-Route::get('request-book', 'RequestedBookController@show')->name('request.books');
+Route::get('request-book', 'RequestedBookController@create')->name('request.books');
 Route::post('request-book', 'RequestedBookController@store')->name('request.books.store');
 
 Route::prefix('admin')->name('admin.')->group(function () {
