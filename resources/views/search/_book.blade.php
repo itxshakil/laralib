@@ -6,7 +6,8 @@
         <h4 class="text-xl font-semibold">{{$book->title}}</h4>
         <div>
             @foreach ($book->authors as $author)
-            <a href="{{route('authors.show',$author)}}" class="text-gray-300">{{$author->name}}, </a>
+            <a href="{{route('authors.show',$author)}}" class="text-gray-300">{{$author->name}}@if ($loop->remaining),
+                @endif </a>
             @endforeach
         </div>
         <x-book-average-rating average-rating="{{$book->average_rating}}" />

@@ -10,13 +10,15 @@
     </div>
     <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg lg:rounded-l-none">
         <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">Issue History of {{__($book->title)}} By
-            @foreach($book->authors as $author){{$author->name}}@endforeach</h3>
+            @foreach($book->authors as $author){{$author->name}}@if ($loop->remaining),
+            @endif @endforeach</h3>
         <div class="flex flex-col sm:flex-row gap-2 flex-wrap flex-stretch flex-grow">
             <div class="w-full sm:w-1/2 lg:w-3/12 rounded p-2 border bg-gray-900 text-gray-100">
                 <p class="text-lg font-semibold">{{$book->title}}</p>
                 <span>By</span>
                 @foreach($book->authors as $author)
-                <a href="{{route('admin.authors.show',$author)}}">{{$author->name}}</a>
+                <a href="{{route('admin.authors.show',$author)}}">{{$author->name}}@if ($loop->remaining),
+                    @endif </a>
                 @endforeach
                 <x-book-average-rating average-rating="{{$book->average_rating}}" />
                 <div class="mt-1 flex gap-2 text-gray-300 justify-between">

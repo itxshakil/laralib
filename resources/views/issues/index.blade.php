@@ -8,7 +8,8 @@
         <div class="w-full sm:w-1/3 lg:w-1/4 xl:w-1/5 bg-gray-800 text-gray-100 rounded p-4 shadow flex-grow">
             <p class="text-xl">{{$issue->book->title}}</p>
             <p class="mt-2">Written By @foreach($issue->book->authors as $author) <a
-                    href="{{route('authors.show',$author)}}">{{$author->name}}</a>@endforeach</p>
+                    href="{{route('authors.show',$author)}}">{{$author->name}}@if ($loop->remaining),
+                    @endif </a>@endforeach</p>
             <span
                 class="inline-flex text-sm capitalize px-2 rounded-full {{$issue->returned_at ? 'text-green-200 bg-green-800' : 'text-red-200 bg-red-800'}}">{{$issue->returned_at ? 'Returned' : 'Not Returned'}}</span>
             @if ($issue->fine)

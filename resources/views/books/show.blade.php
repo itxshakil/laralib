@@ -8,7 +8,8 @@
             <div class="w-full mr-2 sm:w-1/2 rounded p-2 shadow-md bg-gray-300">
                 <p class="text-xl">{{$book->title}}</p>
                 <p>Written By @foreach($book->authors as $author) <a
-                        href="{{route('authors.show',$author)}}">{{$author->name}}</a>@endforeach</p>
+                        href="{{route('authors.show',$author)}}">{{$author->name}}@if ($loop->remaining),
+                        @endif </a>@endforeach</p>
                 <span
                     class="text-sm capitalize inline-block items-center px-2 rounded-full {{$book->count ? 'bg-green-800 text-green-100' : 'bg-red-800 text-red-100'}}">{{$book->count ? 'Available' : 'Not Available'}}</span>
                 <span class="text-gray-700 text-sm capitalize">in {{$book->language}}</span>
