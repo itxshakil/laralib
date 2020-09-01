@@ -23,12 +23,12 @@ class BookController extends Controller
         return BookResource::collection($books->paginate(15));
     }
     /**
-     * Remove the specified resource from storage.
+     * Get book by ISBN.
      *
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function isbn(Book $book)
+    public function bookByISBN(Book $book)
     {
         return $book->only('title', 'count', 'language');
     }
