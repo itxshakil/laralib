@@ -7,7 +7,7 @@
       @change="fetch"
       v-model="search"
       placeholder="Search By ISBN, Author or Book Name"
-      class="w-full sm:w-2/12 my-2 self-end py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700"
+      class="w-full sm:w-2/12 my-2 self-end py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
     />
     <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
       <div
@@ -79,7 +79,7 @@
                 <div class="flex flex-col justify-center items-center text-center gap-1">
                   <a
                     :href="'/admin/books/'+book.id+'/edit'"
-                    class="w-32 text-sm capitalize py-2 px-4 rounded bg-blue-800 text-blue-100"
+                    class="w-32 text-sm capitalize py-2 px-4 rounded bg-indigo-800 text-indigo-100"
                   >Edit Details</a>
                   <button
                     v-if="book.deleted_at === null"

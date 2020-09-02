@@ -7,7 +7,7 @@
           <a
             href="/admin/users/create"
             target="_blank"
-            class="text-xs text-blue-500"
+            class="text-xs text-indigo-500"
           >add new student</a>
         </div>
         <input
@@ -17,7 +17,7 @@
           v-model="form.rollno"
           @change="checkUserName"
           placeholder="78945614"
-          class="w-full py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700"
+          class="w-full py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
         />
         <p
           class="text-xs italic text-red-500"
@@ -33,7 +33,7 @@
           id="course"
           @change="checkUserName"
           v-model="form.course"
-          class="w-full py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700"
+          class="w-full py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
         >
           <option
             :value="course.id"
@@ -52,7 +52,7 @@
       <section class="sm:mb-4 w-full">
         <div class="flex justify-between items-baseline">
           <label class="block mb-2 text-sm font-bold text-gray-700" for="isbn">ISBN Number</label>
-          <a href="/admin/books/create" target="_blank" class="text-xs text-blue-500">add new book</a>
+          <a href="/admin/books/create" target="_blank" class="text-xs text-indigo-500">add new book</a>
         </div>
         <input
           type="number"
@@ -61,7 +61,7 @@
           v-model="form.isbn"
           @change="loadBookName"
           placeholder="7894561231234"
-          class="w-full py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700"
+          class="w-full py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
         />
         <p
           class="text-xs italic text-red-500"
@@ -97,7 +97,7 @@
     </div>
     <section class="mb-4 text-center">
       <button
-        class="w-full bg-blue-500 active:bg-blue-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
+        class="w-full bg-indigo-500 active:bg-indigo-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
         type="submit"
       >Issue Book</button>
     </section>

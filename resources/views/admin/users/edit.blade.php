@@ -19,7 +19,7 @@
                     </label>
                     <input type="text" name="name" id="name" value="{{old('name') ?? $user->name}}"
                         placeholder="John Doe"
-                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
                     @error('name')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -30,7 +30,7 @@
                     </label>
                     <input type="email" name="email" id="email" value="{{old('email') ?? $user->email}}"
                         placeholder="john@example.com"
-                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
                     @error('email')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -43,7 +43,7 @@
                     </label>
                     <input type="text" name="class" id="class" value="{{old('class') ?? $user->class}}"
                         placeholder="BCA 1st"
-                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
                     @error('class')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -54,7 +54,7 @@
                     </label>
                     <input type="number" name="rollno" id="rollno" value="{{$user->rollno ?? old('rollno')}}"
                         placeholder="327166363"
-                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
                     @error('rollno')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -62,7 +62,7 @@
             </div>
             <section class="mb-4 text-center">
                 <button
-                    class="w-full bg-blue-500 active:bg-blue-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
+                    class="w-full bg-indigo-500 active:bg-indigo-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
                     type="submit">
                     Update
                 </button>

@@ -44,7 +44,7 @@
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <form action="{{route('search')}}" method="get">
                     <input type="search" name="q" id="q" placeholder="Search Books"
-                        class="w-48 sm:w-64 my-2 py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                        class="w-48 sm:w-64 my-2 py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
                 </form>
                 <button
                     class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
@@ -76,8 +76,8 @@
                         To: "transform opacity-0 scale-95"
                     -->
                     <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-                        <div :class="isOpen ? 'sm:block' : 'hidden'" class="py-1 rounded-md bg-white shadow-xs" role="menu"
-                            aria-orientation="vertical" aria-labelledby="user-menu">
+                        <div :class="isOpen ? 'sm:block' : 'hidden'" class="py-1 rounded-md bg-white shadow-xs"
+                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                             <a href="#"
                                 class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
                                 role="menuitem">Your Profile</a>

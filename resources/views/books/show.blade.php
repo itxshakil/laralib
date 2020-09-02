@@ -46,7 +46,7 @@
                     Score
                 </label>
                 <select type="range" name="score" id="range"
-                    class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                    class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -63,14 +63,14 @@
                 </label>
                 <textarea name="comment" id="comment" cols="20" rows="3" value="{{old('isbn') ?? null}}"
                     placeholder="7894561231234"
-                    class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700"></textarea>
+                    class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"></textarea>
                 @error('comment')
                 <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                 @enderror
             </section>
             <section class="mb-4 text-center">
                 <button
-                    class="w-full bg-blue-500 active:bg-blue-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
+                    class="w-full bg-indigo-500 active:bg-indigo-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
                     type="submit">
                     Submit rating
                 </button>
@@ -80,7 +80,7 @@
         </form>
         @endcan
         @guest
-        <p class="pt-4 text-2xl text-center pb-2 md:pb-4">Please <a href="/login" class="text-blue-500">Login</a> to
+        <p class="pt-4 text-2xl text-center pb-2 md:pb-4">Please <a href="/login" class="text-indigo-500">Login</a> to
             rate the book.</p>
         @endguest
 
