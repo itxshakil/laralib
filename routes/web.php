@@ -38,8 +38,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::namespace('Auth\Admin')->group(function () {
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
         Route::post('/login', 'LoginController@login')->name('login.submit');
-        Route::get('/register', 'LoginController@showRegistrationForm')->name('register');
-        Route::post('/register', 'LoginController@register')->name('register.submit');
+        // Route::get('/register', 'LoginController@showRegistrationForm')->name('register');
+        // Route::post('/register', 'LoginController@register')->name('register.submit');
         Route::post('/logout', 'LoginController@logout')->name('logout');
 
         Route::get('/password/change', 'ChangePasswordController@showForm');
