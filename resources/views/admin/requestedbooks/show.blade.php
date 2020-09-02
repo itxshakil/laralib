@@ -5,7 +5,7 @@
     <div class="flex justify-between items-center">
         <h3 class="text-2xl p-2">{{ __($requestedBook->name) }}</h3>
     </div>
-    <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg lg:rounded-l-none">
+    <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg shadow">
         <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">Details of {{__($requestedBook->name)}}</h3>
         <div class="flex flex-col sm:flex-row gap-2 flex-wrap flex-stretch flex-grow">
             <div class="w-full sm:w-1/2 lg:w-3/12 rounded p-2 border bg-gray-800 text-gray-200">

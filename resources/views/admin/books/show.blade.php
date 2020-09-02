@@ -8,7 +8,7 @@
             class="align-baseline py-2 px-4 border border-transparent text-sm  font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">All
             Books</a>
     </div>
-    <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg lg:rounded-l-none">
+    <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg shadow">
         <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">Issue History of {{__($book->title)}} By
             @foreach($book->authors as $author){{$author->name}}@if ($loop->remaining),
             @endif @endforeach</h3>

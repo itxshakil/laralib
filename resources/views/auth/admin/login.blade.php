@@ -6,7 +6,7 @@
         <div class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
             style="background-image: url('https://source.unsplash.com/K4mSJ7kc0As/600x800')">
         </div>
-        <div class="w-full lg:w-1/2 bg-gray-200 p-2 md:p-5 rounded-lg lg:rounded-l-none">
+        <div class="w-full lg:w-1/2 bg-gray-200 p-2 md:p-5 rounded-lg shadow">
             <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">Welcome Back!</h3>
             <form method="POST" action="{{ route('admin.login.submit') }}">
                 @csrf
