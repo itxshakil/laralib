@@ -29,8 +29,7 @@ class IssueLogController extends Controller
      */
     public function create()
     {
-        $courses =  Course::all();
-        return view('admin/issue_logs.create', compact('courses'));
+        return view('admin/issue_logs.create');
     }
 
     /**
