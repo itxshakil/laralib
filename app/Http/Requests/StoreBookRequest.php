@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ISBN;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreBookRequest extends FormRequest
@@ -24,8 +25,8 @@ class StoreBookRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string'],
-            'isbn' => ['required', 'integer', 'unique:books'],
+            'title' => ['required', 'string', 'max:255'],
+            'isbn' => ['required', new ISBN, 'unique:books'],
             'count' => ['required', 'integer'],
             'language' => ['required', 'string'],
             'authors' => ['required', 'array']

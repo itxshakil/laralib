@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<div class="max-w-7xl mx-auto px-6">
+<div class="container mx-auto">
     <div class="flex justify-between items-center">
         <h3 class="text-2xl p-2">{{ __('Add Book') }}</h3>
         <a href="{{route('admin.books.index')}}"
@@ -9,8 +9,8 @@
             Books</a>
     </div>
     <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg shadow">
-        <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">Add New Book!</h3>
-        <form class="px-4 md:px-8  pt-6 pb-2 mb-4 bg-white rounded" method="POST"
+        <h3 class="py-4 text-2xl text-center">Add New Book!</h3>
+        <form class="px-4 md:px-8  pt-6 pb-2 mb-4 bg-white rounded shadow" method="POST"
             action="{{route('admin.books.store')}}">
             <div class="flex flex-col sm:flex-row gap-4">
                 <section class="sm:mb-4 w-full">
@@ -18,8 +18,8 @@
                         Title
                     </label>
                     <input type="text" name="title" id="title" value="{{old('title') ?? null }}"
-                        placeholder="Song of Ice and Fire"
-                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                        placeholder="Song of Ice and Fire" required aria-required="true" autofocus>
                     @error('title')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -29,8 +29,8 @@
                         ISBN Number
                     </label>
                     <input type="number" name="isbn" id="isbn" value="{{old('isbn') ?? null}}"
-                        placeholder="7894561231234"
-                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                        placeholder="7894561231234" required>
                     @error('isbn')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -41,8 +41,9 @@
                     <label class="block mb-2 text-sm font-bold text-gray-700" for="count">
                         Count
                     </label>
-                    <input type="number" name="count" id="count" value="{{old('count')  ?? null }}" placeholder="25 "
-                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
+                    <input type="number" name="count" id="count" value="{{old('count')  ?? null }}"
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                        placeholder="25">
                     @error('count')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -52,8 +53,8 @@
                         Language
                     </label>
                     <input type="text" name="language" id="language" value="{{old('language') ?? 'English'}}"
-                        placeholder="john@example.com"
-                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                        placeholder="Hindi">
                     @error('language')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -63,7 +64,8 @@
                         Authors
                     </label>
                     <select name="authors[]" id="authors" multiple
-                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
+                        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                        required aria-required="true">
                         @foreach ($authors as $author)
                         <option value="{{$author->id}}">{{$author->name}}</option>
                         @endforeach

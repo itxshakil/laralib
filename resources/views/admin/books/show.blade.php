@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<div class="max-w-7xl mx-auto px-6">
+<div class="container mx-auto">
     <div class="flex justify-between items-center">
         <h3 class="text-2xl p-2">{{ __($book->title) }}</h3>
         <a href="{{route('admin.books.index')}}"
@@ -9,7 +9,7 @@
             Books</a>
     </div>
     <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg shadow">
-        <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">Issue History of {{__($book->title)}} By
+        <h3 class="py-4 text-2xl text-center">Issue History of {{__($book->title)}} By
             @foreach($book->authors as $author){{$author->name}}@if ($loop->remaining),
             @endif @endforeach</h3>
         <div class="flex flex-col sm:flex-row gap-2 flex-wrap flex-stretch flex-grow">
@@ -36,7 +36,7 @@
             </div>
             @foreach($book->issue_logs as $issue)
             <div class="w-full sm:w-1/2 lg:w-3/12 rounded p-2 border bg-gray-800 text-gray-100 flex-grow">
-                <a href="/admin/users/{{$issue->user->id ?? "#"}}"
+                <a href="/admin/users/{{$issue->user->id ?? "###"}}"
                     class="text-xl font-semibold">{{$issue->user->name ?? 'Deleted User'}}</a>
                 <p class="text-sm text-gray-400">{{$issue->user->email ?? 'Deleted User'}}</p>
                 <span
