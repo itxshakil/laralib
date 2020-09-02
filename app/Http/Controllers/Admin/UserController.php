@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Course;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $courses  = Course::all();
+        return view('admin.users.create', compact('courses'));
     }
 
     /**
@@ -37,17 +39,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'class' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:users'],
+            'course' => ['required', 'numeric', 'exists:courses,id'],
             'rollno' => ['required', 'integer'],
             'password' => ['required', 'string', 'min:8'],
         ]);
 
-        $data['password'] = Hash::make($data['password']);
+        Course::find($request->course)->users()->create($request->only('name', 'email', 'rollno', 'password'));
 
-        User::create($data);
         return redirect(route('admin.users.index'));
     }
 

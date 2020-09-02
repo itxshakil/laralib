@@ -38,13 +38,18 @@
             </div>
             <div class="flex flex-col sm:flex-row gap-4">
                 <section class="sm:mb-4 w-full">
-                    <label class="block mb-2 text-sm font-bold text-gray-700" for="class">
-                        Class
+                    <label class="block mb-2 text-sm font-bold text-gray-700" for="course">
+                        Courses
                     </label>
-                    <input type="text" name="class" id="class" value="{{old('class')}}" placeholder="BCA 1st"
+                    <select name="course" id="course"
                         class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
                         required>
-                    @error('class')
+                        <option value="" disabled selected aria-disabled="true">Select Course</option>
+                        @foreach ($courses as $course)
+                        <option value="{{$course->id}}">{{$course->name}}</option>
+                        @endforeach
+                    </select>
+                    @error('course')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
                 </section>
