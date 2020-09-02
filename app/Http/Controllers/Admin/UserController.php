@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -89,14 +90,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $data =  $request->validate([
+        $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'class' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user)],
+            'course' => ['required', 'numeric', 'exists:courses,id'],
             'rollno' => ['required', 'integer'],
         ]);
 
-        $user->update($data);
+        $user->update(array_merge($request->only('name', 'email', 'rollno'), ['course_id' => $request->course]));
 
         return redirect(route('admin.users.index'));
     }
