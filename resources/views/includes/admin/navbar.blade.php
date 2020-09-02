@@ -40,7 +40,7 @@
                         <a href="{{route('admin.authors.index')}}"
                             class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.authors.index' ? 'bg-gray-900' : null}}">Authors</a>
                         <a href="{{route('admin.request.books')}}"
-                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.authors.index' ? 'bg-gray-900' : null}}">Requests</a>
+                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'admin.request.books' ? 'bg-gray-900' : null}}">Requests</a>
                     </div>
                 </div>
             </div>
