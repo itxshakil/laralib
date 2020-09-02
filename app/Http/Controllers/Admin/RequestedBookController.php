@@ -21,6 +21,7 @@ class RequestedBookController extends Controller
     {
         return view('admin.requestedbooks.show', compact('requestedBook'));
     }
+
     public function approve(RequestedBook $requestedBook)
     {
         $this->updateStatus($requestedBook);
@@ -32,6 +33,7 @@ class RequestedBookController extends Controller
 
         return back();
     }
+    
     public function reject(RequestedBook $requestedBook)
     {
         $this->updateStatus($requestedBook, false);
