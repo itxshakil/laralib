@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $courses  = Course::all();
+        $courses  = Course::select('id', 'name')->get();
         return view('admin.users.create', compact('courses'));
     }
 
@@ -75,7 +75,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        $user->load('course');
+        $courses = Course::select('id', 'name')->get();
+        return view('admin.users.edit', compact('user', 'courses'));
     }
 
     /**
