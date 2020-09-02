@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<div class="max-w-7xl mx-auto px-6">
+<div class="container mx-auto">
     <div class="flex justify-between items-center">
         <h3 class="text-2xl p-2">{{ __('Edit Author') }}</h3>
         <a href="{{route('admin.authors.index')}}"
@@ -9,7 +9,7 @@
             Authors</a>
     </div>
     <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg shadow">
-        <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">Edit Author!</h3>
+        <h3 class="py-4 text-2xl text-center">Edit Author!</h3>
         <form class="px-4 md:px-8  pt-6 pb-2 mb-4 bg-white rounded" method="POST"
             action="{{route('admin.authors.update',$author)}}">
             @include('admin.authors._form')
@@ -17,7 +17,7 @@
                 <button
                     class="w-full bg-indigo-500 active:bg-indigo-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
                     type="submit">
-                    Update
+                    Update {{$author->name}}
                 </button>
             </section>
             @csrf

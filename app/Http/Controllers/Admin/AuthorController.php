@@ -36,7 +36,12 @@ class AuthorController extends Controller
      */
     public function store(StoreAuthorRequest $request)
     {
-        Author::create($request->toArray());
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['nullable', 'email', 'max:255'],
+            'introduction' => ['nullable', 'string', 'max:255'],
+        ]);
+        Author::create($data);
 
         return redirect(route('admin.authors.index'));
     }
@@ -74,7 +79,13 @@ class AuthorController extends Controller
      */
     public function update(StoreAuthorRequest $request, Author $author)
     {
-        $author->update($request->toArray());
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['nullable', 'email', 'max:255'],
+            'introduction' => ['nullable', 'string', 'max:255'],
+        ]);
+        
+        $author->update($data);
 
         return redirect(route('admin.authors.index'));
     }

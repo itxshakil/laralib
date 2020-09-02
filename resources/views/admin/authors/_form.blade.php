@@ -4,8 +4,8 @@
             Name
         </label>
         <input type="text" name="name" id="name" value="{{old('name') ?? $author->name ?? null }}"
-            placeholder="John Doe"
-            class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
+            class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+            placeholder="{{$author->name ?? "John Doe"}}" required aria-required="true" autofocus>
         @error('name')
         <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
         @enderror
@@ -15,8 +15,8 @@
             Email Address
         </label>
         <input type="email" name="email" id="email" value="{{old('email') ?? $author->email ?? null}}"
-            placeholder="john@example.com"
-            class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
+            class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+            placeholder="{{$author->email ?? "john@example.com"}}">
         @error('email')
         <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
         @enderror
@@ -27,7 +27,8 @@
         Introduction
     </label>
     <textarea name="introduction" id="introduction" cols="30" rows="10"
-        value="{{old('introduction') ?? $author->introduction ?? null}}" placeholder="Introduction ..."
+        value="{{old('introduction') ?? $author->introduction ?? null}}"
+        placeholder="{{$author->introduction ?? "Introduction ..."}}"
         class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"></textarea>
     @error('introduction')
     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
