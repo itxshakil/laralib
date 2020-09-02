@@ -7,8 +7,6 @@ use App\Notifications\BookRequestApproved;
 use App\Notifications\BookRequestRejected;
 use App\RequestedBook;
 use App\User;
-use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class RequestedBookController extends Controller
 {

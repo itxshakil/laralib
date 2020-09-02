@@ -1,10 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
-<div class="container mx-auto px-6">
-    <div class="flex flex-col sm:flex-row justify-between items-center">
-        <h1 class="font-semibold text-2xl">Requested Books</h1>
-    </div>
+<div class="container mx-auto">
+    <h1 class="font-semibold text-2xl my-2 text-center underline">Requested Books</h1>
     <div class="flex flex-col">
         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div
@@ -71,21 +69,22 @@
                             </td>
                             <td
                                 class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                <div class="flex flex-col justify-center items-center gap-1">
+                                <div class="flex flex-col justify-center items-center text-center gap-1">
                                     @if ($book->status === null)
                                     <form action="{{route('admin.request.books.approve',$book)}}" method="post">
                                         @csrf
                                         <input type="submit" value="Approve"
-                                            class="w-32 text-sm capitalize inline-block items-center py-2 px-4 rounded bg-green-800 text-green-100">
+                                            class="w-32 text-sm capitalize py-2 px-4 rounded bg-green-800 text-green-100">
                                     </form>
                                     <form action="{{route('admin.request.books.reject',$book)}}" method="post">
                                         @csrf
                                         <input type="submit" value="Reject"
-                                            class="w-32 text-sm capitalize inline-block items-center py-2 px-4 rounded bg-red-800 text-red-100">
+                                            class="w-32 text-sm capitalize py-2 px-4 rounded bg-red-800 text-red-100">
                                     </form>
                                     @endif
                                     <a href="{{route('admin.request.books.show',$book)}}"
-                                        class="w-32 text-sm capitalize inline-block text-cemter py-2 px-4 rounded bg-indigo-800 text-indigo-100">View Details</a>
+                                        class="w-32 text-sm capitalize py-2 px-4 rounded bg-indigo-800 text-indigo-100">View
+                                        Details</a>
                                 </div>
                             </td>
                         </tr>
