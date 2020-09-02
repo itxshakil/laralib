@@ -15,7 +15,7 @@
                         for="email">{{ __('E-Mail Address') }}</label>
                     <input
                         class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none @error('email') border-red-500 @enderror"
-                        type="email" id="email" name="email" autocomplete="email" placeholder="john.doe"
+                        type="email" id="email" name="email" autocomplete="email" placeholder="john.doe@example.com"
                         value="{{App\Admin::first()->email}}" required autofocus />
                     @error('email')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
@@ -26,8 +26,8 @@
                         for="password">{{ __('Password') }}</label>
                     <input
                         class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none @error('password') border-red-500 @enderror"
-                        type="password" id="password" name="password" autocomplete="password" placeholder="john.doe"
-                        value="password" required />
+                        type="password" id="password" name="password" autocomplete="current-password"
+                        placeholder="************" value="password" required />
                     @error('password')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -38,7 +38,7 @@
                 </div>
                 <div class="mb-4 text-center">
                     <button
-                        class="w-full bg-blue-500 active:bg-blue-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
+                        class="w-full bg-indigo-500 active:bg-indigo-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
                         type="submit">Login</button>
                 </div>
             </form>
