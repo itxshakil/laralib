@@ -23,7 +23,7 @@
                     <input type="text" name="name" id="name" value="{{old('name') ?? null }}"
                         placeholder="Programming with Java A Primer"
                         class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 @error('name') border-red-500 @enderror"
-                        required autofocus>
+                        required aria-required="true" autofocus>
                     @error('name')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -35,7 +35,7 @@
                     <input type="text" name="author" id="author" value="{{old('author') ?? null }}"
                         placeholder="E. Balagurusamy"
                         class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 @error('author') border-red-500 @enderror"
-                        required>
+                        required aria-required="true">
                     @error('author')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror

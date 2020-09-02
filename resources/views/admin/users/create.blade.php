@@ -19,7 +19,7 @@
                     </label>
                     <input type="text" name="name" id="name" value="{{old('name')}}"
                         class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-                        placeholder="John Doe" required autofocus>
+                        placeholder="John Doe" required aria-required="true" autofocus>
                     @error('name')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -30,7 +30,7 @@
                     </label>
                     <input type="email" name="email" id="email" value="{{old('email')}}"
                         class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-                        placeholder="john@example.com" required>
+                        placeholder="john@example.com" required aria-required="true">
                     @error('email')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -43,7 +43,7 @@
                     </label>
                     <select name="course" id="course"
                         class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-                        required>
+                        required aria-required="true">
                         <option value="" disabled selected aria-disabled="true">Select Course</option>
                         @foreach ($courses as $course)
                         <option value="{{$course->id}}">{{$course->name}}</option>
@@ -59,7 +59,7 @@
                     </label>
                     <input type="number" name="rollno" id="rollno" value="{{old('rollno')}}"
                         class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-                        placeholder="327166363" required>
+                        placeholder="327166363" required aria-required="true">
                     @error('rollno')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -70,7 +70,7 @@
                     </label>
                     <input type="text" name="password" id="password" value="{{old('password') ?? "password"}}"
                         class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-                        placeholder="password" required>
+                        placeholder="password" required aria-required="true">
                     @error('password')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror

@@ -116,7 +116,7 @@
                     <input
                         class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none @error('name') border-red-500 @enderror"
                         type="text" id="name" name="name" autocomplete="name" placeholder="John Doe"
-                        value="{{old('name')}}" required />
+                        value="{{old('name')}}" required aria-required="true" />
                     @error('name')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -127,7 +127,7 @@
                     <input
                         class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none @error('email') border-red-500 @enderror"
                         type="email" id="email" name="email" autocomplete="email" placeholder="john.doe@example.com"
-                        value="{{old('email')}}" required />
+                        value="{{old('email')}}" required aria-required="true" />
                     @error('email')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -147,7 +147,7 @@
                     <label class="block mb-2 text-sm font-bold text-gray-700" for="message">{{ __('Message') }}</label>
                     <textarea name="message" id="message" cols="30" rows="5"
                         class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none @error('message') border-red-500 @enderror"
-                        placeholder="Your message goes here..." required></textarea>
+                        placeholder="Your message goes here..." required aria-required="true"></textarea>
                 </div>
                 <div class="mb-4 text-center">
                     <button
