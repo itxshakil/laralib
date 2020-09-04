@@ -90,6 +90,7 @@
             <p class="ml-4 mb-1">Automatic fine calculation for late return</p>
             <p class="ml-4 mb-1">Requested Book by members (accept or reject)</p>
             <p class="ml-4 mb-1">Seperate Authentication System form Admins (multiple admin)</p>
+            <p class="ml-4 mb-1">Change Password</p>
             <p class="ml-4 mb-1">Notify member by SMS and Email (Coming soon)</p>
             <p class="ml-4 mb-1">Book Rating management (approve, block, spam) (Coming Soon)</p>
             <h3 class="text-2xl mt-4">Member Panel</h3>
