@@ -34,6 +34,9 @@ Route::post('/contact', 'ContactController')->name('contact');
 Route::get('request-book', 'RequestedBookController@create')->name('request.books');
 Route::post('request-book', 'RequestedBookController@store')->name('request.books.store');
 
+Route::get('/password/change', 'Auth\ChangePasswordController@showForm')->name('password.change')->middleware('auth');
+Route::post('/password/change', 'Auth\ChangePasswordController@change')->name('password.change.submit')->middleware('auth');
+
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::namespace('Auth\Admin')->group(function () {
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
@@ -42,8 +45,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Route::post('/register', 'LoginController@register')->name('register.submit');
         Route::post('/logout', 'LoginController@logout')->name('logout');
 
-        Route::get('/password/change', 'ChangePasswordController@showForm')->name('password.change');
-        Route::post('/password/change', 'ChangePasswordController@change')->name('password.change.submit');
+        Route::get('/password/change', 'ChangePasswordController@showForm')->name('password.change')->middleware('auth:admin');
+        Route::post('/password/change', 'ChangePasswordController@change')->name('password.change.submit')->middleware('auth:admin');
 
 
         // Password reset routes
