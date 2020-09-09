@@ -1,5 +1,8 @@
 <?php
 
+
+namespace Database\Seeders;
+
 use App\Course;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -20,6 +23,7 @@ class CourseSeeder extends Seeder
             ['name' => 'BCA 3rd', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'BA 1st',  'created_at' => $now, 'updated_at' => $now],
             ['name' => 'BA 2nd', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'BA 3rd', 'created_at' => $now, 'updated_at' => $now],
         ]);
     }
 }
