@@ -1,18 +1,34 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\RequestedBook;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(RequestedBook::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name,
-        'author' => $faker->name,
-        'isbn' => $faker->optional()->isbn13,
-        'publisher' => $faker->optional()->name,
-        'year' => $faker->optional()->year,
-        'message' => $faker->optional()->paragraph(),
-        'status' => $faker->optional()->boolean,
-    ];
-});
+class RequestedBookFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = RequestedBook::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name' => $this->faker->name,
+            'author' => $this->faker->name,
+            'isbn' => $this->faker->optional()->isbn13,
+            'publisher' => $this->faker->optional()->name,
+            'year' => $this->faker->optional()->year,
+            'message' => $this->faker->optional()->paragraph(),
+            'status' => $this->faker->optional()->boolean,
+        ];
+    }
+}

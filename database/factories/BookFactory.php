@@ -1,14 +1,30 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\Book;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Book::class, function (Faker $faker) {
-    return [
-        'title' => $faker->text(40),
-        'isbn' => $faker->unique()->isbn10,
-        'count' => $faker->numberBetween(0,18),
-    ];
-});
+class BookFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Book::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'title' => $this->faker->text(40),
+            'isbn' => $this->faker->unique()->isbn10,
+            'count' => $this->faker->numberBetween(0, 18),
+        ];
+    }
+}
