@@ -2,9 +2,12 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class RequestedBook extends Model
 {
-    protected $fillable = ['name', 'author', 'isbn', 'publisher', 'year', 'message', 'user_id','admin_id'];
+    use HasFactory;
+
+    protected $fillable = ['name', 'author', 'isbn', 'publisher', 'year', 'message', 'user_id', 'admin_id'];
 }

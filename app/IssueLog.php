@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class IssueLog extends Model
 {
+   use HasFactory;
+
    protected $fillable = ['user_id', 'book_id', 'admin_id', 'returned_at', 'returned_to'];
 
    protected $appends = ['fine'];

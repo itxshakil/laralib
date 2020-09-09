@@ -5,13 +5,14 @@ namespace App;
 use App\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Book extends Model
 {
-    use SearchableTrait, SoftDeletes;
+    use SearchableTrait, SoftDeletes, HasFactory;
 
     protected $fillable = ['title', 'isbn', 'language', 'count'];
 
