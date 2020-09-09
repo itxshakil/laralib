@@ -93,7 +93,7 @@
                     </tbody>
                 </table>
                 @if ($books->count() > 0)
-                {{$books->appends(request()->input())->links('pagination.tailwind')}}
+                {{$books->appends(request()->input())->links()}}
                 @endif
             </div>
         </div>

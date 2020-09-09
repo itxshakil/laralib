@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\RequestedBook;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +14,6 @@ class RequestedBookSeeder extends Seeder
      */
     public function run()
     {
-        factory(RequestedBook::class, 12)->create();
+        RequestedBook::factory()->count(12)->create();
     }
 }

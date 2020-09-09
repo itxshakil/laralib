@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\IssueLog;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +14,6 @@ class IssueLogSeeder extends Seeder
      */
     public function run()
     {
-        factory(IssueLog::class,38)->create();
+        IssueLog::factory()->count(40)->create();
     }
 }

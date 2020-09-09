@@ -27,9 +27,8 @@
         Introduction
     </label>
     <textarea name="introduction" id="introduction" cols="30" rows="10"
-        value="{{old('introduction') ?? $author->introduction ?? null}}"
         placeholder="{{$author->introduction ?? "Introduction ..."}}"
-        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"></textarea>
+        class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">{{old('introduction') ?? $author->introduction ?? null}}</textarea>
     @error('introduction')
     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
     @enderror

@@ -15,7 +15,7 @@
     @endforelse
 
     @if ($books->count() > 0)
-    {{$books->appends(request()->input())->links('pagination.tailwind')}}
+    {{$books->appends(request()->input())->links()}}
     @endif
 
     <div class="bg-gray-400 border p-4 rounded-md">

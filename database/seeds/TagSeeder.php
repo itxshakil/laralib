@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use App\Tag;
 use Illuminate\Database\Seeder;
 
 class TagSeeder extends Seeder
@@ -11,6 +14,6 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        factory(Tag::class, 15)->create();
+        Tag::factory()->count(15)->create();
     }
 }

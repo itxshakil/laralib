@@ -1,16 +1,32 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\IssueLog;
 use Carbon\Carbon;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(IssueLog::class, function (Faker $faker) {
-    return [
-        'user_id' => random_int(1, 5),
-        'admin_id' => random_int(1, 5),
-        'book_id' => random_int(1, 20),
-        'returned_at' => (random_int(0, 1)) ? Carbon::now()->addDays(random_int(5, 27)) : null
-    ];
-});
+class IssueLogFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = IssueLog::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'user_id' => random_int(1, 5),
+            'admin_id' => random_int(1, 5),
+            'book_id' => random_int(1, 120),
+            'returned_at' => (random_int(0, 1)) ? Carbon::now()->addDays(random_int(5, 27)) : null
+        ];
+    }
+}
