@@ -21,7 +21,7 @@
         @endforeach
     </div>
     @if ($books->count() > 0)
-    {{$books->links('pagination.tailwind')}}
+    {{$books->links()}}
     @endif
 </div>
 @endsection
