@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Image;
 use Illuminate\Database\Seeder;
 
 class ImageSeeder extends Seeder
@@ -13,6 +14,6 @@ class ImageSeeder extends Seeder
      */
     public function run()
     {
-        factory(Image::class, 10)->create();
+        Image::factory()->count(10)->create();
     }
 }
