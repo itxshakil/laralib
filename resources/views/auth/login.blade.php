@@ -16,7 +16,7 @@
                     <input
                         class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none @error('email') border-red-500 @enderror"
                         type="email" id="email" name="email" autocomplete="email" placeholder="john.doe@example.com"
-                        value="{{App\User::first()->email}}" required aria-required="true" autofocus />
+                        value="{{old('email')}}" required aria-required="true" autofocus />
                     @error('email')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
@@ -27,7 +27,7 @@
                     <input
                         class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none @error('password') border-red-500 @enderror"
                         type="password" id="password" name="password" autocomplete="password" placeholder="password"
-                        value="password" required aria-required="true" />
+                        required aria-required="true" />
                     @error('password')
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
