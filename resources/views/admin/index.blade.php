@@ -3,8 +3,12 @@
 @section('content')
 <div class="container mx-auto">
     <h3 class="text-2xl p-2">{{ __('Book Issued and Returned') }}</h3>
-    <canvas id="myChart" width="400" height="400" style="width:100%; max-width:660px !important;"></canvas>
-    <canvas id="lastYearIssued" width="400" height="400" style="width:100%; max-width:660px !important;"></canvas>
+    <canvas id="myChart"></canvas>
+    <h3 class="text-2xl p-2">{{ __('Book Issued current year vs Last Year') }}</h3>
+    <canvas id="lastYearIssued"></canvas>
+    <div class="flex justify-between">
+        <canvas id="currentStatus"></canvas>
+    </div>
     <div class="flex justify-between items-center">
         <h3 class="text-2xl p-2">{{ __('Pending Book') }}</h3>
         <a href="{{route('admin.issue_logs.index')}}"
@@ -52,7 +56,7 @@
             'December',
             ],
             datasets: [{
-            label: '# of Issued Books',
+            label: '# of Books Issued',
             data: [
                 {{ $issuedChart->firstWhere('month','January')->data ?? 0 }},
                 {{ $issuedChart->firstWhere('month','February')->data ?? 0 }},
@@ -83,7 +87,7 @@
             ],
             borderWidth: 1
             },{
-            label: '# of Returned Books',
+            label: '# of Books Returned',
             data: [
             {{ $returnChart->firstWhere('month','January')->data ?? 0 }},
             {{ $returnChart->firstWhere('month','February')->data ?? 0 }},
@@ -99,7 +103,7 @@
             {{ $returnChart->firstWhere('month','December')->data ?? 0 }},
             ],
             backgroundColor: [
-            'rgba(152 90 216,0.5)',
+            'rgba(152, 90 216,0.5)',
             ],
             borderColor: [
             'rgba(255, 99, 132, 1)',
@@ -149,7 +153,7 @@ labels: [
 'December',
 ],
 datasets: [{
-label: '# of Issued Books This year',
+label: '# of Books Issued current year',
 data: [
 {{ $issuedChart->firstWhere('month','January')->data ?? 0 }},
 {{ $issuedChart->firstWhere('month','February')->data ?? 0 }},
@@ -180,7 +184,7 @@ borderColor: [
 ],
 borderWidth: 1
 },{
-label: '# of Issued Books Last Year',
+label: '# of Books IssuedLast Year',
 data: [
 {{ $issuedLastYearChart->firstWhere('month','January')->data ?? 0 }},
 {{ $issuedLastYearChart->firstWhere('month','February')->data ?? 0 }},
@@ -196,7 +200,7 @@ data: [
 {{ $issuedLastYearChart->firstWhere('month','December')->data ?? 0 }},
 ],
 backgroundColor: [
-'rgba(152 90 216,0.5)',
+'rgba(152, 90 216,0.5)',
 ],
 borderColor: [
 'rgba(255, 99, 132, 1)',
@@ -219,42 +223,33 @@ borderWidth: 1
         data: lastYeardata,
         options: options
         });
-        // var myChart = new Chart(ctx, {
-        // type: 'bar',
-        // data: {
-        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        // datasets: [{
-        // label: '# of Votes',
-        // data: [12, 19, 3, 5, 2, 3],
-        // backgroundColor: [
-        // 'rgba(255, 99, 132, 0.2)',
-        // 'rgba(54, 162, 235, 0.2)',
-        // 'rgba(255, 206, 86, 0.2)',
-        // 'rgba(75, 192, 192, 0.2)',
-        // 'rgba(153, 102, 255, 0.2)',
-        // 'rgba(255, 159, 64, 0.2)'
-        // ],
-        // borderColor: [
-        // 'rgba(255, 99, 132, 1)',
-        // 'rgba(54, 162, 235, 1)',
-        // 'rgba(255, 206, 86, 1)',
-        // 'rgba(75, 192, 192, 1)',
-        // 'rgba(153, 102, 255, 1)',
-        // 'rgba(255, 159, 64, 1)'
-        // ],
-        // borderWidth: 1
-        // }]
-        // },
-        // options: {
-        // scales: {
-        // yAxes: [{
-        // ticks: {
-        // beginAtZero: true
-        // }
-        // }]
-        // }
-        // }
-        // });
+
+
+        currentStatus = {
+        labels: ['Issued', 'Available'],
+        datasets: [{
+            label: '# of Books',
+            data: [ {{ \App\IssueLog::issued()->count()}},{{ App\Book::sum('count') }} ],
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            ],
+            borderWidth: 1
+        }]
+    };
+        var ctx = document.getElementById('currentStatus');
+        var myPieChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: currentStatus,
+        options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        }
+        });
     })
 </script>
 @endpush
