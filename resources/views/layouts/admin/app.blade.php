@@ -29,6 +29,7 @@
             @yield('content')
         </main>
     </div>
+    @stack('post-scripts')
 </body>
 
 </html>

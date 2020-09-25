@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\IssueLog;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -22,7 +24,15 @@ class AdminController extends Controller
         $pending_issues = IssueLog::issued()->get();
         $pending_issues->load('admin', 'book.authors', 'user');
 
-        return view('admin.index', compact('pending_issues'));
+        // $returnChart =  IssueLog::selectRaw('year(created_at) year, monthname(created_at) month, count(*) data')
+        // ->groupBy('year', 'month')
+        // ->orderBy('year', 'desc')
+        // ->get()->dd();
+
+        $returnChart =  IssueLog::whereYear('returned_at', \Carbon\Carbon::now()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->orderBy('month', 'desc')->get();
+        $issuedChart =  IssueLog::whereYear('created_at', \Carbon\Carbon::now()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->orderBy('month', 'desc')->get();
+
+        return view('admin.index', compact('pending_issues', 'returnChart', 'issuedChart'));
     }
 
     /**
