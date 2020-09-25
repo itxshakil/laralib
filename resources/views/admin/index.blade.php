@@ -4,6 +4,7 @@
 <div class="container mx-auto">
     <h3 class="text-2xl p-2">{{ __('Book Issued and Returned') }}</h3>
     <canvas id="myChart" width="400" height="400" style="width:100%; max-width:660px !important;"></canvas>
+    <canvas id="lastYearIssued" width="400" height="400" style="width:100%; max-width:660px !important;"></canvas>
     <div class="flex justify-between items-center">
         <h3 class="text-2xl p-2">{{ __('Pending Book') }}</h3>
         <a href="{{route('admin.issue_logs.index')}}"
@@ -68,8 +69,6 @@
             ],
             backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
             ],
             borderColor: [
             'rgba(255, 99, 132, 1)',
@@ -100,7 +99,7 @@
             {{ $returnChart->firstWhere('month','December')->data ?? 0 }},
             ],
             backgroundColor: [
-            'rgba(152 90 216,1)',
+            'rgba(152 90 216,0.5)',
             ],
             borderColor: [
             'rgba(255, 99, 132, 1)',
@@ -116,36 +115,6 @@
             borderWidth: 1
             }],
         }
-        var ctx = document.getElementById('myChart');
-        // let data = {
-        //     label: 'Books Issue Data',
-        //     datasets: [{
-        // data: [10, 20, 30]
-        // }],
-        // backgroundColor: [
-        // 'rgba(255, 99, 132, 0.2)',
-        // 'rgba(54, 162, 235, 0.2)',
-        // 'rgba(255, 206, 86, 0.2)',
-        // // 'rgba(75, 192, 192, 0.2)',
-        // // 'rgba(153, 102, 255, 0.2)',
-        // // 'rgba(255, 159, 64, 0.2)'
-        // ],
-        // borderColor: [
-        // 'rgba(255, 99, 132, 1)',
-        // 'rgba(54, 162, 235, 1)',
-        // 'rgba(255, 206, 86, 1)',
-        // // 'rgba(75, 192, 192, 1)',
-        // // 'rgba(153, 102, 255, 1)',
-        // // 'rgba(255, 159, 64, 1)'
-        // ],
-        // borderWidth: 1,
-
-        // // These labels appear in the legend and in the tooltips when hovering different arcs
-        // labels: [
-        // 'Returned',
-        // 'Issued',
-        // 'Available'
-        // ]};
         let options = {
         responsive: true,
         maintainAspectRatio: true,
@@ -157,9 +126,97 @@
         }]
         }
         };
+        var ctx = document.getElementById('myChart');
         var myPieChart = new Chart(ctx, {
         type: 'line',
         data: data,
+        options: options
+        });
+
+let lastYeardata = {
+labels: [
+'January',
+'February',
+'March',
+'April',
+'May',
+'June',
+'July',
+'August',
+'September',
+'October',
+'November',
+'December',
+],
+datasets: [{
+label: '# of Issued Books This year',
+data: [
+{{ $issuedChart->firstWhere('month','January')->data ?? 0 }},
+{{ $issuedChart->firstWhere('month','February')->data ?? 0 }},
+{{ $issuedChart->firstWhere('month','March')->data ?? 0 }},
+{{ $issuedChart->firstWhere('month','April')->data ?? 0 }},
+{{ $issuedChart->firstWhere('month','May')->data ?? 0 }},
+{{ $issuedChart->firstWhere('month','June')->data ?? 0 }},
+{{ $issuedChart->firstWhere('month','July')->data ?? 0 }},
+{{ $issuedChart->firstWhere('month','August')->data ?? 0 }},
+{{ $issuedChart->firstWhere('month','September')->data ?? 0 }},
+{{ $issuedChart->firstWhere('month','October')->data ?? 0 }},
+{{ $issuedChart->firstWhere('month','November')->data ?? 0 }},
+{{ $issuedChart->firstWhere('month','December')->data ?? 0 }},
+],
+backgroundColor: [
+'rgba(255, 99, 132, 0.2)',
+],
+borderColor: [
+'rgba(255, 99, 132, 1)',
+'rgba(255, 99, 132, 1)',
+'rgba(255, 99, 132, 1)',
+'rgba(54, 162, 235, 1)',
+'rgba(54, 162, 235, 1)',
+'rgba(54, 162, 235, 1)',
+'rgba(255, 206, 86, 1)',
+'rgba(255, 206, 86, 1)',
+'rgba(255, 206, 86, 1)',
+],
+borderWidth: 1
+},{
+label: '# of Issued Books Last Year',
+data: [
+{{ $issuedLastYearChart->firstWhere('month','January')->data ?? 0 }},
+{{ $issuedLastYearChart->firstWhere('month','February')->data ?? 0 }},
+{{ $issuedLastYearChart->firstWhere('month','March')->data ?? 0 }},
+{{ $issuedLastYearChart->firstWhere('month','April')->data ?? 0 }},
+{{ $issuedLastYearChart->firstWhere('month','May')->data ?? 0 }},
+{{ $issuedLastYearChart->firstWhere('month','June')->data ?? 0 }},
+{{ $issuedLastYearChart->firstWhere('month','July')->data ?? 0 }},
+{{ $issuedLastYearChart->firstWhere('month','August')->data ?? 0 }},
+{{ $issuedLastYearChart->firstWhere('month','September')->data ?? 0 }},
+{{ $issuedLastYearChart->firstWhere('month','October')->data ?? 0 }},
+{{ $issuedLastYearChart->firstWhere('month','November')->data ?? 0 }},
+{{ $issuedLastYearChart->firstWhere('month','December')->data ?? 0 }},
+],
+backgroundColor: [
+'rgba(152 90 216,0.5)',
+],
+borderColor: [
+'rgba(255, 99, 132, 1)',
+'rgba(255, 99, 132, 1)',
+'rgba(255, 99, 132, 1)',
+'rgba(54, 162, 235, 1)',
+'rgba(54, 162, 235, 1)',
+'rgba(54, 162, 235, 1)',
+'rgba(255, 206, 86, 1)',
+'rgba(255, 206, 86, 1)',
+'rgba(255, 206, 86, 1)',
+],
+borderWidth: 1
+}],
+}
+
+        var ctx = document.getElementById('lastYearIssued');
+        var myPieChart = new Chart(ctx, {
+        type: 'line',
+        data: lastYeardata,
         options: options
         });
         // var myChart = new Chart(ctx, {
