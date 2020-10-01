@@ -29,7 +29,9 @@ class AdminController extends Controller
         // ->orderBy('year', 'desc')
         // ->get()->dd();
 
-        $returnChart =  IssueLog::whereYear('returned_at', \Carbon\Carbon::now()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->get();
+        $returnChart =  IssueLog::whereYear('returned_at', \Carbon\Carbon::now()->format('Y'))->selectRaw('month(created_at) month, count(*) data')->groupBy('month')->get();
+
+        $returnChart->dd();
         $issuedChart =  IssueLog::whereYear('created_at', \Carbon\Carbon::now()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->get();
         $issuedLastYearChart =  IssueLog::whereYear('created_at', \Carbon\Carbon::now()->subYears()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->get();
 
@@ -43,6 +45,12 @@ class AdminController extends Controller
      */
     public function create()
     {
+        groupBy(function ($val) {
+            return Carbon::parse($val->created_at)->format('d');
+        });
+
+        $q->groupBy(function($val){return \Carbon\Carbon::parse($val->created_at->format('Y'));});
+        // $q->groupBy(function($val) {return \Carbon\Carbon::parse($val->created_at)->format('Y')});
         //
     }
 
