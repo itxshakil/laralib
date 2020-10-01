@@ -29,9 +29,9 @@ class AdminController extends Controller
         // ->orderBy('year', 'desc')
         // ->get()->dd();
 
-        $returnChart =  IssueLog::whereYear('returned_at', \Carbon\Carbon::now()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->orderBy('month', 'desc')->get();
-        $issuedChart =  IssueLog::whereYear('created_at', \Carbon\Carbon::now()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->orderBy('month', 'desc')->get();
-        $issuedLastYearChart =  IssueLog::whereYear('created_at', \Carbon\Carbon::now()->subYears()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->orderBy('month', 'desc')->get();
+        $returnChart =  IssueLog::whereYear('returned_at', \Carbon\Carbon::now()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->get();
+        $issuedChart =  IssueLog::whereYear('created_at', \Carbon\Carbon::now()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->get();
+        $issuedLastYearChart =  IssueLog::whereYear('created_at', \Carbon\Carbon::now()->subYears()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->get();
 
         return view('admin.index', compact('pending_issues', 'returnChart', 'issuedChart', 'issuedLastYearChart'));
     }
