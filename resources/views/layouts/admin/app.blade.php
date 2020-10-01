@@ -28,6 +28,10 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer id="subscribe" class="py-2 mt-3 bg-gray-800 text-gray-200">
+            <a class="text-center block" href="mailto:itxshakil@gmail.com">itxshakil@gmail.com</a>
+            <p class="text-center">All rights reserved &copy;2020</p>
+        </footer>
     </div>
     @stack('post-scripts')
 </body>

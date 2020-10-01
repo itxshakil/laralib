@@ -77,8 +77,8 @@
             @endif
         </div>
         <main class="py-4 flex flex-col justify-center items-center h-screen">
-            <h1 class="text-6xl">LaraLib</h1>
-            <p class="text-3xl">A Modern Library Mangement System</p>
+            <h1 class="text-6xl text-center">LaraLib</h1>
+            <p class="text-3xl text-center">A Modern Library Mangement System</p>
         </main>
         <section id="features" class="-mt-10 border-dashed border-2 p-4 container mx-auto border-gray-600">
             <h2 class="text-3xl font-semibold text-center underline">Features</h2>
