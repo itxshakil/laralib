@@ -26,13 +26,14 @@ class AdminController extends Controller
         $pending_issues->load('admin', 'book.authors', 'user');
 
         $issuedChart = Cache::remember('issuedInLast28Days', 86400, function () {
-            return IssueLog::select('id', 'created_at')->whereBetween('created_at', [\Carbon\carbon::now(), \Carbon\Carbon::now()->addDays(28)])->get()->countBy(function ($log) {
-                return \Carbon\Carbon::parse($log->created_at)->format('d-M');
+            return IssueLog::select('id', 'created_at')->whereBetween('created_at', [\Carbon\Carbon::now()->subDays(28), \Carbon\Carbon::now()])->orderBy('created_at')->get()->countBy(function ($issuelog) {
+                return \Carbon\Carbon::parse($issuelog->created_at)->format('d-M');
             });
         });
+
         $returnedChart = Cache::remember('returedInLast28Days', 86400, function () {
-            return IssueLog::select('id', 'returned_at')->whereBetween('returned_at', [\Carbon\carbon::now(), \Carbon\Carbon::now()->addDays(28)])->get()->countBy(function ($log) {
-                return \Carbon\Carbon::parse($log->returned_at)->format('d-M');
+            return IssueLog::select('id', 'returned_at')->whereBetween('returned_at', [\Carbon\Carbon::now()->subDays(28), \Carbon\Carbon::now()])->orderBy('returned_at')->get()->countBy(function ($issuelog) {
+                return \Carbon\Carbon::parse($issuelog->returned_at)->format('d-M');
             });
         });
 
