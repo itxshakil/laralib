@@ -28,10 +28,13 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <footer id="subscribe" class="py-2 mt-3 bg-gray-800 text-gray-200">
-            <a class="text-center block" href="mailto:itxshakil@gmail.com">itxshakil@gmail.com</a>
-            <p class="text-center">All rights reserved &copy;2020</p>
+        <footer class="mx-auto py-3 text-center bg-gray-800 text-white">
+            <p>Developed By <a href="https://wa.me/message/DU2KJXPQO6XZL1">Shakil Alam</a></p>
+            <p>&copy 2020 All rights reserved.</p>
         </footer>
+        <a href="https://wa.me/+918076688419"
+            class="fixed bottom-0 right-0 text-l bg-indigo-500 active:bg-indigo-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs">Buy
+            Now</a>
     </div>
     @stack('post-scripts')
 </body>
