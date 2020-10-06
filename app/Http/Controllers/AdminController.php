@@ -6,6 +6,7 @@ use App\Admin;
 use App\IssueLog;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -24,18 +25,18 @@ class AdminController extends Controller
         $pending_issues = IssueLog::issued()->get();
         $pending_issues->load('admin', 'book.authors', 'user');
 
-        // $returnChart =  IssueLog::selectRaw('year(created_at) year, monthname(created_at) month, count(*) data')
-        // ->groupBy('year', 'month')
-        // ->orderBy('year', 'desc')
-        // ->get()->dd();
+        $issuedChart = Cache::remember('issuedInLast28Days', 86400, function () {
+            return IssueLog::select('id', 'created_at')->whereBetween('created_at', [\Carbon\carbon::now(), \Carbon\Carbon::now()->addDays(28)])->get()->countBy(function ($log) {
+                return \Carbon\Carbon::parse($log->created_at)->format('d-M');
+            });
+        });
+        $returnedChart = Cache::remember('returedInLast28Days', 86400, function () {
+            return IssueLog::select('id', 'returned_at')->whereBetween('returned_at', [\Carbon\carbon::now(), \Carbon\Carbon::now()->addDays(28)])->get()->countBy(function ($log) {
+                return \Carbon\Carbon::parse($log->returned_at)->format('d-M');
+            });
+        });
 
-        $returnChart =  IssueLog::whereYear('returned_at', \Carbon\Carbon::now()->format('Y'))->selectRaw('month(created_at) month, count(*) data')->groupBy('month')->get();
-
-        $returnChart->dd();
-        $issuedChart =  IssueLog::whereYear('created_at', \Carbon\Carbon::now()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->get();
-        $issuedLastYearChart =  IssueLog::whereYear('created_at', \Carbon\Carbon::now()->subYears()->format('Y'))->selectRaw('monthname(created_at) month, count(*) data')->groupBy('month')->get();
-
-        return view('admin.index', compact('pending_issues', 'returnChart', 'issuedChart', 'issuedLastYearChart'));
+        return view('admin.index', compact('pending_issues', 'issuedChart', 'returnedChart'));
     }
 
     /**
@@ -45,12 +46,6 @@ class AdminController extends Controller
      */
     public function create()
     {
-        groupBy(function ($val) {
-            return Carbon::parse($val->created_at)->format('d');
-        });
-
-        $q->groupBy(function($val){return \Carbon\Carbon::parse($val->created_at->format('Y'));});
-        // $q->groupBy(function($val) {return \Carbon\Carbon::parse($val->created_at)->format('Y')});
         //
     }
 
