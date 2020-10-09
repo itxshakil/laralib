@@ -14,6 +14,7 @@ module.exports = {
     ],
     options: {
       // defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
+      whitelist: ['hidden' ,'sm:flex-1', 'sm:flex', 'sm:items-center', 'sm:justify-between'],
       whitelistPatterns: [/-active$/, /-enter$/, /-leave-to$/, /show$/],
     }
   },
