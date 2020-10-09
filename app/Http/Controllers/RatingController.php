@@ -23,11 +23,13 @@ class RatingController extends Controller
             'comment' => ['nullable', 'string', 'max:255'],
         ]);
 
-        return $book->ratings()->create([
+        $rating = $book->ratings()->create([
             'score' => $request->score,
             'comment' => $request->comment,
             'user_id' => auth()->id(),
         ]);
+
+        return redirect(route('books.show',$book));
     }
 
     /**
