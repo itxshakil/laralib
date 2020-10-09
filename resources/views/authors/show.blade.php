@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+Details of {{__($author->name)}}
+@endsection
 @section('content')
 <div class="container mx-auto">
     <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg">

@@ -1,5 +1,7 @@
 @extends('layouts.admin.app')
-
+@section('title')
+    Issue Book
+@endsection
 @section('content')
 <div class="container mx-auto">
     <div class="flex justify-between items-center">

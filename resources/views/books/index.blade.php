@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+{{ __('Latest Books') }}
+@endsection
 @section('content')
 <div class="container mx-auto px-6">
     <div class="flex justify-between items-center">

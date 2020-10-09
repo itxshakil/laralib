@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+{{ __('Your Issue History') }}
+@endsection
 @section('content')
 <div class="container mx-auto">
     <h3 class="text-2xl p-2 underline text-center">{{ __('Your Issue History') }}</h3>

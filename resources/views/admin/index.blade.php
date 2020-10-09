@@ -1,5 +1,5 @@
 @extends ('layouts.admin.app')
-
+@section('title','Admin Dashboard')
 @section('content')
 <div class="container mx-auto">
 	<h3 class="text-2xl p-2">{{ __('Book Issued in Last 28 days') }}</h3>

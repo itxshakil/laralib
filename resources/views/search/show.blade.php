@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Search Result for {{request()->input('q')}}
+@endsection
 @section('content')
 <div class="container mx-auto px-6">
     <div class="flex flex-col sm:flex-row justify-between items-center">

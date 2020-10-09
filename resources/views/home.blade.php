@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    User Dashboard
+@endsection
 @section('content')
 <div class="container mx-auto">
     <div class="flex justify-between items-center">

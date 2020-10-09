@@ -1,5 +1,5 @@
 @extends('layouts.admin.app')
-
+@section('title','Edit user details')
 @section('content')
 <div class="container mx-auto">
     <div class="flex justify-between items-center">

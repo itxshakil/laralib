@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+Request New Book!
+@endsection
 @section('content')
 <div class="container mx-auto">
     <div class="w-full bg-gray-200 p-2 shadow rounded-lg">

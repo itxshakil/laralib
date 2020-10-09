@@ -1,5 +1,5 @@
 @extends('layouts.admin.app')
-
+@section('title','Requested Books')
 @section('content')
 <div class="container mx-auto">
     <h1 class="font-semibold text-2xl my-2 text-center underline">Requested Books</h1>
