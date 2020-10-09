@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBookRequest;
+use App\Rules\ISBN;
 
 class BookController extends Controller
 {
@@ -85,7 +86,7 @@ class BookController extends Controller
     {
         $data = $request->validate([
             'title' => ['required', 'string'],
-            'isbn' => ['required', 'integer', Rule::unique('books')->ignore($book)],
+            'isbn' => ['required', new ISBN, Rule::unique('books')->ignore($book)],
             'count' => ['required', 'integer'],
             'language' => ['required', 'string'],
             'authors' => ['required', 'array']

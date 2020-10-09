@@ -15,15 +15,15 @@
 	<div class="flex flex-col sm:flex-row flex-wrap items-stretch">
 		@forelse ($pending_issues as $issue)
 		<div class="border rounded w-64 p-4 m-2 bg-gray-800 text-gray-100 flex-grow">
-			<p class="text-xl">{{ $issue-> book -> title}}</p>
+			<p class="text-xl">{{ $issue->book->title}}</p>
 			<p class="mt-2">Written By @foreach($issue->book->authors as $author) <a
-					href="{{route('authors.show',$author)}}">{{ $author-> name}}@if ($loop->remaining),
+					href="{{route('authors.show',$author)}}">{{ $author->name}}@if ($loop->remaining),
 					@endif </a>@endforeach</p>
-			<p class="text-gray-400 text-sm">ISBN : {{ $issue-> book -> isbn}}</p>
+			<p class="text-gray-400 text-sm">ISBN : {{ $issue->book->isbn}}</p>
 			<p class="text-gray-400 text-sm">Issued to : <a
-					href="{{route('admin.users.show',$issue->user)}}">{{ $issue-> user -> name}}</a></p>
-			<p class="text-gray-400 text-sm">Issued By : {{ $issue-> admin -> name}}</p>
-			<p class="text-gray-400 text-sm capitalize">Issued on : {{ $issue-> created_at -> toDateString()}}</p>
+					href="{{route('admin.users.show',$issue->user)}}">{{ $issue->user->name}}</a></p>
+			<p class="text-gray-400 text-sm">Issued By : {{ $issue->admin->name}}</p>
+			<p class="text-gray-400 text-sm capitalize">Issued on : {{ $issue->created_at->toDateString()}}</p>
 		</div>
 		@empty
 		<p class="text-lg">No Pending Books</p>
