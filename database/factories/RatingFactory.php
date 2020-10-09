@@ -24,8 +24,8 @@ class RatingFactory extends Factory
         return [
             'score' => rand(1, 5),
             'comment' => $this->faker->optional()->sentence(18),
-            'user_id' => rand(1, 5),
-            'book_id' => rand(1, 20),
+            'user_id' => rand(1, 12),
+            'book_id' => rand(1, 120),
         ];
     }
 }

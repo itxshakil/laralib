@@ -23,7 +23,7 @@ class IssueLogFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => random_int(1, 5),
+            'user_id' => random_int(1, 12),
             'admin_id' => random_int(1, 5),
             'book_id' => random_int(1, 120),
             'returned_at' => (random_int(0, 1)) ? Carbon::now()->addDays(random_int(5, 27)) : null
