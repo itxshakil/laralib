@@ -19,6 +19,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+Vue.component('flash', require('./components/Flash.vue').default);
 Vue.component('books', require('./components/Books.vue').default);
 Vue.component('users', require('./components/Users.vue').default);
 Vue.component('authors', require('./components/Authors.vue').default);

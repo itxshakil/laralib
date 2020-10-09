@@ -29,7 +29,7 @@ class RatingController extends Controller
             'user_id' => auth()->id(),
         ]);
 
-        return redirect(route('books.show',$book));
+        return redirect(route('books.show',$book))->with('flash','Rating is saved successfully.');
     }
 
     /**

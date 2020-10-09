@@ -27,6 +27,7 @@
 
         <main class="py-4">
             @yield('content')
+            <flash message="{{session('flash')}}"></flash>
         </main>
         <footer class="mx-auto py-3 text-center bg-gray-800 text-white">
             <p>Developed By <a href="https://wa.me/message/DU2KJXPQO6XZL1">Shakil Alam</a></p>
