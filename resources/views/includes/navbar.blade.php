@@ -43,7 +43,7 @@
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <form action="{{route('search')}}" method="get">
-                    <input type="search" name="q" id="q" placeholder="Search Books"
+                    <input type="search" name="q" id="q" placeholder="Search Books" value="{{request()->input('q')}}"
                         class="w-48 sm:w-64 my-2 py-2 px-4 border text-sm font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
                 </form>
                 <button
