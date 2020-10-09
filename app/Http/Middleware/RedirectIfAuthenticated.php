@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
             case 'admin':
 
                 if (Auth::guard($guard)->check()) {
-                    return redirect()->route('admin.dashboard');
+                    return redirect()->route('admin.dashboard')->with('flash', 'You are logged in as Admin.');
                 }
 
                 break;
@@ -30,7 +30,7 @@ class RedirectIfAuthenticated
             default:
 
                 if (Auth::guard($guard)->check()) {
-                    return redirect(RouteServiceProvider::HOME);
+                    return redirect(RouteServiceProvider::HOME)->with('flash', 'You are logged in as User.');
                 }
 
                 break;

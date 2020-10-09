@@ -43,7 +43,7 @@ class BookController extends Controller
         $book = Book::create($request->only('title', 'isbn', 'count', 'language'));
         $book->authors()->sync($request->authors);
 
-        return redirect(route('admin.books.index'));
+        return redirect(route('admin.books.index'))->with('flash', 'Book added successfully.');
     }
 
     /**
@@ -94,7 +94,7 @@ class BookController extends Controller
         $book->update($request->only('title', 'isbn', 'count', 'language'));
         $book->authors()->sync($request->authors);
 
-        return redirect(route('admin.books.index'));
+        return redirect(route('admin.books.index'))->with('flash', 'Book updated successfully.');
     }
 
     /**

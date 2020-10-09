@@ -85,7 +85,7 @@ class LoginController extends Controller
     {
         $this->guard()->logout();
 
-        return redirect('/admin/login');
+        return redirect('/admin/login')->with('flash', 'You\'re logged out of your account.');
     }
     /**
      * Get the guard to be used during authentication.

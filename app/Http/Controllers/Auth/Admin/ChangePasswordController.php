@@ -30,7 +30,7 @@ class ChangePasswordController extends Controller
 
         $this->changeUserPassword($request->password);
 
-        return redirect('/admin')->with('flash', 'Password Changed Successfully');
+        return redirect('/admin')->with('flash', 'Password changed successfully.');
     }
 
     /**

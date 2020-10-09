@@ -43,7 +43,7 @@ class AuthorController extends Controller
         ]);
         Author::create($data);
 
-        return redirect(route('admin.authors.index'));
+        return redirect(route('admin.authors.index'))->with('flash', 'Author added successfully.');
     }
 
     /**
@@ -84,10 +84,10 @@ class AuthorController extends Controller
             'email' => ['nullable', 'email', 'max:255'],
             'introduction' => ['nullable', 'string', 'max:255'],
         ]);
-        
+
         $author->update($data);
 
-        return redirect(route('admin.authors.index'));
+        return redirect(route('admin.authors.index'))->with('flash', 'Author updated successfully.');
     }
 
     /**

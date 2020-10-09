@@ -30,7 +30,7 @@ class ChangePasswordController extends Controller
 
         auth()->user()->update(['password' => $request->password]);
 
-        return redirect('/home')->with('flash', 'Password Changed Successfully');
+        return redirect('/home')->with('flash', 'Password changed successfully.');
     }
 
     /**

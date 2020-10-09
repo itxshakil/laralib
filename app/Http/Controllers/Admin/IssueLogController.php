@@ -57,7 +57,7 @@ class IssueLogController extends Controller
 
         $book->decrement('count');
 
-        return redirect(route('admin.issue_logs.index'));
+        return redirect(route('admin.issue_logs.index'))->with('flash', "$book->name is issued to $user->name");
     }
 
     /**

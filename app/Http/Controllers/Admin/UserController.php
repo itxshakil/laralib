@@ -50,7 +50,7 @@ class UserController extends Controller
 
         Course::find($request->course)->users()->create($request->only('name', 'email', 'rollno', 'password'));
 
-        return redirect(route('admin.users.index'));
+        return redirect(route('admin.users.index'))->with('flash', "User added successfully.");
     }
 
     /**
@@ -99,7 +99,7 @@ class UserController extends Controller
 
         $user->update(array_merge($request->only('name', 'email', 'rollno'), ['course_id' => $request->course]));
 
-        return redirect(route('admin.users.index'));
+        return redirect(route('admin.users.index'))->with('flash', 'User updated successfully.');
     }
 
     /**
