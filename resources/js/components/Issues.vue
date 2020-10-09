@@ -83,6 +83,7 @@ export default {
   },
   methods: {
     fetch(page) {
+      flash("Fetching issues. Please wait", "warning");
       axios.get(this.url(page)).then(this.refresh);
     },
     url(page) {

@@ -87,10 +87,11 @@ export default {
       axios
         .put("/admin/issues/" + this.issue.id)
         .then((response) => {
+      flash("Book marked as returned.", "success");
           this.issue.returned_at = new Date();
         })
         .catch((error) => {
-          console.log(error.response.statusText);
+      flash("Error in marking as returned, try again.", "warning");
         });
     },
   },

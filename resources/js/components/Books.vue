@@ -18,16 +18,24 @@
             <tr>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-              >Name</th>
+              >
+                Name
+              </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-              >Authors</th>
+              >
+                Authors
+              </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-              >Status</th>
+              >
+                Status
+              </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-              >Count</th>
+              >
+                Count
+              </th>
               <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
             </tr>
           </thead>
@@ -44,29 +52,40 @@
                   </div>
                   <div class="ml-4">
                     <a
-                      :href="'/admin/books/'+book.id"
+                      :href="'/admin/books/' + book.id"
                       class="text-sm leading-5 font-medium text-gray-900"
-                      v-text="book.title.slice(0,32)"
+                      v-text="book.title.slice(0, 32)"
                     ></a>
-                    <div class="text-sm leading-5 text-gray-500" v-text="book.isbn"></div>
+                    <div
+                      class="text-sm leading-5 text-gray-500"
+                      v-text="book.isbn"
+                    ></div>
                   </div>
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div v-for="author in book.authors" :key="author.id">
-                  <div class="text-sm leading-5 font-medium text-gray-900" v-text="author.name"></div>
-                  <div class="text-sm leading-5 text-gray-500" v-text="author.email"></div>
+                  <div
+                    class="text-sm leading-5 font-medium text-gray-900"
+                    v-text="author.name"
+                  ></div>
+                  <div
+                    class="text-sm leading-5 text-gray-500"
+                    v-text="author.email"
+                  ></div>
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <span
                   v-if="book.count > 20"
                   class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                >Available</span>
+                  >Available</span
+                >
                 <span
                   v-else
                   class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800"
-                >Low Count</span>
+                  >Low Count</span
+                >
               </td>
               <td
                 class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
@@ -76,16 +95,21 @@
               <td
                 class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
               >
-                <div class="flex flex-col justify-center items-center text-center gap-1">
+                <div
+                  class="flex flex-col justify-center items-center text-center gap-1"
+                >
                   <a
-                    :href="'/admin/books/'+book.id+'/edit'"
+                    :href="'/admin/books/' + book.id + '/edit'"
                     class="w-32 text-sm capitalize py-2 px-4 rounded bg-indigo-800 text-indigo-100"
-                  >Edit Details</a>
+                    >Edit Details</a
+                  >
                   <button
                     v-if="book.deleted_at === null"
                     class="w-32 text-sm capitalize py-2 px-4 rounded bg-red-800 text-red-100"
                     @click="deleteBook(book)"
-                  >Delete</button>
+                  >
+                    Delete
+                  </button>
                 </div>
               </td>
             </tr>
@@ -97,13 +121,15 @@
             v-show="links.current_page !== 1"
             @click.prevent="fetch(--links.current_page)"
             class="px-4 py-2 m-2 border rounded bg-indigo-500 text-white cursor-pointer"
-          >Previous</a>
+            >Previous</a
+          >
           <a
             :href="links.next"
             v-show="links.last_page != links.current_page"
             @click.prevent="fetch(++links.current_page)"
             class="px-4 py-2 m-2 border rounded bg-indigo-500 text-white cursor-pointer"
-          >Next</a>
+            >Next</a
+          >
         </div>
       </div>
     </div>
@@ -124,6 +150,7 @@ export default {
   },
   methods: {
     fetch(page) {
+      flash("Loading books, Please wait...", "warning");
       axios.get(this.url(page)).then(this.refresh);
     },
     url(page) {
@@ -145,12 +172,13 @@ export default {
         axios
           .delete("/admin/books/" + book.id)
           .then((response) => {
+            flash("Book is deleted successfully.", "danger");
             this.books = this.books.filter((item) => {
               return item.id !== book.id;
             });
           })
           .catch((err) => {
-            console.error(err.response);
+            flash("Erro during deleting book. Try again.", "danger");
           });
       }
     },

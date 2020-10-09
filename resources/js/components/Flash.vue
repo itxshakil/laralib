@@ -1,7 +1,15 @@
 <template>
   <div
     class="flash-alert border px-4 py-3 my-2 rounded w-64"
-    :class="'bg-'+classes+'-100 text-'+classes+'-700 border-'+classes+'-400'"
+    :class="
+      'bg-' +
+      classes +
+      '-100 text-' +
+      classes +
+      '-700 border-' +
+      classes +
+      '-400'
+    "
     role="alert"
     v-show="show"
     v-text="body"
@@ -15,14 +23,14 @@ export default {
     return {
       body: this.message,
       level: "success",
-      show: false
+      show: false,
     };
   },
   created() {
     if (this.message) {
       this.flash();
     }
-    window.events.$on("flash", data => this.flash(data));
+    window.events.$on("flash", (data) => this.flash(data));
   },
   computed: {
     classes() {
@@ -35,7 +43,7 @@ export default {
       if (this.level == "warning") {
         return "yellow";
       }
-    }
+    },
   },
   methods: {
     flash(data) {
@@ -50,8 +58,8 @@ export default {
       setTimeout(() => {
         this.show = false;
       }, 3000);
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

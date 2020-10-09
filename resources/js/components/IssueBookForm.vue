@@ -1,14 +1,20 @@
 <template>
-  <form class="px-4 md:px-8 pt-6 pb-2 mb-4 bg-white rounded" @submit.prevent="issue">
+  <form
+    class="px-4 md:px-8 pt-6 pb-2 mb-4 bg-white rounded"
+    @submit.prevent="issue"
+  >
     <div class="flex flex-col sm:flex-row gap-4">
       <section class="sm:mb-4 w-full">
         <div class="flex justify-between items-baseline">
-          <label class="block mb-2 text-sm font-bold text-gray-700" for="rollno">Roll number</label>
+          <label class="block mb-2 text-sm font-bold text-gray-700" for="rollno"
+            >Roll number</label
+          >
           <a
             href="/admin/users/create"
             target="_blank"
             class="text-xs text-indigo-500"
-          >add new student</a>
+            >add new student</a
+          >
         </div>
         <input
           type="number"
@@ -27,7 +33,9 @@
         ></p>
       </section>
       <section class="sm:mb-4 w-full">
-        <label class="block mb-2 text-sm font-bold text-gray-700" for="course">Course</label>
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="course"
+          >Course</label
+        >
         <select
           name="course"
           id="course"
@@ -51,8 +59,15 @@
       </section>
       <section class="sm:mb-4 w-full">
         <div class="flex justify-between items-baseline">
-          <label class="block mb-2 text-sm font-bold text-gray-700" for="isbn">ISBN Number</label>
-          <a href="/admin/books/create" target="_blank" class="text-xs text-indigo-500">add new book</a>
+          <label class="block mb-2 text-sm font-bold text-gray-700" for="isbn"
+            >ISBN Number</label
+          >
+          <a
+            href="/admin/books/create"
+            target="_blank"
+            class="text-xs text-indigo-500"
+            >add new book</a
+          >
         </div>
         <input
           type="number"
@@ -73,9 +88,15 @@
     </div>
     <div class="flex flex-col sm:flex-row gap-4 mb-4" v-if="user || book">
       <div class="p-2 rounded-md flex-1 border" v-if="user">
-        <div class="text-sm text-gray-900 font-bold capitalize" v-text="user.name"></div>
+        <div
+          class="text-sm text-gray-900 font-bold capitalize"
+          v-text="user.name"
+        ></div>
         <div class="flex items-center">
-          <div class="text-xs text-gray-700 font-bold" v-text="user.email"></div>
+          <div
+            class="text-xs text-gray-700 font-bold"
+            v-text="user.email"
+          ></div>
           <div
             class="text-xs text-red-100 font-bold p-1 ml-2 rounded-full bg-red-800"
             title="Book Already Issued and not return"
@@ -85,9 +106,15 @@
         </div>
       </div>
       <div class="p-2 rounded-md flex-1 border" v-if="book">
-        <div class="text-sm text-gray-900 font-bold capitalize" v-text="book.title"></div>
+        <div
+          class="text-sm text-gray-900 font-bold capitalize"
+          v-text="book.title"
+        ></div>
         <div class="flex items-center">
-          <div class="text-xs text-gray-700 font-bold capitalize" v-text="book.language"></div>
+          <div
+            class="text-xs text-gray-700 font-bold capitalize"
+            v-text="book.language"
+          ></div>
           <div
             class="text-xs text-gray-100 font-bold p-1 ml-2 rounded-full bg-gray-900"
             v-text="book.count"
@@ -99,7 +126,9 @@
       <button
         class="w-full bg-indigo-500 active:bg-indigo-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
         type="submit"
-      >Issue Book</button>
+      >
+        Issue Book
+      </button>
     </section>
   </form>
 </template>
@@ -125,25 +154,27 @@ export default {
       });
     },
     loadBookName() {
+      flash("Loading book detail. Please wait", "warning");
       axios
         .get("/api/book/isbn/" + this.form.isbn)
         .then((response) => {
           this.book = response.data;
         })
         .catch((error) => {
-          alert(error.response.statustext);
+          flash("Error, Please check detail and try again.", "danger");
           this.book = null;
         });
     },
     checkUserName() {
       if (this.form.rollno && this.form.course) {
+        flash("Loading user detail. Please wait.", "warning");
         axios
           .get("/api/course/" + this.form.course + "/user/" + this.form.rollno)
           .then((response) => {
             this.user = response.data;
           })
           .catch((error) => {
-            alert(error.response.statusText);
+            flash("Error, Please check detail and try again.", "danger");
             this.user = null;
           });
       }

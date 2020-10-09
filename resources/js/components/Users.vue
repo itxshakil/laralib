@@ -18,16 +18,24 @@
             <tr>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-              >Name</th>
+              >
+                Name
+              </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-              >Course</th>
+              >
+                Course
+              </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-              >Status</th>
+              >
+                Status
+              </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-              >Role</th>
+              >
+                Role
+              </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >
@@ -62,44 +70,62 @@
                   </div>
                   <div class="ml-4">
                     <a
-                      :href="'/admin/users/'+user.id"
+                      :href="'/admin/users/' + user.id"
                       class="text-sm leading-5 font-medium text-gray-900"
                       v-text="user.name"
                     ></a>
-                    <div class="text-sm leading-5 text-gray-500" v-text="user.email"></div>
+                    <div
+                      class="text-sm leading-5 text-gray-500"
+                      v-text="user.email"
+                    ></div>
                   </div>
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="text-sm leading-5 text-gray-900" v-text="user.course.name"></div>
-                <div class="text-sm leading-5 text-gray-500" v-text="user.rollno"></div>
+                <div
+                  class="text-sm leading-5 text-gray-900"
+                  v-text="user.course.name"
+                ></div>
+                <div
+                  class="text-sm leading-5 text-gray-500"
+                  v-text="user.rollno"
+                ></div>
               </td>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <span
                   class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
                   v-if="user.email_verified_at"
-                >Verified</span>
+                  >Verified</span
+                >
                 <span
                   class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
                   v-else
-                >Unverified</span>
+                  >Unverified</span
+                >
               </td>
               <td
                 class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
-              >Student</td>
+              >
+                Student
+              </td>
               <td
                 class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
               >
-                <div class="flex flex-col justify-center items-center text-center gap-1">
+                <div
+                  class="flex flex-col justify-center items-center text-center gap-1"
+                >
                   <a
-                    :href="'/admin/users/'+user.id+'/edit'"
+                    :href="'/admin/users/' + user.id + '/edit'"
                     class="w-32 text-sm capitalize py-2 px-4 rounded bg-indigo-800 text-indigo-100"
-                  >Edit Details</a>
+                    >Edit Details</a
+                  >
                   <button
                     v-if="user.deleted_at === null"
                     class="w-32 text-sm capitalize py-2 px-4 rounded bg-red-800 text-red-100"
                     @click="deleteUser(user)"
-                  >Delete</button>
+                  >
+                    Delete
+                  </button>
                 </div>
               </td>
             </tr>
@@ -111,13 +137,15 @@
             v-show="links.current_page !== 1"
             @click.prevent="fetch(--links.current_page)"
             class="px-4 py-2 m-2 border rounded bg-indigo-500 text-white cursor-pointer"
-          >Previous</a>
+            >Previous</a
+          >
           <a
             :href="links.next"
             v-show="links.last_page != links.current_page"
             @click.prevent="fetch(++links.current_page)"
             class="px-4 py-2 m-2 border rounded bg-indigo-500 text-white cursor-pointer"
-          >Next</a>
+            >Next</a
+          >
         </div>
       </div>
     </div>
@@ -141,6 +169,7 @@ export default {
   },
   methods: {
     fetch(page) {
+      flash("Fetching users. Please wait", "warning");
       axios.get(this.url(page)).then(this.refresh);
     },
     url(page) {
@@ -162,21 +191,27 @@ export default {
       this.links = data.meta;
     },
     fetchCourses() {
-      axios.get("/api/courses").then((response) => {
-        this.courses = response.data;
-      });
+      axios
+        .get("/api/courses")
+        .then((response) => {
+          this.courses = response.data;
+        })
+        .catch((err) => {
+          flash("Error during loading users. Try again.", "danger");
+        });
     },
     deleteUser(user) {
       if (confirm("Are you sure to delete user?")) {
         axios
           .delete("/admin/users/" + user.id)
           .then((response) => {
+            flash("User is deleted successfully.", "danger");
             this.users = this.users.filter((item) => {
               return item.id !== user.id;
             });
           })
           .catch((err) => {
-            console.error(err.response);
+            flash(err.response.message, "danger");
           });
       }
     },
