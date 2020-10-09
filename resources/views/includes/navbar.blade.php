@@ -31,13 +31,17 @@
                 </a>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex">
+                        @auth
                         <a href="{{route('home')}}"
                             class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'home' ? 'bg-gray-900' : null}}">Dashboard</a>
+                        @endauth
                         <a href="{{route('books.index')}}"
                             class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'books.index' ? 'bg-gray-900' : null}}">Books</a>
+                        @auth
                         <a href="{{route('issues.index')}}"
                             class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'issues.index' ? 'bg-gray-900' : null}}">My
                             Issue History</a>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -57,6 +61,7 @@
 
                 <!-- Profile dropdown -->
                 <div class="ml-3 relative">
+                    @auth
                     <div>
                         <button @click="isOpen = !isOpen"
                             class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out"
@@ -83,36 +88,46 @@
                                 role="menuitem">Change Password</a>
                             <a href="{{route('issues.index')}}"
                                 class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
-                                role="menuitem">My History</a>
+                                role="menuitem">My Issue History</a>
                             <a href="#"
                                 class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
-                                role="menuitem" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Sign out</a>
+                                role="menuitem"
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign
+                                out</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>
                     </div>
+                    @else
+                    <a href="{{ route('login') }}"
+                        class="bg-indigo-500 active:bg-indigo-800 text-white px-3 sm:px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs">Login</a>
+                    @endauth
                 </div>
             </div>
         </div>
     </div>
 
     <!--
-    Mobile menu, toggle classes based on menu state.
+        Mobile menu, toggle classes based on menu state.
 
-    Menu open: "block", Menu closed: "hidden"
-  -->
+        Menu open: "block", Menu closed: "hidden"
+    -->
     <div :class="isOpen ? 'block' : 'hidden'" class="sm:hidden">
         <div class="px-2 pt-2 pb-3">
-            <a href="#"
-                class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
-            <a href="#"
-                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
-            <a href="#"
-                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
-            <a href="#"
-                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+            @auth
+            <a href="{{route('home')}}"
+                class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
+                {{Route::currentRouteName() == 'home' ? 'bg-gray-900' : null}}>Dashboard</a>
+            @endauth
+            <a href="{{route('books.index')}}"
+                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
+                {{Route::currentRouteName() == 'books.index' ? 'bg-gray-900' : null}}>Books</a>
+            @auth
+            <a href="{{route('issues.index')}}"
+                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out {{Route::currentRouteName() == 'issues.index' ? 'bg-gray-900' : null}}">My
+                Issue History</a>
+            @endauth
         </div>
     </div>
 </nav>
