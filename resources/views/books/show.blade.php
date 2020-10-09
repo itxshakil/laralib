@@ -47,11 +47,11 @@
                 </label>
                 <select type="range" name="score" id="range"
                     class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="1">1 Very Bad</option>
+                    <option value="2">2 Bad</option>
+                    <option value="3">3 Average</option>
+                    <option value="4" selected>4 Good</option>
+                    <option value="5">5 Very Good</option>
                 </select>
                 @error('score')
                 <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
@@ -62,7 +62,7 @@
                     Your comment
                 </label>
                 <textarea name="comment" id="comment" cols="20" rows="3" value="{{old('isbn') ?? null}}"
-                    placeholder="7894561231234"
+                    placeholder="Your review about book"
                     class="w-full py-2 px-4 border text-sm  font-medium rounded-md focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"></textarea>
                 @error('comment')
                 <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
