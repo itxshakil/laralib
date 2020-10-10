@@ -44,5 +44,7 @@ class randomizeIssueLogs extends Command
             $item->returned_at = (random_int(0, 1)) ? $time->addDays(random_int(2, 27)) : null;
             $item->save();
         });
+
+        return "IssueLog Randomize successfully.";
     }
 }

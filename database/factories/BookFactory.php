@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class BookFactory extends Factory
 {
     const MAX_AUTHOR_PER_BOOK = 2;
-    const MAX_BOOK = 30;
+    const MAX_AUTHOR = 12;
 
     /**
      * The name of the factory's corresponding model.
@@ -49,7 +49,7 @@ class BookFactory extends Factory
     {
         $ids = collect();
         for ($i = 0; $i < rand(1, self::MAX_AUTHOR_PER_BOOK); $i++) {
-            $ids->push(random_int(1, self::MAX_BOOK));
+            $ids->push(random_int(1, self::MAX_AUTHOR));
         }
         return $ids;
     }

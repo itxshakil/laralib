@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,5 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(IssueLogSeeder::class);
         $this->call(RequestedBookSeeder::class);
         // $this->call(RatingSeeder::class);
+
+        Artisan::call('randomize:issuelog');
     }
 }

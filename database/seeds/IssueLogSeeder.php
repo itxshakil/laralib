@@ -14,6 +14,6 @@ class IssueLogSeeder extends Seeder
      */
     public function run()
     {
-        IssueLog::factory()->count(400)->create();
+        IssueLog::factory()->count(60)->create();
     }
 }
