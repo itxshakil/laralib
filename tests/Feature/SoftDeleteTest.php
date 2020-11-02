@@ -20,8 +20,8 @@ class SoftDeleteTest extends TestCase
      */
     public function admin_can_soft_delete_users()
     {
-        $user = factory(User::class)->create(['course_id' => factory(Course::class)->create()->id]);
-        $this->actingAs(factory(Admin::class)->create(), 'admin');
+        $user = User::factory()->create(['course_id' => Course::factory()->create()->id]);
+        $this->actingAs(Admin::factory()->create(), 'admin');
         $this->delete(route('admin.users.destroy', $user))->assertOk();
 
         $this->assertSoftDeleted($user);
@@ -32,11 +32,11 @@ class SoftDeleteTest extends TestCase
      */
     public function admin_can_soft_delete_rating()
     {
-        $rating = factory(Rating::class)->create([
-            'user_id' => factory(User::class)->create(['course_id' => factory(Course::class)->create()->id])->id,
-            'book_id' => factory(Book::class)->create()->id
+        $rating = Rating::factory()->create([
+            'user_id' => User::factory()->create(['course_id' => Course::factory()->create()->id])->id,
+            'book_id' => Book::factory()->create()->id
         ]);
-        $this->actingAs(factory(Admin::class)->create(), 'admin');
+        $this->actingAs(Admin::factory()->create(), 'admin');
         $this->delete(route('admin.ratings.destroy', $rating))->assertOk();
 
         $this->assertSoftDeleted($rating);
@@ -47,9 +47,9 @@ class SoftDeleteTest extends TestCase
      */
     public function admin_can_soft_delete_book()
     {
-        $book = factory(Book::class)->create();
+        $book = Book::factory()->create();
 
-        $this->actingAs(factory(Admin::class)->create(), 'admin');
+        $this->actingAs(Admin::factory()->create(), 'admin');
         $this->delete(route('admin.books.destroy', $book))->assertOk();
 
         $this->assertSoftDeleted($book);

@@ -18,7 +18,7 @@ class TagTest extends TestCase
     // public function authenticated_admin_can_create_new_tags()
     // {
     //     $this->actingAs(factory(Admin::class)->create(), 'admin');
-    //     $tag = factory(Tag::class)->make();
+    //     $tag = Tag::factory()->make();
     //     $this->post(route('admin.tags.store'), $tag->toArray())->assertCreated();
     //     $this->post(route('admin.tags.store'), $tag->toArray())->assertOk();
 

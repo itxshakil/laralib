@@ -7,6 +7,9 @@ use Illuminate\Database\Seeder;
 
 class BookSeeder extends Seeder
 {
+    const MAX_AUTHOR_PER_BOOK = 2;
+    const MAX_AUTHOR = 12;
+
     /**
      * Run the database seeds.
      *
@@ -14,6 +17,17 @@ class BookSeeder extends Seeder
      */
     public function run()
     {
-        Book::factory()->count(60)->create();
+        Book::factory()->count(60)->create()->each(function ($book) {
+            $book->authors()->toggle($this->randomAuthorIds());
+        });
+    }
+
+    private function randomAuthorIds()
+    {
+        $ids = collect();
+        for ($i = 0; $i < rand(1, self::MAX_AUTHOR_PER_BOOK); $i++) {
+            $ids->push(random_int(1, self::MAX_AUTHOR));
+        }
+        return $ids;
     }
 }

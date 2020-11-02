@@ -17,7 +17,7 @@ class AuthorTest extends TestCase
      */
     public function author_hasMany_books()
     {
-        $author = factory(Author::class)->create();
+        $author = Author::factory()->create();
 
         $this->assertInstanceOf(Collection::class, $author->books, "Author's books relationship fails");
     }

@@ -16,7 +16,7 @@ class TagTest extends TestCase
      */
     public function new_tag_can_be_created()
     {
-        $tag = factory(Tag::class)->make();
+        $tag = Tag::factory()->make();
         Tag::create($tag->toArray());
 
         $this->assertDatabaseHas('tags', ['name' => $tag->name]);
