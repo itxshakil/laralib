@@ -4,11 +4,11 @@ Details of {{__($book->title)}}
 @endsection
 @section('content')
 <div class="container mx-auto">
-    <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg">
+    <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg shadow">
         <h3 class="py-4 text-2xl text-center">Details of {{__($book->title)}}</h3>
         <div class="flex flex-col sm:flex-row gap-2 flex-wrap flex-stretch flex-grow">
             <div class="w-full mr-2 sm:w-1/2 rounded p-2 shadow-md bg-gray-300">
-                <p class="text-xl">{{$book->title}}</p>
+                <p class="text-xl font-semibold">{{$book->title}}</p>
                 <p>Written By @foreach($book->authors as $author) <a
                         href="{{route('authors.show',$author)}}">{{$author->name}}@if ($loop->remaining),
                         @endif </a>@endforeach</p>
@@ -16,7 +16,7 @@ Details of {{__($book->title)}}
                     class="text-sm capitalize inline-block items-center px-2 rounded-full {{$book->count ? 'bg-green-800 text-green-100' : 'bg-red-800 text-red-100'}}">{{$book->count ? 'Available' : 'Not Available'}}</span>
                 <span class="text-gray-700 text-sm capitalize">in {{$book->language}}</span>
                 <x-book-average-rating average-rating="{{$book->average_rating}}" />
-                <p class="text-gray-700 text-sm">ISBN : {{$book->isbn}}</p>
+                <p class="text-gray-700 text-sm mt-4">ISBN : {{$book->isbn}}</p>
             </div>
             @forelse($issue_logs as $issue)
             <div class="w-full sm:w-1/3 lg:w-1/4 xl:w-1/5 bg-gray-800 text-gray-100 rounded p-4 shadow flex-grow">
