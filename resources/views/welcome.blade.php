@@ -59,7 +59,6 @@
         }
 
         .links>a {
-            color: #636b6f;
             padding: 0 25px;
             font-size: 13px;
             font-weight: 600;
@@ -92,36 +91,37 @@
             @if (Route::has('login'))
             <div class="top-right links">
                 @auth('admin')
-                <a href="{{ url('/admin') }}">Dashboard</a>
+                <a class="text-white" href="{{ url('/admin') }}">Dashboard</a>
                 @else
-                <a href="{{ route('admin.login') }}">Admin Login</a>
+                <a class="text-white" href="{{ route('admin.login') }}">Admin Login</a>
                 @endif
                 @auth
-                <a href="{{ url('/home') }}">Home</a>
+                <a class="text-white" href="{{ url('/home') }}">Home</a>
                 @else
-                <a href="{{ route('login') }}">Login</a>
+                <a class="text-white" href="{{ route('login') }}">Login</a>
 
                 @if (Route::has('register'))
-                <a href="{{ route('register') }}">Register</a>
+                <a class="text-white" href="{{ route('register') }}">Register</a>
                 @endif
                 @endauth
             </div>
             @endif
         </div>
-        <main class="py-4 flex flex-col justify-center items-center h-screen">
+        <main class="py-4 flex flex-col justify-center items-center h-screen bg-indigo-700 text-white">
             <h1 class="text-6xl text-center">LaraLib</h1>
-            <p class="text-3xl text-center">A Modern Library Mangement System</p>
+            <p class="text-3xl text-center">A Modern Way of Managing Library</p>
+            <a href="/admin" class="mt-2 bg-indigo-500 active:bg-indigo-800 text-white px-4 sm:px-8 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold">Try now</a>
         </main>
-        <section id="features" class="-mt-10 border-dashed border-2 p-4 container mx-auto border-gray-600">
+        <section id="features" class="-mt-10 bg-white rounded shadow p-4 container mx-auto border-gray-600">
             <h2 class="text-3xl font-semibold text-center underline">Features</h2>
             <h3 class="text-2xl">Admin Panel</h3>
             <p class="ml-4 mb-1">Dashboard (Graphical report of recent activities.</p>
-            <p class="ml-4 mb-1">Member Mangement (Student and course)</p>
-            <p class="ml-4 mb-1">Book mangement(book, authors and categories)</p>
+            <p class="ml-4 mb-1">Member Management (Student and course)</p>
+            <p class="ml-4 mb-1">Book management(book, authors and categories)</p>
             <p class="ml-4 mb-1">Circulation management (issue, and return)</p>
             <p class="ml-4 mb-1">Automatic fine calculation for late return</p>
             <p class="ml-4 mb-1">Requested Book by members (accept or reject)</p>
-            <p class="ml-4 mb-1">Seperate Authentication System form Admins (multiple admin)</p>
+            <p class="ml-4 mb-1">Separate Authentication System form Admins (multiple admin)</p>
             <p class="ml-4 mb-1">Change Password</p>
             <p class="ml-4 mb-1">Notify member by SMS and Email (Coming soon)</p>
             <p class="ml-4 mb-1">Book Rating management (approve, block, spam) (Coming Soon)</p>
