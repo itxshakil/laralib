@@ -31,45 +31,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/randomizeIssueLogs.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/randomizeIssueLogs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BookController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/IssueLogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/IssueLogController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/RatingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/RatingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TagController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Admin/AuthorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Admin/AuthorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Admin/BookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Admin/BookController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Admin/IssueController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Admin/IssueController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Admin/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/Admin/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Admin/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/Admin/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Admin/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CourseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ImageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IssueController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IssueController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RatingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RatingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequestedBookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequestedBookController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/AuthorResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/AuthorResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/BookResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/BookResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/IssueResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/IssueResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/UserResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/UserResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/AdminResetPasswordNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/AdminResetPasswordNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/BookRequestApproved.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/BookRequestApproved.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/BookRequestRejected.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/BookRequestRejected.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/RatingPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/RatingPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/View/Components/BookAverageRating.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/Components/BookAverageRating.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/CreatesApplication.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/CreatesApplication.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,13 +169,23 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.RatingTest.user_can_not_rate_books_if_not_issued_to_them">
+    <configuration name="RatingTest.user_can_not_rate_books_if_not_issued_to_them" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\RatingTest" file="$PROJECT_DIR$/tests/Feature/RatingTest.php" method="user_can_not_rate_books_if_not_issued_to_them" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.RatingTest.user_can_not_rate_books_if_not_issued_to_them" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -225,7 +197,7 @@
       <updated>1607957400924</updated>
       <workItem from="1607957401931" duration="2614000" />
       <workItem from="1608004547937" duration="19000" />
-      <workItem from="1608214627367" duration="708000" />
+      <workItem from="1608214627367" duration="1301000" />
     </task>
     <task id="LOCAL-00001" summary="Added PHPStorm files">
       <created>1607957663353</created>
@@ -241,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607958894888</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Some simple code fixes">
+      <created>1608215451938</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608215451938</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +260,18 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="437" y="207" key="#Notifications/0.0.1366.768@0.0.1366.768" timestamp="1607960238078" />
+    <state x="502" y="68" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1" timestamp="1608215968165">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="502" y="68" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1366.768@0.0.1366.768" timestamp="1608215968165" />
+    <state x="441" y="253" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1608215616579">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="441" y="253" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.768@0.0.1366.768" timestamp="1608215616579" />
+    <state x="522" y="86" key="RollbackChangesDialog" timestamp="1608215606444">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="522" y="86" key="RollbackChangesDialog/0.0.1366.768@0.0.1366.768" timestamp="1608215606444" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1607960005150">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
