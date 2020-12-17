@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\IssueLog;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 
 class IssueController extends Controller
@@ -11,7 +12,7 @@ class IssueController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {

@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\IssueLog;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class randomizeIssueLogs extends Command
@@ -39,7 +40,7 @@ class randomizeIssueLogs extends Command
     public function handle()
     {
         IssueLog::all()->each(function ($item) {
-            $time = \Carbon\Carbon::now()->addDays(random_int(-30, 5));
+            $time = Carbon::now()->addDays(random_int(-30, 5));
             $item->created_at = $time;
             $item->returned_at = (random_int(0, 1)) ? $time->addDays(random_int(2, 27)) : null;
             $item->save();

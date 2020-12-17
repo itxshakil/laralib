@@ -9,13 +9,14 @@ use Illuminate\Http\Request;
 use App\Http\Resources\IssueResource;
 use App\IssueLog;
 use App\Rules\AlreadyNotIssued;
+use Illuminate\Http\Response;
 
 class IssueController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index(Request $request)
     {
@@ -33,8 +34,8 @@ class IssueController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {

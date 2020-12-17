@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RatingController extends Controller
 {
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request, Book $book)
     {
@@ -35,8 +36,8 @@ class RatingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Rating  $rating
-     * @return \Illuminate\Http\Response
+     * @param Rating $rating
+     * @return Response
      */
     public function edit(Rating $rating)
     {
@@ -46,9 +47,9 @@ class RatingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rating  $rating
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Rating $rating
+     * @return Response
      */
     public function update(Request $request, Rating $rating)
     {
@@ -58,8 +59,8 @@ class RatingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Rating  $rating
-     * @return \Illuminate\Http\Response
+     * @param Rating $rating
+     * @return Response
      */
     public function destroy(Rating $rating)
     {

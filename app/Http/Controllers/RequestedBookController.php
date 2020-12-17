@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\RequestedBook;
 use App\Rules\ISBN;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RequestedBookController extends Controller
 {
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -21,8 +22,8 @@ class RequestedBookController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {

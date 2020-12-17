@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+use Illuminate\Http\Response;
 
 class AuthorController extends Controller
 {
     /**
      * Display the specified resource.
      *
-     * @param  \App\Author  $author
-     * @return \Illuminate\Http\Response
+     * @param Author $author
+     * @return Response
      */
     public function show(Author $author)
     {

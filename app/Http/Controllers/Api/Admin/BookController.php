@@ -6,13 +6,14 @@ use App\Book;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BookResource;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index(Request $request)
     {
@@ -25,8 +26,8 @@ class BookController extends Controller
     /**
      * Get book by ISBN.
      *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
+     * @param Book $book
+     * @return Response
      */
     public function bookByISBN(Book $book)
     {
