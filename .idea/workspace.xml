@@ -30,9 +30,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -197,7 +195,7 @@
       <updated>1607957400924</updated>
       <workItem from="1607957401931" duration="2614000" />
       <workItem from="1608004547937" duration="19000" />
-      <workItem from="1608214627367" duration="1301000" />
+      <workItem from="1608214627367" duration="1631000" />
     </task>
     <task id="LOCAL-00001" summary="Added PHPStorm files">
       <created>1607957663353</created>
@@ -220,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608215451938</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Extract Method for issueBookToAuthUser">
+      <created>1608216330576</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1608216330576</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,21 +258,26 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added PHPStorm files" />
     <MESSAGE value="Some simple code fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some simple code fixes" />
+    <MESSAGE value="Extract Method for issueBookToAuthUser" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extract Method for issueBookToAuthUser" />
   </component>
   <component name="WindowStateProjectService">
     <state x="437" y="207" key="#Notifications" timestamp="1607960238078">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="437" y="207" key="#Notifications/0.0.1366.768@0.0.1366.768" timestamp="1607960238078" />
-    <state x="502" y="68" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1" timestamp="1608215968165">
+    <state x="502" y="68" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1" timestamp="1608216166294">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="502" y="68" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1366.768@0.0.1366.768" timestamp="1608215968165" />
-    <state x="441" y="253" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1608215616579">
+    <state x="502" y="68" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1366.768@0.0.1366.768" timestamp="1608216166294" />
+    <state x="441" y="253" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1608216367542">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="441" y="253" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.768@0.0.1366.768" timestamp="1608215616579" />
+    <state x="441" y="253" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.768@0.0.1366.768" timestamp="1608216367542" />
+    <state x="498" y="317" key="ReplaceDuplicatesPrompt" timestamp="1608216176237">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="498" y="317" key="ReplaceDuplicatesPrompt/0.0.1366.768@0.0.1366.768" timestamp="1608216176237" />
     <state x="522" y="86" key="RollbackChangesDialog" timestamp="1608215606444">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

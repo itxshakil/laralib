@@ -33,17 +33,12 @@ class AuthorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param StoreAuthorRequest $request
      * @return Response
      */
     public function store(StoreAuthorRequest $request)
     {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['nullable', 'email', 'max:255'],
-            'introduction' => ['nullable', 'string', 'max:255'],
-        ]);
-        Author::create($data);
+        Author::create($request->validated());
 
         return redirect(route('admin.authors.index'))->with('flash', 'Author added successfully.');
     }
@@ -79,7 +74,7 @@ class AuthorController extends Controller
      * @param Author $author
      * @return Response
      */
-    public function update(StoreAuthorRequest $request, Author $author)
+    public function update(Request $request, Author $author)
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],

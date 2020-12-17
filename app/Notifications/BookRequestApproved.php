@@ -16,7 +16,7 @@ class BookRequestApproved extends Notification
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param $bookname
      */
     public function __construct($bookname)
     {
