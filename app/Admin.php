@@ -4,6 +4,7 @@ namespace App;
 
 use App\Notifications\AdminResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticable;
 use Illuminate\Notifications\Notifiable;
 
@@ -46,7 +47,7 @@ class Admin extends Authenticable
         $this->notify(new AdminResetPasswordNotification($token));
     }
 
-    public function issue_logs()
+    public function issue_logs():HasMany
     {
         return $this->hasMany(IssueLog::class);
     }

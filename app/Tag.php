@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,7 +25,7 @@ class Tag extends Model
         });
     }
 
-    public function books()
+    public function books():MorphToMany
     {
         return $this->morphedByMany(Book::class, 'taggable');
     }

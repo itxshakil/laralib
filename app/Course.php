@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @method static find($course)
@@ -14,7 +15,7 @@ class Course extends Model
 
     protected $fillable = ['name'];
 
-    public function users()
+    public function users():HasMany
     {
         return $this->hasMany(User::class);
     }

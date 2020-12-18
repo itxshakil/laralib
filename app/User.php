@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
  * @method static create(array $array)
  * @method static find($user_id)
  */
+
 class User extends Authenticatable
 {
     use Notifiable, SoftDeletes, HasFactory;
@@ -54,7 +58,7 @@ class User extends Authenticatable
     //     return $this->belongsToMany(Book::class)->withTimestamps();
     // }
 
-    public function issue_logs()
+    public function issue_logs():HasMany
     {
         return $this->hasMany(IssueLog::class);
     }
@@ -64,17 +68,17 @@ class User extends Authenticatable
         return $this->hasMany(IssueLog::class)->issued();
     }
 
-    public function course()
+    public function course():BelongsTo
     {
         return $this->belongsTo(Course::class);
     }
 
-    public function ratings()
+    public function ratings():HasMany
     {
         return $this->hasMany(Rating::class);
     }
 
-    public function image()
+    public function image():MorphOne
     {
         return $this->morphOne(Image::class, 'imageable');
     }

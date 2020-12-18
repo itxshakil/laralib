@@ -5,6 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
 use Nicolaslopezj\Searchable\SearchableTrait;
@@ -57,7 +60,7 @@ class Book extends Model
     ];
 
 
-    public function authors()
+    public function authors():BelongsToMany
     {
         return $this->belongsToMany(Author::class)->withTimestamps();
     }
@@ -67,24 +70,24 @@ class Book extends Model
     //     return $this->belongsToMany(User::class)->withTimestamps();
     // }
 
-    public function issue_logs()
+    public function issue_logs():HasMany
     {
         return $this->hasMany(IssueLog::class);
     }
 
-    public function ratings()
+    public function ratings():HasMany
     {
         return $this->hasMany(Rating::class);
     }
 
-    public function tags()
+    public function tags():MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
     public function getAverageRatingAttribute()
     {
-        return Cache::remember("book.{$this->id}.averagerating", 600, function () {
+        return Cache::remember("book.{$this->id}.averageRating", 600, function () {
             return $this->ratings()->avg('score') ?? 0;
         });
     }

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property mixed created_at
@@ -25,15 +26,17 @@ class IssueLog extends Model
       'returned_at' => 'datetime',
    ];
 
-   public function book()
+   public function book():BelongsTo
    {
       return $this->belongsTo(Book::class);
    }
-   public function user()
+
+   public function user():BelongsTo
    {
       return $this->belongsTo(User::class);
    }
-   public function admin()
+
+   public function admin():BelongsTo
    {
       return $this->belongsTo(Admin::class);
    }
