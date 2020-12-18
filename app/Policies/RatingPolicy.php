@@ -5,7 +5,6 @@ namespace App\Policies;
 use App\Book;
 use App\User;
 use App\Rating;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class RatingPolicy
@@ -39,6 +38,7 @@ class RatingPolicy
      * Determine whether the user can create models.
      *
      * @param User $user
+     * @param Book $book
      * @return mixed
      */
     public function create(User $user, Book $book)

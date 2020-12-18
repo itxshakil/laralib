@@ -8,6 +8,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * @method static create(array $array)
+ * @method static find($user_id)
+ */
 class User extends Authenticatable
 {
     use Notifiable, SoftDeletes, HasFactory;

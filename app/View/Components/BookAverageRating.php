@@ -8,12 +8,13 @@ use Illuminate\View\View;
 class BookAverageRating extends Component
 {
     public $averageRating;
+
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param int $averageRating
      */
-    public function __construct($averageRating = 0)
+    public function __construct(int $averageRating = 0)
     {
         $this->averageRating =  $averageRating;
     }

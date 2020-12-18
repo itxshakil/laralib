@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static firstOrCreate(array $data)
+ */
 class Tag extends Model
 {
     use HasFactory;

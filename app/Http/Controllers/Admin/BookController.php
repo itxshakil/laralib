@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Book;
 use App\Author;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
@@ -85,7 +86,7 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $data = $request->validate([
+        $request->validate([
             'title' => ['required', 'string'],
             'isbn' => ['required', new ISBN, Rule::unique('books')->ignore($book)],
             'count' => ['required', 'integer'],
@@ -103,7 +104,8 @@ class BookController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Book $book
-     * @return Response
+     * @return bool
+     * @throws Exception
      */
     public function destroy(Book $book)
     {

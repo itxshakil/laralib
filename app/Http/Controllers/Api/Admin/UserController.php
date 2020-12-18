@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
-use App\Book;
 use App\Course;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @param Request $request
+     * @return AnonymousResourceCollection
      */
     public function index(Request $request)
     {
@@ -34,8 +34,9 @@ class UserController extends Controller
     /**
      * get User By Roll no and Course.
      *
-     * @param Book $book
-     * @return Response
+     * @param Course $course
+     * @param User $user
+     * @return User
      */
     public function userByRollno(Course $course, User $user)
     {

@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -59,7 +58,6 @@ class LoginController extends Controller
      * @param Request $request
      * @return void
      *
-     * @throws ValidationException
      */
     protected function validateLogin(Request $request)
     {

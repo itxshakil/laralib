@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Book;
 use App\User;
-use App\Course;
 use App\IssueLog;
 use Illuminate\Http\Request;
 use App\Rules\AlreadyNotIssued;

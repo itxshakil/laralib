@@ -5,6 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static create(array $validated)
+ * @method static paginate(int $int)
+ */
 class Author extends Model
 {
     use HasFactory;

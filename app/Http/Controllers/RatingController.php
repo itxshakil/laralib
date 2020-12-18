@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Rating;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -13,7 +14,9 @@ class RatingController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
+     * @param Book $book
      * @return Response
+     * @throws AuthorizationException
      */
     public function store(Request $request, Book $book)
     {
@@ -24,7 +27,7 @@ class RatingController extends Controller
             'comment' => ['nullable', 'string', 'max:255'],
         ]);
 
-        $rating = $book->ratings()->create([
+        $book->ratings()->create([
             'score' => $request->score,
             'comment' => $request->comment,
             'user_id' => auth()->id(),

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Rating;
-use Illuminate\Http\Response;
+use Exception;
 
 class RatingController extends Controller
 {
@@ -12,7 +12,8 @@ class RatingController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Rating $rating
-     * @return Response
+     * @return bool
+     * @throws Exception
      */
     public function destroy(Rating $rating)
     {

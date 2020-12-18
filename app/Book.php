@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,6 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
+/**
+ * @property mixed id
+ * @method static search(array|string|null $query)
+ * @method static firstWhere(string $string, $isbn)
+ * @method static create(array $only)
+ */
 class Book extends Model
 {
     use SearchableTrait, SoftDeletes, HasFactory;

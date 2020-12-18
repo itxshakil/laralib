@@ -13,7 +13,7 @@ class AlreadyNotIssued implements Rule
     /**
      * Create a new rule instance.
      *
-     * @return void
+     * @param User $user
      */
     public function __construct(User $user)
     {

@@ -70,7 +70,7 @@ class AuthorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      * @param Author $author
      * @return Response
      */
