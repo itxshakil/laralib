@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-{{ __('Latest Books') }}
+{{ __('Latest Books') }} | Page - {{$books->getCurrentPage()}}
 @endsection
 @section('content')
 <div class="container mx-auto px-6">
@@ -17,7 +17,7 @@
             <span
                 class="text-sm capitalize inline-block items-center px-2 rounded-full {{$book->count ? 'bg-green-800 text-green-100' : 'bg-red-800 text-red-100'}}">{{$book->count ? 'Available' : 'Not Available'}}</span>
             <span class="text-gray-400 text-sm capitalize">in {{$book->language}}</span>
-            <x-book-average-rating average-rating="{{$book->average_rating}}" />
+            <x-book-average-rating average-rating="{{$book->average_rating}}"></x-book-average-rating>
             <p class="text-gray-400 text-sm mt-4">ISBN : {{$book->isbn}}</p>
         </div>
         @endforeach
