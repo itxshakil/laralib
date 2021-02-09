@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @method static first()
+ */
 class Admin extends Authenticable
 {
     use HasFactory, Notifiable;

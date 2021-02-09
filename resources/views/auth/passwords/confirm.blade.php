@@ -7,7 +7,7 @@
             style="background-image: url('https://source.unsplash.com/K4mSJ7kc0As/600x800')">
         </div>
         <div class="w-full lg:w-1/2 bg-gray-200 p-2 md:p-5 rounded-r-lg shadow">
-            <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">{{ __('Confirm Password') }}</h3>
+            <h1 class="pt-4 text-2xl text-center pb-2 md:pb-4">{{ __('Confirm your Password') }}</h1>
             <p class="text-xs italic" role="alert">{{ __('Please confirm your password before continuing.') }}</p>
             <form method="POST" action="{{ route('password.confirm') }}">
                 @csrf

@@ -3,22 +3,21 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="google-site-verification" content="oRXIYL6yenkxhE2G4UhEjBQarn6Sb3Z3jRtBdBCoAWA" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="oRXIYL6yenkxhE2G4UhEjBQarn6Sb3Z3jRtBdBCoAWA" />
     <meta name="description"
         content="Laralib is a Library Management System with Admin and User Authentication system, where you can manage users (students), books, author, and issue logs. It also has an automatic fine calculation for the late returned book." />
     <meta name="keywords"
         content="library management system,laravel library management system,laravel library management system with admin panel,laravel,admin panel,laravel project,laravel 8,library management system in laravel" />
-    <meta name="subject" content="Laravel Library Mangement | Laralib" />
+    <meta name="subject" content="Laravel Library Management | Laralib" />
     <meta name="language" content="en" />
     <meta name="rating" content="General" />
     <meta name="url" content="https://laralib.herokuapp.com" />
     <meta name="identifier-URL" content="https://laralib.herokuapp.com" />
     <meta name="owner" content="Shakil Alam" />
     <meta name="author" content="Shakil Alam , itxshakil@gmail.com" />
-    <meta name="og:title" content="Portfolio" />
+    <meta name="og:title" content="Laravel Library Management | Laralib" />
     <meta name="og:url" content="https://laralib.herokuapp.com" />
-    <meta name="og:url" content="https://laralib.herokuapp.com" />
-    <meta name="og:url" content="https://laralib.herokuapp.com/" />
     <meta name="og:site_name" content="Shakil Alam | Portfolio" />
     <meta name="og:description"
         content="Laralib is a Library Management System with Admin and User Authentication system, where you can manage users (students), books, author, and issue logs. It also has an automatic fine calculation for the late returned book." />
@@ -109,30 +108,30 @@
         </div>
         <main class="py-4 flex flex-col justify-center items-center h-screen bg-indigo-700 text-white">
             <h1 class="text-6xl text-center">LaraLib</h1>
-            <p class="text-3xl text-center">A Modern Way of Managing Library</p>
+            <h2 class="text-3xl text-center">A Modern Way of Managing Library</h2>
             <a href="/admin" class="mt-2 bg-indigo-500 active:bg-indigo-800 text-white px-4 sm:px-8 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold">Try now</a>
         </main>
         <section id="features" class="-mt-10 bg-white rounded shadow p-4 container mx-auto border-gray-600">
             <h2 class="text-3xl font-semibold text-center underline">Features</h2>
             <h3 class="text-2xl">Admin Panel</h3>
-            <p class="ml-4 mb-1">Dashboard (Graphical report of recent activities.</p>
-            <p class="ml-4 mb-1">Member Management (Student and course)</p>
-            <p class="ml-4 mb-1">Book management(book, authors and categories)</p>
-            <p class="ml-4 mb-1">Circulation management (issue, and return)</p>
-            <p class="ml-4 mb-1">Automatic fine calculation for late return</p>
-            <p class="ml-4 mb-1">Requested Book by members (accept or reject)</p>
-            <p class="ml-4 mb-1">Separate Authentication System form Admins (multiple admin)</p>
-            <p class="ml-4 mb-1">Change Password</p>
-            <p class="ml-4 mb-1">Notify member by SMS and Email (Coming soon)</p>
-            <p class="ml-4 mb-1">Book Rating management (approve, block, spam) (Coming Soon)</p>
+            <h5 class="ml-4 mb-1">Dashboard (Graphical report of recent activities.</h5>
+            <h5 class="ml-4 mb-1">Member Management (Student and course)</h5>
+            <h5 class="ml-4 mb-1">Book management(book, authors and categories)</h5>
+            <h5 class="ml-4 mb-1">Circulation management (issue, and return)</h5>
+            <h5 class="ml-4 mb-1">Automatic fine calculation for late return</h5>
+            <h5 class="ml-4 mb-1">Requested Book by members (accept or reject)</h5>
+            <h5 class="ml-4 mb-1">Separate Authentication System form Admins (multiple admin)</h5>
+            <h5 class="ml-4 mb-1">Change Password</h5>
+            <h5 class="ml-4 mb-1">Notify member by SMS and Email (Coming soon)</h5>
+            <h5 class="ml-4 mb-1">Book Rating management (approve, block, spam) (Coming Soon)</h5>
             <h3 class="text-2xl mt-4">Member Panel</h3>
-            <p class="ml-4 mb-1">Browse Books (recent, most issued)</p>
-            <p class="ml-4 mb-1">Circulation History</p>
-            <p class="ml-4 mb-1">Authentication System</p>
-            <p class="ml-4 mb-1">Change Password</p>
-            <p class="ml-4 mb-1">Member can rate books.</p>
-            <p class="ml-4 mb-1">Notification of Requested Book (approved, rejected)</p>
-            <p class="ml-4 mb-1">View Notification From Admin (Coming Soon)</p>
+            <h5 class="ml-4 mb-1">Browse Books (recent, most issued)</h5>
+            <h5 class="ml-4 mb-1">Circulation History</h5>
+            <h5 class="ml-4 mb-1">Authentication System</h5>
+            <h5 class="ml-4 mb-1">Change Password</h5>
+            <h5 class="ml-4 mb-1">Member can rate books.</h5>
+            <h5 class="ml-4 mb-1">Notification of Requested Book (approved, rejected)</h5>
+            <h5 class="ml-4 mb-1">View Notification From Admin (Coming Soon)</h5>
             <p>and more...</p>
         </section>
         <section id="contact" class="mt-4 container mx-auto w-full lg:w-1/2 bg-gray-200 p-2 md:p-5 rounded-lg">
@@ -185,7 +184,7 @@
                 <div class="mb-4 text-center">
                     <button
                         class="w-full bg-indigo-500 active:bg-indigo-800 text-white px-3 sm:px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md font-bold text-xs"
-                        type="submit">Send Message</button>
+                        type="submit">Send Now</button>
                 </div>
             </form>
         </section>

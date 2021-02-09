@@ -36,13 +36,13 @@
                                             alt />
                                     </div>
                                     <div class="ml-4">
-                                        <p class="text-sm leading-5 font-medium text-gray-900">{{$book->name}}</p>
-                                        <p class="text-sm leading-5 text-gray-500">{{$book->isbn}}</p>
+                                        <h2 class="text-sm leading-5 font-medium text-gray-900">{{$book->name}}</h2>
+                                        <h3 class="text-sm leading-5 text-gray-500">{{$book->isbn}}</h3>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 font-medium text-gray-900">{{$book->author}}</div>
+                                <h3 class="text-sm leading-5 font-medium text-gray-900">{{$book->author}}</h3>
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <p class="text-sm leading-5 font-medium text-gray-900">{{$book->publisher}}</p>
@@ -51,18 +51,18 @@
                             <td
                                 class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
                                 @if ($book->status === null)
-                                <p
+                                <h4
                                     class="text-sm capitalize inline-block items-center px-2 rounded-full bg-yellow-800 text-yellow-100">
-                                    Pending</p>
+                                    Pending</h4>
                                 @else
                                 @if ($book->status)
-                                <p
+                                <h4
                                     class="text-sm capitalize inline-block items-center px-2 rounded-full bg-green-800 text-green-100">
-                                    Approved</p>
+                                    Approved</h4>
                                 @else
-                                <p
+                                <h4
                                     class="text-sm capitalize inline-block items-center px-2 rounded-full bg-red-800 text-red-100">
-                                    Rejected</p>
+                                    Rejected</h4>
                                 @endif
                                 @endif
 

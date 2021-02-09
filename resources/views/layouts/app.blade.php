@@ -9,7 +9,7 @@
         content="Laralib is a Library Management System with Admin and User Authentication system, where you can manage users (students), books, author, and issue logs. It also has an automatic fine calculation for the late returned book." />
     <meta name="keywords"
         content="library management system,laravel library management system,laravel library management system with admin panel,laravel,admin panel,laravel project,laravel 8,library management system in laravel" />
-    <meta name="subject" content="Laravel Library Mangement | Laralib" />
+    <meta name="subject" content="Laravel Library Management | Laralib" />
     <meta name="language" content="en" />
     <meta name="rating" content="General" />
     <meta name="url" content="https://laralib.herokuapp.com" />
@@ -64,7 +64,7 @@
             <flash message="{{session('flash')}}"></flash>
         </main>
         <footer class="mx-auto py-3 text-center bg-gray-800 text-white">
-            <p>Developed By <a href="https://wa.me/message/DU2KJXPQO6XZL1">Shakil Alam</a></p>
+            <p>Developed By <a href="https://shakiltech.com">Shakil Alam</a></p>
             <p>&copy 2020 All rights reserved.</p>
         </footer>
         <a href="https://wa.me/+918076688419"

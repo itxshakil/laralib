@@ -7,7 +7,7 @@
             style="background-image: url('https://source.unsplash.com/K4mSJ7kc0As/600x800')">
         </div>
         <div class="w-full lg:w-1/2 bg-gray-200 p-2 md:p-5 rounded-r-lg shadow">
-            <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">{{ __('Reset Password') }}</h3>
+            <h1 class="pt-4 text-2xl text-center pb-2 md:pb-4">{{ __('Reset your Password') }}</h1>
             @if (session('status'))
             <p class="text-xs italic text-green-500" role="alert">{{ session('status') }}</p>
             @endif

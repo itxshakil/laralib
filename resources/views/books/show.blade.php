@@ -5,29 +5,29 @@ Details of {{__($book->title)}}
 @section('content')
 <div class="container mx-auto">
     <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg shadow">
-        <h3 class="py-4 text-2xl text-center">Details of {{__($book->title)}}</h3>
+        <h1 class="py-4 text-2xl text-center">Details of {{__($book->title)}}</h1>
         <div class="flex flex-col sm:flex-row gap-2 flex-wrap flex-stretch flex-grow">
             <div class="w-full mr-2 sm:w-1/2 rounded p-2 shadow-md bg-gray-300">
-                <p class="text-xl font-semibold">{{$book->title}}</p>
-                <p>Written By @foreach($book->authors as $author) <a
+                <h2 class="text-xl font-semibold">{{$book->title}}</h2>
+                <h3>Written By @foreach($book->authors as $author) <a
                         href="{{route('authors.show',$author)}}">{{$author->name}}@if ($loop->remaining),
-                        @endif </a>@endforeach</p>
+                        @endif </a>@endforeach</h3>
                 <span
                     class="text-sm capitalize inline-block items-center px-2 rounded-full {{$book->count ? 'bg-green-800 text-green-100' : 'bg-red-800 text-red-100'}}">{{$book->count ? 'Available' : 'Not Available'}}</span>
                 <span class="text-gray-700 text-sm capitalize">in {{$book->language}}</span>
-                <x-book-average-rating average-rating="{{$book->average_rating}}" />
+                <x-book-average-rating average-rating="{{$book->average_rating}}"></x-book-average-rating>
                 <p class="text-gray-700 text-sm mt-4">ISBN : {{$book->isbn}}</p>
             </div>
             @forelse($issue_logs as $issue)
             <div class="w-full sm:w-1/3 lg:w-1/4 xl:w-1/5 bg-gray-800 text-gray-100 rounded p-4 shadow flex-grow">
-                <p class="text-xl">{{$book->title}}</p>
+                <h2 class="text-xl">{{$book->title}}</h2>
                 <span
                     class="inline-flex text-sm capitalize px-2 rounded-full {{$issue->returned_at ? 'text-green-200 bg-green-800' : 'text-red-200 bg-red-800'}}">{{$issue->returned_at ? 'Returned' : 'Not Returned'}}</span>
                 @if ($issue->fine)
                 <span class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
                     title="Total Fine">{{$issue->fine}}</span>
                 @endif
-                <p class="text-gray-400 text-sm">ISBN : {{$book->isbn}}</p>
+                <h3 class="text-gray-400 text-sm">ISBN : {{$book->isbn}}</h3>
                 <p class="text-gray-400 text-sm capitalize">Issued on : {{$issue->created_at->format('d-M-Y')}}</p>
                 @if($issue->returned_at)
                 <p class="text-gray-400 text-sm capitalize">Returned on : {{$issue->returned_at->format('d-M-Y')}}</p>
@@ -40,7 +40,7 @@ Details of {{__($book->title)}}
     </div>
     <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg shadow">
         @can('create', [App\Rating::class, $book])
-        <h3 class="pt-4 text-2xl text-center pb-2 md:pb-4">Add New rating!</h3>
+        <h2 class="pt-4 text-2xl text-center pb-2 md:pb-4">Add New rating!</h2>
         <form class="px-4 md:px-8  pt-6 pb-2 mb-4 bg-white rounded" method="POST"
             action="{{route('rating.store',$book)}}">
             <section class="sm:mb-4 w-full">
@@ -90,10 +90,10 @@ Details of {{__($book->title)}}
         @foreach($book->ratings as $rating)
         @if ($rating->comment)
         <div class="w-full rounded p-2 bg-gray-100 px-4 mb-4 shadow-lg">
-            <p class="text-gray-700 mt-2 capitalize">{{$rating->user->name}}</p>
-            <x-book-average-rating average-rating="{{$rating->score}}" />
+            <h4 class="text-gray-700 mt-2 capitalize">{{$rating->user->name}}</h4>
+            <x-book-average-rating average-rating="{{$rating->score}}"></x-book-average-rating>
             <span class="text-gray-700">on {{$rating->created_at->format('d-M-Y') }}</span>
-            <p class="text-lg">{{$rating->comment}}</p>
+            <h4 class="text-lg">{{$rating->comment}}</h4>
         </div>
         @endif
         @endforeach

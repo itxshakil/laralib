@@ -5,24 +5,24 @@
 @section('content')
 <div class="container mx-auto">
     <div class="flex justify-between items-center">
-        <h3 class="text-2xl p-2">{{ __($book->title) }}</h3>
+        <h1 class="text-2xl p-2">Details of {{ __($book->title) }}</h1>
         <a href="{{route('admin.books.index')}}"
             class="align-baseline py-2 px-4 border border-transparent text-sm  font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">All
             Books</a>
     </div>
     <div class="w-full bg-gray-200 p-2 md:p-5 rounded-lg shadow">
-        <h3 class="py-4 text-2xl text-center">Issue History of {{__($book->title)}} By
+        <h2 class="py-4 text-2xl text-center">Issue History of {{__($book->title)}} By
             @foreach($book->authors as $author){{$author->name}}@if ($loop->remaining),
-            @endif @endforeach</h3>
+            @endif @endforeach</h2>
         <div class="flex flex-col sm:flex-row gap-2 flex-wrap flex-stretch flex-grow">
             <div class="w-full sm:w-1/2 lg:w-3/12 rounded p-2 border bg-gray-900 text-gray-100">
-                <p class="text-lg font-semibold">{{$book->title}}</p>
+                <h3 class="text-lg font-semibold">{{$book->title}}</h3>
                 <span>By</span>
                 @foreach($book->authors as $author)
                 <a href="{{route('admin.authors.show',$author)}}">{{$author->name}}@if ($loop->remaining),
                     @endif </a>
                 @endforeach
-                <x-book-average-rating average-rating="{{$book->average_rating}}" />
+                <x-book-average-rating average-rating="{{$book->average_rating}}"></x-book-average-rating>
                 <div class="mt-1 flex gap-2 text-gray-300 justify-between">
                     <div>
                         <p class="text-gray-300 mt-2">ISBN: {{$book->isbn}}</p>
@@ -57,10 +57,10 @@
         @foreach($book->ratings as $rating)
         @if ($rating->comment)
         <div class="w-full rounded p-2 bg-gray-100 px-4 mb-4">
-            <p class="text-gray-700 mt-2 capitalize">{{$rating->user->name}}</p>
-            <x-book-average-rating average-rating="{{$rating->score}}" />
+            <h4 class="text-gray-700 mt-2 capitalize">{{$rating->user->name}}</h4>
+            <x-book-average-rating average-rating="{{$rating->score}}"></x-book-average-rating>
             <span class="text-gray-700">on {{$rating->created_at->toDateString() }}</span>
-            <p class="text-lg">{{$rating->comment}}</p>
+            <h3 class="text-lg">{{$rating->comment}}</h3>
             <button class="w-32 text-sm capitalize py-2 px-4 rounded bg-red-800 text-red-100">Delete</button>
         </div>
         @endif

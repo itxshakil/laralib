@@ -3,13 +3,13 @@
 @section('content')
 <div class="container mx-auto">
     <div class="flex justify-between items-center">
-        <h3 class="text-2xl p-2">{{ __('Create User') }}</h3>
+        <h1 class="text-2xl p-2">{{ __('Create new User') }}</h1>
         <a href="{{route('admin.users.index')}}"
             class="align-baseline py-2 px-4 border border-transparent text-sm  font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">All
             Students</a>
     </div>
     <div class="w-full bg-gray-200 p-2 md:p-5 shadow rounded-lg">
-        <h3 class="py-4 text-2xl text-center">Add New Student!</h3>
+        <h2 class="py-4 text-2xl text-center">Add New Student!</h2>
         <form class="px-4 md:px-8  pt-6 pb-2 mb-4 bg-white rounded shadow" method="POST"
             action="{{route('admin.users.store')}}">
             <div class="flex flex-col sm:flex-row gap-4">

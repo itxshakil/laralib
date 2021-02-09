@@ -5,7 +5,7 @@ Request New Book!
 @section('content')
 <div class="container mx-auto">
     <div class="w-full bg-gray-200 p-2 shadow rounded-lg">
-        <h3 class="py-4 text-2xl text-center">Request New Book!</h3>
+        <h1 class="py-4 text-2xl text-center">Request New Book!</h1>
         @if (session('message'))
         <p class="text-center italic text-green-500 mb-2">
             {{ session('message') }}
