@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-{{ __('Latest Books') }} | Page - {{$books->getCurrentPage()}}
+{{ __('Latest Books') }} | Page - {{request()->query('page', 1)}}
 @endsection
 @section('content')
 <div class="container mx-auto px-6">
