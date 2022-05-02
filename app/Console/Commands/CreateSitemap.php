@@ -38,7 +38,7 @@ class CreateSitemap extends Command
      */
     public function handle(): int
     {
-        SitemapGenerator::create('https://laralib.herokuapp.com')->writeToFile('public/sitemap.xml');
+        SitemapGenerator::create(config('app.url'))->writeToFile('public/sitemap.xml');
 
         return 1;
     }
