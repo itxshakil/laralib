@@ -53,7 +53,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2TRW59" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div id="app" class="bg-gray-300">
+    <div id="app" class="bg-gray-300 min-h-screen flex flex-col justify-between">
         @include('includes.admin.navbar')
 
         <main class="py-4">
