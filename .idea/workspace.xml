@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -30,20 +33,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" name="Default Changelist" comment="Remove fideloper/proxy">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" afterDir="false" />
+    </list>
+    <list id="7b6869cd-3f60-49aa-ab60-4d5eee6b66df" name="temp" comment="temp">
+      <change beforePath="$PROJECT_DIR$/.idea/booklab.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/booklab.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/authors/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/authors/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/admin/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/admin/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/issues/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/issues/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/requestedbooks/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requestedbooks/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/search/_book.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/search/_book.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,10 +49,40 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="5" changelist="7b6869cd-3f60-49aa-ab60-4d5eee6b66df" />
+        <range start1="32" end1="34" start2="35" end2="41" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="36" end1="46" start2="43" end2="43" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="54" end1="55" start2="51" end2="54" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="59" end1="59" start2="58" end2="86" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="92" end1="93" start2="119" end2="119" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="94" end1="95" start2="120" end2="120" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="105" end1="106" start2="130" end2="130" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="108" end1="109" start2="132" end2="132" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="111" end1="113" start2="134" end2="134" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="121" end1="122" start2="142" end2="142" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="124" end1="125" start2="144" end2="144" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="171" end1="171" start2="190" end2="216" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="178" end1="187" start2="223" end2="236" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="206" end1="206" start2="255" end2="256" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="216" end1="216" start2="266" end2="269" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="266" end1="267" start2="319" end2="362" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="294" end1="295" start2="389" end2="389" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+        <range start1="302" end1="303" start2="396" end2="403" changelist="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" />
+      </ranges>
+    </file>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -90,9 +117,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
@@ -103,14 +128,10 @@
       <path value="$PROJECT_DIR$/vendor/laravel/framework" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
-      <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
-      <path value="$PROJECT_DIR$/vendor/facade/ignition" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
       <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
-      <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
-      <path value="$PROJECT_DIR$/vendor/opis/closure" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/nicolaslopezj/searchable" />
@@ -119,10 +140,8 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
-      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
-      <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
@@ -169,6 +188,32 @@
       <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/nette/schema" />
+      <path value="$PROJECT_DIR$/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/vendor/league/config" />
+      <path value="$PROJECT_DIR$/vendor/spatie/browsershot" />
+      <path value="$PROJECT_DIR$/vendor/spatie/image-optimizer" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-sitemap" />
+      <path value="$PROJECT_DIR$/vendor/spatie/robots-txt" />
+      <path value="$PROJECT_DIR$/vendor/spatie/temporary-directory" />
+      <path value="$PROJECT_DIR$/vendor/dflydev/dot-access-data" />
+      <path value="$PROJECT_DIR$/vendor/laravel/serializable-closure" />
+      <path value="$PROJECT_DIR$/vendor/nicmart/tree" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/fruitcake/php-cors" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/spatie/backtrace" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-ignition" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-package-tools" />
+      <path value="$PROJECT_DIR$/vendor/spatie/flare-client-php" />
+      <path value="$PROJECT_DIR$/vendor/spatie/ignition" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/vendor/spatie/image" />
+      <path value="$PROJECT_DIR$/vendor/spatie/crawler" />
+      <path value="$PROJECT_DIR$/vendor/league/glide" />
     </include_path>
   </component>
   <component name="ProjectId" id="1leVANAcdaDOfIR4ljEM4yR09Mn" />
@@ -176,15 +221,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/laralib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RunManager" selected="PHPUnit.RatingTest.user_can_not_rate_books_if_not_issued_to_them">
     <configuration name="RatingTest.user_can_not_rate_books_if_not_issued_to_them" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\RatingTest" file="$PROJECT_DIR$/tests/Feature/RatingTest.php" method="user_can_not_rate_books_if_not_issued_to_them" scope="Method" />
@@ -204,6 +253,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="4ca0e941-a8c3-4b9f-ab36-6c4ce87736c8" name="Default Changelist" comment="" />
+      <changelist id="7b6869cd-3f60-49aa-ab60-4d5eee6b66df" name="temp" comment="" />
       <created>1607957400924</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -214,6 +264,9 @@
       <workItem from="1608262739886" duration="61000" />
       <workItem from="1612450242181" duration="251000" />
       <workItem from="1612881330449" duration="3283000" />
+      <workItem from="1651040229785" duration="3053000" />
+      <workItem from="1651049408564" duration="118000" />
+      <workItem from="1651488867310" duration="6623000" />
     </task>
     <task id="LOCAL-00001" summary="Added PHPStorm files">
       <created>1607957663353</created>
@@ -264,7 +317,49 @@
       <option name="project" value="LOCAL" />
       <updated>1612883848574</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add .idea folder to gitignore">
+      <created>1651490474246</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651490474246</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updat composer packages">
+      <created>1651490662578</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1651490662578</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Sitemap generate use config url for base url">
+      <created>1651490731185</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651490731185</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Update packages to Laravel 9 Support">
+      <created>1651495371956</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1651495371956</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Update packages to Laravel 9 Support">
+      <created>1651496351816</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1651496351816</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Remove fideloper/proxy">
+      <created>1651496440333</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1651496440333</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +387,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added PHPStorm files" />
@@ -300,6 +394,12 @@
     <MESSAGE value="Extract Method for issueBookToAuthUser" />
     <MESSAGE value="Some Updates" />
     <MESSAGE value="Add Page number to book index page view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Page number to book index page view" />
+    <MESSAGE value="Add .idea folder to gitignore" />
+    <MESSAGE value="Updat composer packages" />
+    <MESSAGE value="Sitemap generate use config url for base url" />
+    <MESSAGE value="Remove fideloper proxy" />
+    <MESSAGE value="Update packages to Laravel 9 Support" />
+    <MESSAGE value="Remove fideloper/proxy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove fideloper/proxy" />
   </component>
 </project>
