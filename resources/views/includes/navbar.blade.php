@@ -22,8 +22,8 @@
                     </svg>
                 </button>
             </div>
-            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <a class="flex-shrink-0" href="/">{{ config('app.name', 'Laravel') }}</a>
+            <div class="flex-1 flex items-center justify-center sm:justify-start">
+                <a class="flex-shrink-0 text-white uppercase font-bold tracking-wider" href="/">{{ config('app.name', 'Laravel') }}</a>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex">
                         @auth
