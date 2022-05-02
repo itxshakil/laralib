@@ -4,7 +4,7 @@
 <div class="container mx-auto flex justify-center px-3 md:px-6 my-12">
     <div class="w-full xl:w-3/4 lg:w-11/12 flex">
         <div class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg_cover rounded-l-lg"
-            style="background-image: url('https://source.unsplash.com/K4mSJ7kc0As/600x800')">
+            style="background-image: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");background-position-y: center;">
         </div>
         <div class="w-full lg:w-1/2 bg-gray-100 p-2 md:p-5 rounded-lg shadow">
             <h1 class="pt-4 text-2xl text-center pb-2 md:pb-4">{{ __('Change your Password') }}</h1>
