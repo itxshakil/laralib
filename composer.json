@@ -1,10 +1,10 @@
 {
-    "name": "laravel/laravel",
+    "name": "itxshakil/laralib",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "A Library Management System with Admin and User Authentication system, where you can manage users (students), books, author, and issue logs. It also has an automatic fine calculation for the late returned book.",
     "keywords": [
-        "framework",
-        "laravel"
+        "laravel",
+        "library-management-system"
     ],
     "license": "MIT",
     "require": {
