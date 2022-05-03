@@ -52,7 +52,7 @@
         >Issued</div>
         <div
           class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
-          v-text="issue.fine"
+          v-text="formatPrice(issue.fine)"
           title="Total Fine"
           v-if="issue.fine > 0"
         ></div>
@@ -79,6 +79,15 @@ export default {
     };
   },
   methods: {
+  formatPrice(amount){
+  let formatter = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    minimumFractionDigits: 2
+  });
+
+  return formatter.format(amount);
+},
     dateString(date) {
       date = new Date(date);
       return date.toDateString();
