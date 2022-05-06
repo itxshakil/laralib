@@ -57,7 +57,7 @@ class BookRequestRejected extends Notification
     {
         return [
             'title' => 'Book request rejected',
-            'body' => "Your request for $this->bookname has been rejected",
+            'body' => "Your request for $this->bookname has been rejected.",
         ];
     }
 }

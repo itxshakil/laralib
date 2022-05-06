@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 /**
  * @method static create(array $validated)
  * @method static paginate(int $int)
+ *
+ * @author Shakil Alam <itxshakil@gmail.com>
  */
 class Author extends Model
 {

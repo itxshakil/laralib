@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRequestedBook;
 use App\RequestedBook;
-use App\Rules\ISBN;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
 class RequestedBookController extends Controller
@@ -22,22 +22,13 @@ class RequestedBookController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return Response
+     * @param  \App\Http\Requests\StoreRequestedBook  $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreRequestedBook $request): RedirectResponse
     {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'author' => ['required', 'string', 'max:255'],
-            'isbn' => ['nullable', new ISBN,],
-            'publisher' => ['nullable', 'string', 'max:255'],
-            'year' => ['nullable', 'numeric'],
-            'message' => ['nullable', 'string'],
-            'user_id' => ['sometimes', 'nullable', 'numeric'],
-        ]);
-
-        RequestedBook::create($data);
+        RequestedBook::create($request->validated());
         return back()->with('message', 'Book Request sent successfully.');
     }
 }

@@ -10,54 +10,52 @@ use Illuminate\Contracts\Validation\Rule;
 class ISBN implements Rule
 {
     private $value;
-    /**
-     * Create a new rule instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
 
     /**
      * Determine if the validation rule passes.
      *
      * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
-     */
-    public function passes($attribute, $value)
-    {
-        $this->value = $value;
-
-        switch (strlen($this->filteredValue())) {
-            case 10:
-                return $this->shortChecksumMatches();
-
-            case 13:
-                return $this->longChecksumMatches();
-        }
-
-        return false;
-    }
-
-    /**
-     * Determine if checksum for short ISBN numbers is valid
+     * @param  mixed   $value
      *
      * @return bool
      */
-    private function shortChecksumMatches()
+    public function passes($attribute, $value): bool
+    {
+        $this->value = $value;
+
+        return match (strlen($this->filteredValue())) {
+            10 => $this->shortChecksumMatches(),
+            13 => $this->longChecksumMatches(),
+            default => false,
+        };
+    }
+
+    /**
+     * filter value to validate
+     *
+     * @return string
+     */
+    public function filteredValue(): string
+    {
+        return preg_replace("/[^0-9x]/i", '', $this->value);
+    }
+
+    /**
+     * Determine if checksum for short ISBN is valid
+     *
+     * @return bool
+     */
+    private function shortChecksumMatches(): bool
     {
         return $this->getShortChecksum() % 11 === 0;
     }
 
     /**
-     * Calculate checksum of short ISBN numbers
+     * Calculate checksum of short ISBN
      *
-     * @return int
+     * @return float|int
      */
-    private function getShortChecksum()
+    private function getShortChecksum(): float|int
     {
         $checksum = 0;
         $multiplier = 10;
@@ -70,23 +68,22 @@ class ISBN implements Rule
         return $checksum;
     }
 
-
     /**
      * Determine if long checksum is valid
      *
      * @return bool
      */
-    private function longChecksumMatches()
+    private function longChecksumMatches(): bool
     {
         return $this->getLongChecksum() % 10 === 0;
     }
 
     /**
-     * Calculate checksum for long ISBN numbers
+     * Calculate checksum for long ISBN
      *
-     * @return int
+     * @return float|int
      */
-    private function getLongChecksum()
+    private function getLongChecksum(): float|int
     {
         $checksum = 0;
         foreach (str_split($this->filteredValue()) as $num => $digit) {
@@ -98,21 +95,11 @@ class ISBN implements Rule
     }
 
     /**
-     * filter value to validate
-     *
-     * @return string
-     */
-    public function filteredValue()
-    {
-        return preg_replace("/[^0-9x]/i", '', $this->value);
-    }
-
-    /**
      * Get the validation error message.
      *
      * @return string
      */
-    public function message()
+    public function message(): string
     {
         return 'The :attribute must be a valid ISBN 10 or ISBN 13 number';
     }

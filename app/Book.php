@@ -17,6 +17,8 @@ use Nicolaslopezj\Searchable\SearchableTrait;
  * @method static search(array|string|null $query)
  * @method static firstWhere(string $string, $isbn)
  * @method static create(array $only)
+ *
+ * @author Shakil Alam <itxshakil@gmail.com>
  */
 class Book extends Model
 {

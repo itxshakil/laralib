@@ -7,7 +7,7 @@ use Illuminate\View\View;
 
 class BookAverageRating extends Component
 {
-    public $averageRating;
+    public int $averageRating;
 
     /**
      * Create a new component instance.

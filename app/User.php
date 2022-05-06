@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Hash;
 /**
  * @method static create(array $array)
  * @method static find($user_id)
+ *
+ * @author Shakil Alam <itxshakil@gmail.com>
  */
-
 class User extends Authenticatable
 {
     use Notifiable, SoftDeletes, HasFactory;

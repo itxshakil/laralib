@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static firstOrCreate(array $data)
+ *
+ * @author Shakil Alam <itxshakil@gmail.com>
  */
 class Tag extends Model
 {

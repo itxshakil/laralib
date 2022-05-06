@@ -3,30 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Http\Requests\StoreRating;
 use App\Rating;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 
 class RatingController extends Controller
 {
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @param Book $book
-     * @return Response
-     * @throws AuthorizationException
+     * @param  \App\Http\Requests\StoreRating  $request
+     * @param  Book                            $book
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request, Book $book)
+    public function store(StoreRating $request, Book $book): Redirector|RedirectResponse|Application
     {
-        $this->authorize('create', [Rating::class, $book]);
-
-        $request->validate([
-            'score' => ['required', 'numeric', 'between:1,5'],
-            'comment' => ['nullable', 'string', 'max:255'],
-        ]);
-
         $book->ratings()->create([
             'score' => $request->score,
             'comment' => $request->comment,
@@ -34,39 +31,5 @@ class RatingController extends Controller
         ]);
 
         return redirect(route('books.show',$book))->with('flash','Rating is saved successfully.');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Rating $rating
-     * @return Response
-     */
-    public function edit(Rating $rating)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param Rating $rating
-     * @return Response
-     */
-    public function update(Request $request, Rating $rating)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Rating $rating
-     * @return Response
-     */
-    public function destroy(Rating $rating)
-    {
-        //
     }
 }

@@ -22,7 +22,7 @@
                     </svg>
                 </button>
             </div>
-            <div class="flex-1 flex items-center justify-center sm:justify-start">
+            <div class="flex-1 flex items-center pl-4 md:pl-0 justify-start">
                 <a class="flex-shrink-0 text-white uppercase font-bold tracking-wider" href="/">{{ config('app.name', 'Laravel') }}</a>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex">

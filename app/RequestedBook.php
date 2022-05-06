@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static paginate(int $int)
  * @property int user_id
  * @property mixed name
+ *
+ * @author Shakil Alam <itxshakil@gmail.com>
  */
 class RequestedBook extends Model
 {

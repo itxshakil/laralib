@@ -43,7 +43,7 @@ class AlreadyNotIssued implements Rule
      */
     public function message()
     {
-        return 'Book is already issued to user.';
+        return 'Book is already issued to the user.';
     }
 
     private function userHasIssuedBook(Book $book)

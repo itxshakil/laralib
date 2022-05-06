@@ -10,6 +10,8 @@ use Illuminate\Notifications\Notifiable;
 
 /**
  * @method static first()
+ *
+ * @author Shakil Alam <itxshakil@gmail.com>
  */
 class Admin extends Authenticable
 {
