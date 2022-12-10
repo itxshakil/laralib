@@ -22,8 +22,28 @@ class BookFactory extends Factory
      */
     public function definition()
     {
+        $names = [
+            'The Great Gatsby',
+            'The Lord of the Rings',
+            'The Hobbit',
+            'The Catcher in the Rye',
+            'The Lord of the Flies',
+            'The Grapes of Wrath',
+            'Java Script: The Good Parts',
+            'Java Script: The Definitive Guide',
+            'The C Programming Language',
+            'The C Programming Language (2nd Edition)',
+            'The C Programming Language (3rd Edition)',
+            'C++ Primer',
+            'Networking for the World Wide Web',
+            'SQL for the World Wide Web',
+            'Systems Programming with C',
+            'System Analysis and Design',
+            'Test Driven Development',
+            'The C Programming Language (4th Edition)',
+        ];
         return [
-            'title' => $this->faker->text(40),
+            'title' => $this->faker->unique()->randomElement($names),
             'isbn' => $this->faker->unique()->isbn10,
             'count' => $this->faker->numberBetween(0, 18),
         ];
