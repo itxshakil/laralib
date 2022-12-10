@@ -17,7 +17,7 @@ class BookSeeder extends Seeder
      */
     public function run()
     {
-        Book::factory()->count(60)->create()->each(function ($book) {
+        Book::factory()->count(12)->create()->each(function ($book) {
             $book->authors()->toggle($this->randomAuthorIds());
         });
     }
