@@ -175,7 +175,7 @@
                     <p class="text-xs italic text-red-500" role="alert">{{ $message }}</p>
                     @enderror
                 </div>
-                <label for="website" class="sr-only">Website (Leave blank)</label>
+                <label for="website" class="sr-only hidden">Website (Leave blank)</label>
                 <input type="text" id="website" name="website" class="hidden" />
                 <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700" for="message">{{ __('Message') }}</label>
