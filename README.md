@@ -1,8 +1,8 @@
-# [Laralib](https://laralib.herokuapp.com) ![Laravel](https://github.com/itxshakil/laralib/workflows/Laravel/badge.svg?branch=main)
+# [Laralib]([https://laralib.herokuapp.com](https://laralib.shakiltech.com))
 
-A Library Management System with Admin and User Authentication system, where you can manage users (students), books, author, and issue logs. It also has an automatic fine calculation for the late returned book.
+A Library Management System with Admin and User Authentication system, where you can manage users (students), books, authors, and issue logs. It also has an automatic fine calculation for the late returned book.
 
-##### [https://laralib.herokuapp.com](https://laralib.herokuapp.com)
+##### [https://laralib.shakiltech.com/](https://laralib.shakiltech.com)
 
 ## Table of contents
 * [Features](#features)
@@ -15,14 +15,14 @@ A Library Management System with Admin and User Authentication system, where you
 ## Features
 ### Admin Panel
 - Dashboard (Graphical report of recent activities.
-- Member Mangement (Student and course)
-- Book mangement(book, authors and categories)
+- Member Management (Student and course)
+- Book management(book, authors and categories)
 - Circulation management (issue, and return)
 - Automatic fine calculation for late return
 - Requested Book by members (accept or reject)
-- Seperate Authentication System form Admins (multiple admin)
+- Separate Authentication System for Admins (multiple admins)
 - Change Password
-- Notify member by SMS and Email (Coming soon)
+- Notify members by SMS and Email (Coming soon)
 - Book Rating management (approve, block, spam) (Coming Soon)
 
 ### Member Panel
@@ -30,7 +30,7 @@ A Library Management System with Admin and User Authentication system, where you
 - Circulation History
 - Authentication System
 - Change Password
-- Member can rate books.
+- Members can rate books.
 - Notification of Requested Book (approved, rejected)
 - View Notification From Admin (Coming Soon)
   and more...
