@@ -14,7 +14,6 @@ class Contact extends Model
 
     protected static function booted()
     {
-        parent::booted();
         static::created(function (Contact $contact) {
             Notification::route('mail', config('mail.admin.address'))
                 ->notify(new \App\Notifications\ContactNotification($contact));
