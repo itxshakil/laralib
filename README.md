@@ -1,4 +1,4 @@
-# [Laralib]([https://laralib.herokuapp.com](https://laralib.shakiltech.com))
+# [Laralib](https://laralib.shakiltech.com)
 
 A Library Management System with Admin and User Authentication system, where you can manage users (students), books, authors, and issue logs. It also has an automatic fine calculation for the late returned book.
 
