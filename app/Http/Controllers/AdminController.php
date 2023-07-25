@@ -23,7 +23,11 @@ class AdminController extends Controller
     public function index()
     {
         $pending_issues = IssueLog::issued()->get();
-        $pending_issues->load('admin', 'book.authors', 'user');
+        $pending_issues->load(['admin', 'book' => function($query){
+            $query->withTrashed()->with(['authors']);
+        }, 'user'=> function($query){
+            $query->withTrashed();
+        }]);
 
         $issuedChart = Cache::remember('issuedInLast28Days', 86400, function () {
             return IssueLog::select('id', 'created_at')->whereBetween('created_at', [Carbon::now()->subDays(28), Carbon::now()])->orderBy('created_at')->get()->countBy(function ($issuelog) {
